@@ -1,6 +1,6 @@
-# client
+# working-with-nuxtjs
 
-> project manager course program to build Specification documents
+> testing nuxt
 
 ## Build Setup
 
