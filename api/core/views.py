@@ -10,4 +10,4 @@ from .models import User
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSirializer
-    queryset = User
+    queryset = User.objects.all()

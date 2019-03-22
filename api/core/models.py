@@ -8,8 +8,9 @@ class User(models.Model):
     First_name=models.CharField(max_length=50)
     Last_name=models.CharField(max_length=50)
     Email=models.CharField(max_length=50)
-    Password=models.CharField(max_length=16)
-
+    Password=models.CharField(max_length=50)
+   
+    
     
     def __str_(self):
         return "User name {}".format(self.First_name)
