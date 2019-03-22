@@ -11,28 +11,28 @@ from django.contrib.auth.models import BaseUserManager
 class UserProfileManager(BaseUserManager):
     """Helps Django work with our custom user model"""
 
-    def create_user(self, email, first_name, last_name, password=None):
+    def create_user(self, email,user_name, first_name, last_name, password=None):
         """Creates a new user profile object."""
 
         if not email:
             raise ValueError("Users must have an email address.")
 
         email = self.normalize_email(email)
-        user = self.model(email=email, first_name=first_name, last_name=last_name)
+        user = self.model(email=email,user_name=user_name, first_name=first_name, last_name=last_name)
 
         user.set_password(password)
         user.save(using=self._db)
 
         return user
 
-    def create_premium_user(self, email, first_name, last_name, password=None, credit_card):
+    def create_premium_user(self, email, first_name, last_name, password, credit_card):
         """Creates a new premium user profile object."""
 
         if not email:
             raise ValueError("Users must have an email address.")
 
         email = self.normalize_email(email)
-        premim_user = self.model(email=email, first_name=first_name, last_name=last_name, credit_card=credit_card)
+        premim_user = self.model(email=email,user_name=user_name, first_name=first_name, last_name=last_name, credit_card=credit_card)
 
         premim_user.set_password(password)
         premim_user.save(using=self._db)
@@ -40,10 +40,10 @@ class UserProfileManager(BaseUserManager):
 
         return premim_user
 
-    def create_superuser(self, email, name, password):
+    def create_superuser(self, email,user_name, first_name, last_name, password):
         """Creates and savesa new superuser with given details."""
 
-        user = self.create_user(email, first_name, last_name, password)
+        user = self.create_user(email,user_name, first_name, last_name, password)
 
         user.is_superuser = True
         user.is_staff = True
@@ -86,21 +86,18 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
     def __str__(self):
         """uses this when it needs to convert the object to a string."""
 
-        return "The user name is: {0}\n The user email is: {1}\n".format(self.get_full_name(),self.email)
+        return self.get_full_name()
 
 class PremiumUserProfile(UserProfile):
     """Reprsents a "premium user profile" inside our system"""
 
     credit_card = models.CharField(max_length=16, unique=True)
-    self.change_is_premium()
-
+    
+    def change(self):
+        change_is_premium()
+    
     REQUIRED_FIELDS = ['credit_card']
 
-    @override
-    def __str__(self):
-        """Reprsents premium user details."""
-
-        return "{0} the credit card is: ************{1}".format(super.str(),self.credit_card[11:])
 
 
 # Create your models here.
