@@ -25,7 +25,7 @@ class UserProfileManager(BaseUserManager):
 
         return user
 
-    def create_premium_user(self, email, first_name, last_name, password, credit_card):
+    def create_premium_user(self, email,user_name, first_name, last_name, password, credit_card):
         """Creates a new premium user profile object."""
 
         if not email:
@@ -54,7 +54,7 @@ class UserProfileManager(BaseUserManager):
 
 class UserProfile(AbstractBaseUser,PermissionsMixin):
     """Reprsents a "user profile" inside our system"""
-
+    
     email = models.EmailField(max_length=255, unique=True)
     user_name = models.CharField(unique=True,max_length=30)
     first_name = models.CharField(max_length=255)
@@ -94,7 +94,7 @@ class PremiumUserProfile(UserProfile):
     credit_card = models.CharField(max_length=16, unique=True)
     
     def change(self):
-        change_is_premium()
+        self.change_is_premium()
     
     REQUIRED_FIELDS = ['credit_card']
 
