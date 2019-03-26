@@ -28,4 +28,27 @@ class UserTestCase(TestCase):
         admin=UserProfileManager.objects.get(email="alex@admin.com")
         self.assertTrue(isinstance(admin))
         self.assertEqual(admin.__unicode__(),admin.email)
+
+    def test_user_unique(self):
+        user=UserProfileManager.objects.get(email="alexv@regular.com")
+        premium=UserProfileManager.objects.get(email="alex@premium.com")
+        admin=UserProfileManager.objects.get(email="alex@admin.com")
+        self.assertNotEqual(user,premium)
+        self.assertNotEqual(user,admin)
+        self.assertNotEqual(premium,admin)
+    
+    def test_premium(self):
+        user=UserProfileManager.objects.get(email="alexv@regular.com")
+        premium=UserProfileManager.objects.get(email="alex@premium.com")
+        admin=UserProfileManager.objects.get(email="alex@admin.com")
+        self.assertEqual(user.is_premium,False)
+        self.assertEqual(premium.is_premium,True)
+        self.assertEqual(admin.is_premium,False)
+        
+    def test_login(self):
+        c=Client()
+        login_success=c.login(email="alexv@regular.com", password="blayt1245")
+        login_fail=c.login(email="bad_mail@regular.com", password="not12345")
+        self.assertTrue(login_success)
+        self.assertFalse(login_fail)
 # Create your tests here.
