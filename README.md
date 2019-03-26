@@ -12,6 +12,8 @@ $ pip install -r requirements.txt
 # build for production and launch server
 $ pipenv shell
 $ cd <project-name> #where the manage.py is located
+$ python manage.py migrate
+$ python manage.py createsuperuser
 $ python3 manage.py runserver
 
 
