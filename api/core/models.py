@@ -77,7 +77,7 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
         """Used to get a users short name"""
 
         return self.first_name
-
+    
     def change_is_premium(self):
         """Function to change to a premium user."""
         

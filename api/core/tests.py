@@ -52,3 +52,6 @@ class UserTestCase(TestCase):
         self.assertTrue(login_success)
         self.assertFalse(login_fail)
 # Create your tests here.
+
+
+    
