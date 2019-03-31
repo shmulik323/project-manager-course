@@ -31,11 +31,7 @@ module.exports = {
       },
       {
         rel: 'stylesheet',
-<<<<<<< HEAD
-        href: 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons'
-=======
         href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Material+Icons'
->>>>>>> 8d674cb22c805223e9046c5b6b65d5c892190353
       }, {
         rel: 'stylesheet',
         href: 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css'
@@ -58,7 +54,7 @@ module.exports = {
   ],
 
   /*
-   ** Plugins to loadnp before mounting the App
+   ** Plugins to load before mounting the App
    */
   plugins: [
     '@/plugins/vuetify'
@@ -68,8 +64,6 @@ module.exports = {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/proxy',
@@ -92,15 +86,6 @@ module.exports = {
       local: {
         endpoints: {
           login: {
-<<<<<<< HEAD
-            url: 'login',
-            method: 'get',
-            propertyName: 'data.token'
-          },
-          user: {
-            url: 'me',
-=======
->>>>>>> 8d674cb22c805223e9046c5b6b65d5c892190353
             method: 'get',
             propertyName: 'token'
           }

@@ -1,6 +1,6 @@
-# working-with-django
+# working-with-flask
 
-> django rest api
+> flask rest api
 
 ## Build Setup
 
@@ -12,11 +12,11 @@ $ pip install -r requirements.txt
 # build for production and launch server
 $ pipenv shell
 $ cd <project-name> #where the manage.py is located
-$ python manage.py migrate
-$ python manage.py createsuperuser
-$ python3 manage.py runserver
+$ python
+>>from run import db
+>>db.create_all()
 
 
 ```
 
-For detailed explanation on how things work, checkout [Django docs](https://www.django-rest-framework.org/).
+For detailed explanation on how things work, checkout [Flask docs](http://flask.pocoo.org/docs/1.0/).
