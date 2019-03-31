@@ -1,75 +1,100 @@
 <template>
-  <section class="section">
-    <v-layout>
-      <v-flex xs12 sm6 offset-sm3>
-        <v-card>
-          <div class="columns">
-            <div class="column is-4 is-offset-4">
-              <h2 class="title has-text-centered">Welcome back!</h2>
+  <div>
+    <h2 class="text-center">Login</h2>
+    <hr>
+    <b-alert v-if="error" show variant="danger">{{ error + '' }}</b-alert>
+    <b-alert show v-if="$auth.$state.redirect">
+      You have to login before accessing to
+      <strong>{{ $auth.$state.redirect }}</strong>
+    </b-alert>
+    <b-row align-h="center" align-v="center">
+      <b-col md="4">
+        <b-card bg-variant="light">
+          <busy-overlay/>
+          <form @keydown.enter="login">
+            <b-form-group label="Username">
+              <b-input v-model="username" placeholder="anything" ref="username"/>
+            </b-form-group>
 
-              <Notification :message="error" v-if="error"/>
+            <b-form-group label="Password">
+              <b-input type="password" v-model="password" placeholder/>
+            </b-form-group>
 
-              <form method="post" @submit.prevent="login">
-                <div class="field">
-                  <label class="label">Email</label>
-                  <div class="control">
-                    <input type="email" class="input" name="email" v-model="email">
-                  </div>
-                </div>
-                <div class="field">
-                  <label class="label">Password</label>
-                  <div class="control">
-                    <input type="password" class="input" name="password" v-model="password">
-                  </div>
-                </div>
-                <div class="control">
-                  <button type="submit" class="button is-dark is-fullwidth">Log In</button>
-                </div>
-              </form>
-              <div class="has-text-centered" style="margin-top: 20px">
-                <p>Don't have an account?
-                  <nuxt-link to="/register">Register</nuxt-link>
-                </p>
-              </div>
+            <div class="text-center">
+              <b-btn @click="login" variant="primary" block>Login</b-btn>
             </div>
+          </form>
+        </b-card>
+      </b-col>
+      <b-col md="1">
+        <div class="text-center">
+          <b-badge pill>OR</b-badge>
+        </div>
+      </b-col>
+      <b-col md="4" class="text-center pt-4">
+        <b-card title="Social Login" bg-variant="light">
+          <div v-for="s in strategies" :key="s.key" class="mb-2">
+            <b-btn
+              @click="$auth.loginWith(s.key)"
+              block
+              :style="{background: s.color}"
+              class="login-button"
+            >Login with {{ s.name }}</b-btn>
           </div>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </section>
+        </b-card>
+      </b-col>
+    </b-row>
+  </div>
 </template>
 
+<style scoped>
+.login-button {
+  border: 0;
+}
+</style>
+
 <script>
-import Notification from "~/components/Notification";
-
+import busyOverlay from "~/components/busy-overlay";
 export default {
-  middleware: "guest",
-  components: {
-    Notification
-  },
-
+  middleware: ["auth"],
+  components: { busyOverlay },
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
       error: null
     };
   },
-
+  computed: {
+    strategies: () => [
+      { key: "auth0", name: "Auth0", color: "#ec5425" },
+      { key: "google", name: "Google", color: "#4284f4" },
+      { key: "facebook", name: "Facebook", color: "#3c65c4" },
+      { key: "github", name: "GitHub", color: "#202326" }
+    ],
+    redirect() {
+      return (
+        this.$route.query.redirect &&
+        decodeURIComponent(this.$route.query.redirect)
+      );
+    },
+    isCallback() {
+      return Boolean(this.$route.query.callback);
+    }
+  },
   methods: {
     async login() {
-      try {
-        await this.$auth.loginWith("local", {
+      this.error = null;
+      return this.$auth
+        .loginWith("local", {
           data: {
-            email: this.email,
+            username: this.username,
             password: this.password
           }
+        })
+        .catch(e => {
+          this.error = e + "";
         });
-
-        this.$router.push("/");
-      } catch (e) {
-        this.error = e.response.data.message;
-      }
     }
   }
 };
