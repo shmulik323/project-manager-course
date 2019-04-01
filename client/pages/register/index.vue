@@ -11,6 +11,18 @@
 
               <form method="post" @submit.prevent="register">
                 <div class="field">
+                  <label class="label">First-name</label>
+                  <div class="control">
+                    <input type="fname" class="input" name="firstname" v-model="name" required>
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="label">Last name</label>
+                  <div class="control">
+                    <input type="lastname" class="input" name="last" v-model="last" required>
+                  </div>
+                </div>
+                <div class="field">
                   <label class="label">Username</label>
                   <div class="control">
                     <input type="text" class="input" name="username" v-model="username" required>
@@ -39,7 +51,8 @@
                 </div>
               </form>
 
-              <div class="has-text-centered" style="margin-top: 20px">Already got an account?
+              <div class="has-text-centered" style="margin-top: 20px">
+                Already got an account?
                 <nuxt-link to="/login">Login</nuxt-link>
               </div>
             </div>
@@ -71,8 +84,10 @@ export default {
   methods: {
     async register() {
       try {
-        await this.$axios.post("register", {
+        await this.$axios.post("api/auth/user", {
           username: this.username,
+          name: this.name,
+          last: this.last,
           email: this.email,
           password: this.password
         });

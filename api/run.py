@@ -21,12 +21,6 @@ app.config['SECRET_KEY'] = 'thisissecret'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project.db'
 CORS(app)
 db = SQLAlchemy(app)
-login = LoginManager(app)
-
-
-@login.user_loader
-def login_user(user_id):
-    return User.query.get(user_id)
 
 
 class User(db.Model, UserMixin):
@@ -94,7 +88,7 @@ def get_all_users():
     return jsonify({'users': output})
 
 
-@app.route('/api/user/<public_id>', methods=['GET'])
+@app.route('/api/auth/user/<public_id>', methods=['GET'])
 @token_required
 def get_one_user(current_user, public_id):
     user = User.query.filter_by(public_id=public_id).first()

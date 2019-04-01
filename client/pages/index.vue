@@ -13,12 +13,11 @@
 
     <div>
       User status:
-      <b-badge>{{ $auth.$state.loggedIn ? 'Logged In' : 'Guest' }}</b-badge>
+      <b-badge>{{ $auth.$state.loggedIn ? $auth.$state.user : 'Guest' }}</b-badge>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-}
+export default {};
 </script>

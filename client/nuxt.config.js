@@ -75,8 +75,6 @@ module.exports = {
   },
   proxy: {
     '/api': 'http://127.0.0.1:5000',
-    '/api/auth/user': 'http://127.0.0.1:5000',
-    '/api/auth/login': 'http://127.0.0.1:5000'
   },
   auth: {
     redirect: {
@@ -86,7 +84,8 @@ module.exports = {
       local: {
         endpoints: {
           login: {
-            method: 'get',
+            method: 'post',
+            dataType: 'json',
             propertyName: 'token'
           }
         }
@@ -106,7 +105,7 @@ module.exports = {
 
       twitter: {
         client_id: 'FAJNuxjMTicff6ciDKLiZ4t0D'
-      }
+      },
     }
   },
   /*

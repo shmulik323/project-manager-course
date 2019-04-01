@@ -12,8 +12,8 @@
         <b-card bg-variant="light">
           <busy-overlay/>
           <form @keydown.enter="login">
-            <b-form-group label="Username">
-              <b-input v-model="username" placeholder="anything" ref="username"/>
+            <b-form-group label="email">
+              <b-input v-model="email" placeholder="anything" ref="email"/>
             </b-form-group>
 
             <b-form-group label="Password">
@@ -60,7 +60,7 @@ export default {
   components: { busyOverlay },
   data() {
     return {
-      username: "",
+      email: "",
       password: "",
       error: null
     };
@@ -88,7 +88,7 @@ export default {
       return this.$auth
         .loginWith("local", {
           data: {
-            username: this.username,
+            email: this.email,
             password: this.password
           }
         })
