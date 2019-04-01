@@ -14,16 +14,16 @@
     <v-toolbar dark class="primary">
       <v-toolbar-side-icon @click.stop="sideNav = !sideNav"></v-toolbar-side-icon>
       <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer">Development Forms</router-link>
+        <nuxt-link to="/" tag="span" style="cursor: pointer">Development Forms</nuxt-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <template v-if="isAuthenticated">
-          <a class="navbar-item" @click="logout">Logout</a>
+          <b-btn variant="danger" class="navbar-item" @click="logout">Logout</b-btn>
         </template>
         <template v-else>
-          <router-link class="navbar-item" to="/register">Register</router-link>
-          <router-link class="navbar-item" to="/login">Log In</router-link>
+          <b-btn variant="success" class="navbar-item" @click="$router.push('/register')">Register</b-btn>
+          <b-btn variant="info" class="navbar-item" @click="$router.push('/login')">Login</b-btn>
         </template>
       </v-toolbar-items>
     </v-toolbar>
@@ -38,7 +38,7 @@ export default {
       sideNav: false,
       menuItems: [
         { icon: "room", title: "create", link: "/create" },
-        { icon: "person", title: "Profile", link: "/profile" }
+        { icon: "fingerprint", title: "Profile", link: "/secure" }
       ]
     };
   },

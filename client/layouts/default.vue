@@ -3,6 +3,10 @@
     <Navdrow/>
     <div class="container">
       <nuxt/>
+      <div class="fixed-bottom">
+        User status:
+        <b-badge>{{ $auth.$state.loggedIn ? $auth.$state.user : 'Guest' }}</b-badge>
+      </div>
     </div>
   </v-app>
 </template>

@@ -75,6 +75,8 @@ export default {
   data() {
     return {
       username: "",
+      name: "",
+      last: "",
       email: "",
       password: "",
       error: null
@@ -84,10 +86,10 @@ export default {
   methods: {
     async register() {
       try {
-        await this.$axios.post("api/auth/user", {
-          username: this.username,
+        await this.$axios.post("api/register", {
           name: this.name,
           last: this.last,
+          username: this.username,
           email: this.email,
           password: this.password
         });

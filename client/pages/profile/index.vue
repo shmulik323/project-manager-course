@@ -8,11 +8,7 @@
           <div class="content">
             <p>
               <strong>Username:</strong>
-              {{ loggedInUser.username }}
-            </p>
-            <p>
-              <strong>Email:</strong>
-              {{ loggedInUser.email }}
+              {{ $auth.$state.user }}
             </p>
           </div>
         </v-card>
