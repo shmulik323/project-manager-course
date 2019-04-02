@@ -53,7 +53,7 @@ class test_app(unittest.TestCase):
     def test_unique_accounts(self):
         response = self.register('alex', 'vaitz','alexv', 'alex@gmail.com','alexv32')
         user = User.query.filter_by(username='alexv').first()
-        response = self.register_premium('almog', 'gro','almoggr', 'almog@gmail.com','almog32')
+        premium_response = self.register_premium('almog', 'gro','almoggr', 'almog@gmail.com','almog32')
         premium = User.query.filter_by(username='almoggr').first()
         self.assertNotEqual(user, premium)
 
