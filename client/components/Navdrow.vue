@@ -6,7 +6,9 @@
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
-          <v-list-tile-content>{{ item.title }}</v-list-tile-content>
+          <v-list-tile-content>
+            <h5>{{ item.title }}</h5>
+          </v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
@@ -38,8 +40,8 @@ export default {
     return {
       sideNav: false,
       menuItems: [
-        { icon: "room", title: "create", link: "/create" },
-        { icon: "fingerprint", title: "Profile", link: "/secure" }
+        { icon: "create", title: "create form", link: "/create" },
+        { icon: "fingerprint", title: "Profile", link: "/profile" }
       ]
     };
   },
