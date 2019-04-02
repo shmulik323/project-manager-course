@@ -45,7 +45,10 @@ class test_app(unittest.TestCase):
         user = User.query.filter_by(username='alexv').first()
         self.assertEqual(user, response)
     
-        
+    def test_valid_premium_registration(self):
+        response = self.register_premium('alex', 'vaitz','alexv', 'alex@gmail.com','alexv32')
+        user = User.query.filter_by(username='alexv').first()
+        self.assertEqual(user, response) 
 
     def login(self, username, password):
         user=User.query.filter_by(username=username,password=password)
