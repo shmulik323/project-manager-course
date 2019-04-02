@@ -74,3 +74,6 @@ class test_app(unittest.TestCase):
 
         response = self.login( 'alexv', 'alexv32' + 'x')
         self.assertNotEqual(response,False)
+
+if __name__ == "__main__":
+    unittest.main()
