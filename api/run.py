@@ -41,7 +41,6 @@ class User(db.Model, UserMixin):
 
 class PremiumUser(User):
     credit_card = db.Column(db.String(50))
-    change()
 
 
 class MyModelView(ModelView):
@@ -137,8 +136,9 @@ def create_premium():
 
     hashed_password = generate_password_hash(data['password'], method='sha256')
 
-    new_user = User(public_id=str(uuid.uuid4()), name=data['name'], last=data['last'],
+    new_user = PremiumUser(public_id=str(uuid.uuid4()), name=data['name'], last=data['last'],
                     username=data['username'], email=data['email'], password=hashed_password, admin=False)
+    new_user.change()
     db.session.add(new_user)
     db.session.commit()
     return jsonify({'message': 'New premium user created!'})
