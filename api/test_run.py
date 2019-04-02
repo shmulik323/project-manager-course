@@ -1,12 +1,12 @@
 import os
 import tempfile
 import unittest
-import pytest
 import run
 import uuid
-from run import app,db,User,PremiumUser
+from run import app, db, User, PremiumUser
 import requests
 TEST_DB = 'test.db'
+
 
 class test_app(unittest.TestCase):
     def setUp(self):
@@ -19,61 +19,64 @@ class test_app(unittest.TestCase):
         db.create_all()
 
         self.assertEqual(app.debug, False)
- 
-    
+
     def tearDown(self):
         pass
 
-
-    def register(self,name,last,username,email, password):
-        new_user = User(public_id=str(uuid.uuid4()),name=name,last=last,
-                    username=username, email=email, password=password, admin=False)
+    def register(self, name, last, username, email, password):
+        new_user = User(public_id=str(uuid.uuid4()), name=name, last=last,
+                        username=username, email=email, password=password, admin=False)
         db.session.add(new_user)
         db.session.commit()
         return new_user
-    
-    def register_premium(self,name,last,username,email, password):
-        new_user = PremiumUser(public_id=str(uuid.uuid4()),name=name,last=last,
-                    username=username, email=email, password=password, admin=False)
+
+    def register_premium(self, name, last, username, email, password):
+        new_user = PremiumUser(public_id=str(uuid.uuid4()), name=name, last=last,
+                               username=username, email=email, password=password, admin=False)
         new_user.change()
         db.session.add(new_user)
         db.session.commit()
         return new_user
-    
+
     def test_valid_user_registration(self):
-        response = self.register('alex', 'vaitz','alexv', 'alex@gmail.com','alexv32')
+        response = self.register(
+            'alex', 'vaitz', 'alexv', 'alex@gmail.com', 'alexv32')
         user = User.query.filter_by(username='alexv').first()
         self.assertEqual(user, response)
-    
+
     def test_valid_premium_registration(self):
-        response = self.register_premium('almog', 'gro','almoggr', 'almog@gmail.com','almog32')
+        response = self.register_premium(
+            'almog', 'gro', 'almoggr', 'almog@gmail.com', 'almog32')
         user = User.query.filter_by(username='almoggr').first()
-        self.assertEqual(user, response) 
-    
+        self.assertEqual(user, response)
+
     def test_unique_accounts(self):
-        response = self.register('alex', 'vaitz','alexv', 'alex@gmail.com','alexv32')
+        response = self.register(
+            'alex', 'vaitz', 'alexv', 'alex@gmail.com', 'alexv32')
         user = User.query.filter_by(username='alexv').first()
-        premium_response = self.register_premium('almog', 'gro','almoggr', 'almog@gmail.com','almog32')
+        premium_response = self.register_premium(
+            'almog', 'gro', 'almoggr', 'almog@gmail.com', 'almog32')
         premium = User.query.filter_by(username='almoggr').first()
         self.assertNotEqual(user, premium)
 
     def login(self, username, password):
-        user=User.query.filter_by(username=username,password=password)
+        user = User.query.filter_by(username=username, password=password)
         if user:
             return True
         return False
-    
+
     def test_login(self):
         """Make sure login and logout works."""
 
         response = self.login('alexv', 'alexv32')
-        self.assertEqual(response,True)
+        self.assertEqual(response, True)
 
         response = self.login('alexv' + 'x', 'alexv32')
-        self.assertNotEqual(response,False)
+        self.assertNotEqual(response, False)
 
-        response = self.login( 'alexv', 'alexv32' + 'x')
-        self.assertNotEqual(response,False)
+        response = self.login('alexv', 'alexv32' + 'x')
+        self.assertNotEqual(response, False)
+
 
 if __name__ == "__main__":
     unittest.main()

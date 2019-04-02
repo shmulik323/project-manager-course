@@ -19,6 +19,7 @@
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <template v-if="isAuthenticated">
+          <b-btn variant="success" @click="$router.push('/secure')">Hi {{$auth.user.user}}!</b-btn>
           <b-btn variant="danger" class="navbar-item" @click="logout">Logout</b-btn>
         </template>
         <template v-else>

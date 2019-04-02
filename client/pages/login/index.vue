@@ -12,7 +12,7 @@
         <b-card bg-variant="light">
           <busy-overlay/>
           <form @keydown.enter="login">
-            <b-form-group label="email">
+            <b-form-group label="email/username">
               <b-input v-model="email" placeholder="anything" ref="email"/>
             </b-form-group>
 
@@ -61,6 +61,7 @@ export default {
   data() {
     return {
       email: "",
+      username: "",
       password: "",
       error: null
     };
@@ -89,7 +90,8 @@ export default {
         .loginWith("local", {
           data: {
             email: this.email,
-            password: this.password
+            password: this.password,
+            username: this.email
           }
         })
         .catch(e => {
