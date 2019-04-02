@@ -46,9 +46,16 @@ class test_app(unittest.TestCase):
         self.assertEqual(user, response)
     
     def test_valid_premium_registration(self):
-        response = self.register_premium('alex', 'vaitz','alexv', 'alex@gmail.com','alexv32')
-        user = User.query.filter_by(username='alexv').first()
+        response = self.register_premium('almog', 'gro','almoggr', 'almog@gmail.com','almog32')
+        user = User.query.filter_by(username='almoggr').first()
         self.assertEqual(user, response) 
+    
+    def test_unique_accounts(self):
+        response = self.register('alex', 'vaitz','alexv', 'alex@gmail.com','alexv32')
+        user = User.query.filter_by(username='alexv').first()
+        response = self.register_premium('almog', 'gro','almoggr', 'almog@gmail.com','almog32')
+        premium = User.query.filter_by(username='almoggr').first()
+        self.assertNotEqual(user, premium)
 
     def login(self, username, password):
         user=User.query.filter_by(username=username,password=password)
