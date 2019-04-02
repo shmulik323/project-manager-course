@@ -80,4 +80,4 @@ def login():
 @token_required
 def return_user(User):
 
-    return jsonify(user={'user': User.username, 'email': User.email, 'admin': User.admin, 'premium': User.premium})
+    return jsonify(user={'user': User.username, 'email': User.email, 'admin': User.admin, 'premium': User.premium, 'name': User.name, 'last': User.last})

@@ -1,29 +1,94 @@
-
 <template>
-  <section class="section">
-    <v-layout>
-      <v-flex xs12 sm6 offset-sm3>
-        <v-card>
-          <h2 class="title">My Profile</h2>
-          <div class="content">
-            <p>
-              <strong>Username:</strong>
-              {{ $auth.$state.user }}
-            </p>
-          </div>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </section>
+  <div>
+    <b-alert show variant="warning">This is a secure page!</b-alert>
+    <b-row>
+      <b-col md="8">
+        <b-card no-body class="overflow-hidden" style="max-width: 540px;">
+          <b-row no-gutters>
+            <b-col md="6">
+              <b-card-img src="https://picsum.photos/400/400/?image=20" class="rounded-0"></b-card-img>
+            </b-col>
+            <b-col md="6">
+              <b-card-body title="Profile">
+                <b-card-text>
+                  <h4>Hi:{{name}} {{last}}</h4>
+                </b-card-text>
+                <b-card-text>
+                  <v-chip color="indigo" text-color="white">
+                    <v-avatar>
+                      <v-icon>account_circle</v-icon>
+                    </v-avatar>
+                    <h4>username:</h4>
+                    {{ username }}
+                  </v-chip>
+                </b-card-text>
+                <b-card-text>
+                  <v-chip color="indigo" text-color="white">
+                    <v-avatar>
+                      <v-icon>account_circle</v-icon>
+                    </v-avatar>
+                    <h4>email:</h4>
+                    {{ email }}
+                  </v-chip>
+                </b-card-text>
+                <b-card-text v-if="admin">
+                  <v-chip color="indigo" text-color="white">
+                    <v-avatar>
+                      <v-icon>account_circle</v-icon>
+                    </v-avatar>
+                    <h4>admin:</h4>
+                    {{ admin }}
+                  </v-chip>
+                </b-card-text>
+                <b-card-text v-if="premium">
+                  <v-chip color="indigo" text-color="white">
+                    <v-avatar>
+                      <v-icon>account_circle</v-icon>
+                    </v-avatar>
+                    <h4>premium:</h4>
+                    {{ premium }}
+                  </v-chip>
+                </b-card-text>
+              </b-card-body>
+            </b-col>
+          </b-row>
+        </b-card>
+      </b-col>
+    </b-row>
+    <hr>
+    <b-btn-group>
+      <b-button @click="$auth.fetchUser()">Fetch User</b-button>
+      <b-button @click="$auth.logout()">Logout</b-button>
+    </b-btn-group>
+  </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
-  middleware: "auth",
+  middleware: ["auth"],
+  data() {
+    return {
+      name: null,
+      last: null,
+      username: null,
+      email: null,
+      admin: null,
+      premium: null
+    };
+  },
   computed: {
-    ...mapGetters(["loggedInUser"])
+    state() {
+      return JSON.stringify(this.$auth.$state, undefined, 2);
+    }
+  },
+  created() {
+    this.$auth.fetchUser();
+    this.username = this.$auth.user.user;
+    this.name = this.$auth.user.name;
+    this.last = this.$auth.user.last;
+    this.email = this.$auth.user.email;
+    this.admin = this.$auth.user.admin;
+    this.premium = this.$auth.user.premium;
   }
 };
 </script>
