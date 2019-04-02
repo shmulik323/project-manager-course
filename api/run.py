@@ -14,7 +14,7 @@ from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token,
     get_jwt_identity
 )
-import sqlite3
+
 
 app = Flask(__name__)
 
@@ -22,10 +22,6 @@ app.config['SECRET_KEY'] = 'thisissecret'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project.db'
 CORS(app)
 db = SQLAlchemy(app)
-
-def getdb():
-    return db
-
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
