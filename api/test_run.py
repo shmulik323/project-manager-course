@@ -4,7 +4,7 @@ import unittest
 import pytest
 import run
 import uuid
-from run import app,db,User
+from run import app,db,User,PremiumUser
 import requests
 TEST_DB = 'test.db'
 
@@ -31,7 +31,15 @@ class test_app(unittest.TestCase):
         db.session.add(new_user)
         db.session.commit()
         return new_user
- 
+    
+    def register_premium(self,name,last,username,email, password):
+        new_user = PremiumUser(public_id=str(uuid.uuid4()),name=name,last=last,
+                    username=username, email=email, password=password, admin=False)
+        new_user.change()
+        db.session.add(new_user)
+        db.session.commit()
+        return new_user
+    
     def test_valid_user_registration(self):
         response = self.register('alex', 'vaitz','alexv', 'alex@gmail.com','alexv32')
         user = User.query.filter_by(username='alexv').first()
