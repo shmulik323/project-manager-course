@@ -33,7 +33,15 @@ class User(db.Model, UserMixin):
     image_file = db.Column(
         db.String(150), nullable=False, default="default.jpg")
     password = db.Column(db.String(80))
+    premium = db.Column(db.Boolean, default=False)
     admin = db.Column(db.Boolean)
+
+    def change(self):
+        self.premium = True if self.premium == False else False 
+
+class PremiumUser(User):
+    credit_card = db.Column(db.String(50))
+    change()
 
 
 class MyModelView(ModelView):
@@ -82,6 +90,7 @@ def get_all_users():
         user_data['username'] = user.username
         user_data['email'] = user.email
         user_data['password'] = user.password
+        user_data['premium'] =user.premium
         user_data['admin'] = user.admin
         output.append(user_data)
 
@@ -103,6 +112,7 @@ def get_one_user(current_user, public_id):
     user_data['username'] = user.username
     user_data['email'] = user.email
     user_data['password'] = user.password
+    user_data['premium'] =user.premium
     user_data['admin'] = user.admin
 
     return jsonify({'user': user_data})
@@ -114,12 +124,24 @@ def create_user():
 
     hashed_password = generate_password_hash(data['password'], method='sha256')
 
-    new_user = User(public_id=str(uuid.uuid4()), name=data['name'], last=data['last'],
-                    username=data['username'], email=data['email'], password=hashed_password, admin=False)
+    new_user = PremiumUser(public_id=str(uuid.uuid4()), name=data['name'], last=data['last'],
+                    username=data['username'], email=data['email'], password=hashed_password, admin=False,credit_card=credit_card)
+    
     db.session.add(new_user)
     db.session.commit()
     return jsonify({'message': 'New user created!'})
 
+@app.route('/api/auth/premium', methods=['POST'])
+def create_premium():
+    data = request.get_json()
+
+    hashed_password = generate_password_hash(data['password'], method='sha256')
+
+    new_user = User(public_id=str(uuid.uuid4()), name=data['name'], last=data['last'],
+                    username=data['username'], email=data['email'], password=hashed_password, admin=False)
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({'message': 'New premium user created!'})
 
 @app.route('/api/auth/user/<public_id>', methods=['PUT'])
 @token_required
