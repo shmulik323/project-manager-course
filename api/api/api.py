@@ -1,9 +1,15 @@
 from functools import wraps
 from datetime import datetime, timedelta
-
-from flask import Blueprint, jsonify, request, current_app
-
+from werkzeug import secure_filename
+from flask import Blueprint, jsonify, request, current_app, render_template
+from flask import send_file, Response
 import jwt
+import requests
+from time import perf_counter
+import os
+import base64
+import json
+
 
 from .models import db, User
 api = Blueprint('api', __name__)
@@ -29,7 +35,7 @@ def token_required(f):
         try:
             token = auth_headers[1]
             data = jwt.decode(token, current_app.config['SECRET_KEY'])
-            user = User.query.filter_by(password=data['sub']).first()
+            user = User.query.filter_by(username=data['sub']).first()
             if not user:
                 raise RuntimeError('User not found')
             return f(user, *args, **kwargs)
@@ -43,13 +49,13 @@ def token_required(f):
     return _verify
 
 
-@api.route('/hello/<string:name>/')
+@api.route('api/hello/<string:name>/')
 def say_hello(name):
     response = {'msg': "Hello {}".format(name)}
     return jsonify(response)
 
 
-@api.route('/register', methods=('POST',))
+@api.route('api/register', methods=('POST',))
 def register():
     data = request.get_json()
     user = User(**data)
@@ -58,7 +64,7 @@ def register():
     return jsonify(user.to_dict()), 201
 
 
-@api.route('/auth/login', methods=('OPTIONS', 'POST', 'GET'))
+@api.route('api/auth/login', methods=('OPTIONS', 'POST', 'GET'))
 def login():
     data = request.get_json()
     user = User.authenticate(**data)
@@ -67,17 +73,60 @@ def login():
         return jsonify({'message': 'Invalid credentials', 'authenticated': False}), 401
 
     token = jwt.encode({
-        'sub': user.password,
-        'admin': 'true',
-        'name': "John doe",
+        'sub': user.username,
         'iat': datetime.utcnow(),
         'exp': datetime.utcnow() + timedelta(minutes=30)},
         current_app.config['SECRET_KEY'])
     return jsonify({'token': token.decode('UTF-8')})
 
 
-@api.route('/auth/user', methods=('OPTIONS', 'POST', 'GET'))
+@api.route('api/auth/user', methods=('OPTIONS', 'POST', 'GET'))
 @token_required
 def return_user(User):
 
-    return jsonify(user={'user': User.username, 'email': User.email, 'admin': User.admin, 'premium': User.premium, 'name': User.name, 'last': User.last})
+    return jsonify(user={'user': User.username, 'email': User.email, 'admin': User.admin, 'premium': User.premium, 'name': User.name, 'last': User.last, 'image_file': User.image_file})
+
+
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@api.route('api/uploader', methods=['POST'])
+def upload_me():
+
+    if request.method == 'POST':
+        """ Receive base 64 encoded image """
+        start = perf_counter()
+        print('Request received')
+        request_data = json.loads(request.get_data())
+        data = request_data['data'][5:]
+
+        with open('./uploads/'+request_data['name'], 'w') as wf:
+            wf.write(data)
+
+        print('Saved in file.')
+        print('Time elapsed: {}'.format(perf_counter() - start))
+        return Response(status=200)
+
+
+@api.route('api/uploader', methods=['GET'])
+@token_required
+def get_image(User):
+    if request.method == 'GET':
+        path = './uploads/'+User.image_file
+        """ Show saved image """
+        if os.path.exists(path):
+            with open(path, 'r') as rf:
+                data = rf.read()
+                mimetype, image_string = data.split(';base64,')
+                image_bytes = image_string.encode('utf-8')
+                return Response(base64.decodebytes(image_bytes), mimetype=mimetype)
+
+
+@api.route('/', defaults={'path': ''})
+@api.route('/<path:path>')
+def catch_all(path):
+    return requests.get('http://localhost:3000/{}'.format(path)).text

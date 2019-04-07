@@ -3,10 +3,10 @@
     <b-alert show variant="warning">This is a secure page!</b-alert>
     <b-row>
       <b-col md="8">
-        <b-card no-body class="overflow-hidden" style="max-width: 540px;">
+        <b-card no-body class="overflow-hidden" style="max-width: 700px;">
           <b-row no-gutters>
             <b-col md="6">
-              <b-card-img src="https://picsum.photos/400/400/?image=20" class="rounded-0"></b-card-img>
+              <img :src="src" alt>
             </b-col>
             <b-col md="6">
               <b-card-body title="Profile">
@@ -23,7 +23,7 @@
                   </v-chip>
                 </b-card-text>
                 <b-card-text>
-                  <v-chip color="indigo" text-color="white">
+                  <v-chip color="blue" text-color="white">
                     <v-avatar>
                       <v-icon>account_circle</v-icon>
                     </v-avatar>
@@ -41,7 +41,7 @@
                   </v-chip>
                 </b-card-text>
                 <b-card-text v-if="premium">
-                  <v-chip color="indigo" text-color="white">
+                  <v-chip color="blue" text-color="white">
                     <v-avatar>
                       <v-icon>account_circle</v-icon>
                     </v-avatar>
@@ -73,8 +73,26 @@ export default {
       username: null,
       email: null,
       admin: null,
-      premium: null
+      premium: null,
+      src:
+        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
     };
+  },
+  methods: {
+    getProfilePic() {
+      this.$axios
+        .get("api/uploader", {
+          name: this.$auth.user.image_file
+        })
+        .then((req, res) => {
+          var myBuffer = yourFunctionReturnsBuffer();
+          res.writeHead(200, {
+            "Content-Type": "image/jpeg",
+            "Content-Length": myBuffer.length
+          });
+          res.end(myBuffer);
+        });
+    }
   },
   computed: {
     state() {
@@ -82,6 +100,20 @@ export default {
     }
   },
   created() {
+    let config = {
+      // example url
+      url: "api/uploader",
+      method: "GET",
+      responseType: "arraybuffer"
+    };
+    this.$axios(config, { name: this.$auth.user.image_file }).then(response => {
+      var bytes = new Uint8Array(response.data);
+      var binary = bytes.reduce(
+        (data, b) => (data += String.fromCharCode(b)),
+        ""
+      );
+      this.src = "data:image/jpeg;base64," + btoa(binary);
+    });
     this.$auth.fetchUser();
     this.username = this.$auth.user.user;
     this.name = this.$auth.user.name;
@@ -89,6 +121,7 @@ export default {
     this.email = this.$auth.user.email;
     this.admin = this.$auth.user.admin;
     this.premium = this.$auth.user.premium;
+    this.imgUrl = this.getProfilePic();
   }
 };
 </script>

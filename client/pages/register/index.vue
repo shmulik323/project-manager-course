@@ -11,11 +11,30 @@
 
               <form method="post" @submit.prevent="register">
                 <div class="field">
+                  <label class="label">profile pic</label>
+                  <div class="control">
+                    <picture-input
+                      ref="pictureInput"
+                      width="200"
+                      height="200"
+                      margin="8"
+                      accept="image/jpeg, image/png"
+                      size="10"
+                      :removable="true"
+                      :customStrings="{
+        upload: '<h1>Bummer!</h1>',
+        drag: 'Drag a image'
+      }"
+                    ></picture-input>
+                  </div>
+                </div>
+                <div class="field">
                   <label class="label">First-name</label>
                   <div class="control">
                     <input type="fname" class="input" name="firstname" v-model="name" required>
                   </div>
                 </div>
+
                 <div class="field">
                   <label class="label">Last name</label>
                   <div class="control">
@@ -65,11 +84,13 @@
 
 <script>
 import Notification from "~/components/Notification";
+import PictureInput from "vue-picture-input";
 
 export default {
   middleware: "guest",
   components: {
-    Notification
+    Notification,
+    PictureInput
   },
 
   data() {
@@ -79,19 +100,41 @@ export default {
       last: "",
       email: "",
       password: "",
-      error: null
+      error: null,
+      selectedFile: null,
+      file_name: null
     };
   },
 
   methods: {
+    sendUploadToBackend(name, data) {
+      const path = "http://localhost:5000/api/uploader";
+      this.$axios.post(path, { name: name, data: data });
+      console.log("tried code in sendUploadToBackend");
+    },
+    onChange(image) {
+      console.log("New picture selected!");
+      if (this.$refs.pictureInput.image) {
+        this.file_name = this.$refs.pictureInput.file.name;
+        console.log("Picture is loaded.");
+        this.sendUploadToBackend(
+          this.$refs.pictureInput.file.name,
+          this.$refs.pictureInput.image
+        );
+      } else {
+        console.log("FileReader API not supported: use the <form>, Luke!");
+      }
+    },
     async register() {
+      this.onChange();
       try {
         await this.$axios.post("api/register", {
           name: this.name,
           last: this.last,
           username: this.username,
           email: this.email,
-          password: this.password
+          password: this.password,
+          image_file: this.file_name
         });
 
         await this.$auth.loginWith("local", {

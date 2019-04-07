@@ -21,12 +21,13 @@ class User(db.Model):
     admin = db.Column(db.Boolean, default=False)
     premium = db.Column(db.Boolean, default=False)
 
-    def __init__(self, email, password, name, last, username):
+    def __init__(self, email, password, name, last, username, image_file="default.jpg"):
         self.email = email
         self.password = generate_password_hash(password, method='sha256')
         self.username = username
         self.name = name
         self.last = last
+        self.image_file = image_file if image_file else "default.jpg"
 
     def change(self):
         self.premium = True if self.premium == False else False
@@ -53,7 +54,7 @@ class User(db.Model):
         return user
 
     def to_dict(self):
-        return dict(id=self.id, email=self.email, username=self.username, name=self.name, last=self.last, admin=self.admin, premium=self.premium)
+        return dict(id=self.id, email=self.email, username=self.username, name=self.name, last=self.last, admin=self.admin, premium=self.premium, image_file=self.image_file)
 
 
 class PremiumUser(User):
