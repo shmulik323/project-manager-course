@@ -64,6 +64,21 @@ def register():
     return jsonify(user.to_dict()), 201
 
 
+@api.route('api/edit_user', methods=('POST',))
+@token_required
+def edit(User):
+    request = json.loads(request.get_data())
+    user = User.query.filter_by(username=request.username).first()
+    user.username = request.username
+    user.email = request.email
+    user.image_file = request.image_file
+    user.name = request.name
+    user.last = request.last
+
+    db.session.commit()
+    return jsonify(user.to_dict()), 201
+
+
 @api.route('api/auth/login', methods=('OPTIONS', 'POST', 'GET'))
 def login():
     data = request.get_json()

@@ -1,8 +1,3 @@
 {
-<<<<<<< HEAD
-    "python.pythonPath": "/home/shmul/.local/share/virtualenvs/project-manager-course-9ns2ZYel/bin/python",
-    "python.linting.pylintEnabled": true
-=======
-    "python.pythonPath": "/home/shmul/.local/share/virtualenvs/project-manager-course-9ns2ZYel/bin/python"
->>>>>>> 8d674cb22c805223e9046c5b6b65d5c892190353
+    "python.pythonPath": "/usr/bin/python3"
 }

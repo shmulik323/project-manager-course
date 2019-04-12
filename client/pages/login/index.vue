@@ -94,6 +94,9 @@ export default {
             username: this.email
           }
         })
+        .then(e => {
+          this.$route.push("/");
+        })
         .catch(e => {
           this.error = e + "";
         });
