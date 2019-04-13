@@ -41,7 +41,8 @@ export default {
       sideNav: false,
       menuItems: [
         { icon: "create", title: "create form", link: "/create" },
-        { icon: "fingerprint", title: "Profile", link: "/profile" }
+        { icon: "fingerprint", title: "Profile", link: "/profile" },
+        { icon: "email", title: "Contact", link: "/contact" }
       ]
     };
   },

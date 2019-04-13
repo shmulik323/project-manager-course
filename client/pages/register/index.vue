@@ -137,14 +137,16 @@ export default {
           image_file: this.file_name
         });
 
-        await this.$auth.loginWith("local", {
-          data: {
-            email: this.email,
-            password: this.password
-          }
-        });
-
-        this.$router.push("/");
+        await this.$auth
+          .loginWith("local", {
+            data: {
+              email: this.email,
+              password: this.password
+            }
+          })
+          .then(res => {
+            this.$router.push("/");
+          });
       } catch (e) {
         this.error = e.response.data.message;
       }
