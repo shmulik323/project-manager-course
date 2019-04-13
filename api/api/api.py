@@ -1,8 +1,10 @@
 from functools import wraps
 from datetime import datetime, timedelta
 from werkzeug import secure_filename
-from flask import Blueprint, jsonify, request, current_app, render_template
+from flask import Blueprint, jsonify, request, current_app, render_template, flash
 from flask import send_file, Response
+from flask_mail import Mail, Message
+from.form import ContactForm
 import jwt
 import requests
 from time import perf_counter
@@ -130,3 +132,25 @@ def get_image(User):
 @api.route('/<path:path>')
 def catch_all(path):
     return requests.get('http://localhost:3000/{}'.format(path)).text
+
+@app.route('api/contact', methods=['GET', 'POST'])
+def contact():
+  form = ContactForm()
+ 
+  if request.method == 'POST':
+    if form.validate() == False:
+      flash('All fields are required.')
+      return render_template('contact.html', form=form)
+    else:
+      msg = Message(form.subject.data, sender='the email from application', recipients=['mishel110393@gmail.com'])
+      msg.body = """
+      From: %s &lt;%s&gt;
+      %s
+      """ % (form.name.data, form.email.data, form.message.data)
+      mail.send(msg)
+ 
+      return render_template('contact.html', success=True)
+ 
+  elif request.method == 'GET':
+    return render_template('contact.html', form=form)
+

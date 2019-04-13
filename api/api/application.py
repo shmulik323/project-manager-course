@@ -3,10 +3,9 @@ application.py
 - creates a Flask app instance and registers the database object
 """
 
-from flask import Flask
+from flask import Flask, jsonify
 from flask_mail import Mail, Message
 from flask_cors import CORS
-import os
 
 
 def create_app(app_name='API'):
@@ -21,15 +20,15 @@ def create_app(app_name='API'):
         "MAIL_PORT": 465,
         "MAIL_USE_TLS": False,
         "MAIL_USE_SSL": True,
-        "MAIL_USERNAME": 'your email',
-        "MAIL_PASSWORD": 'your password'
+        "MAIL_USERNAME": 'mishel110393@gmail.com',
+        "MAIL_PASSWORD": '********'
     }
 
     app.config.update(mail_settings)
     mail = Mail(app)
 
 
-    @app.route("/")
+    @app.route("/Sent")
     def index():
         msg = Message(subject="Hello",
                       sender=app.config.get("MAIL_USERNAME"),
