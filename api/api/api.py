@@ -1,6 +1,7 @@
 from functools import wraps
 from datetime import datetime, timedelta
 from werkzeug import secure_filename
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Blueprint, jsonify, request, current_app, render_template, flash
 from flask import send_file, Response
 from flask_mail import Mail, Message
@@ -169,3 +170,26 @@ def contact():
   elif request.method == 'GET':
     return render_template('contact.html', form=form)
 
+@app.route('api/reset',methods=['GET'])
+@token_required
+def reset_password():
+    data = request.get_json()
+    user=User.db.query.filter_by(email=data['email']).first()
+    if user: 
+        if check_password_hash(user.password,data['old']):
+            password=generate_password_hash(data['new'], method='sha256')
+            User=password
+    else:
+        return jsonify({'message': 'Invalid password'}), 401
+    db.session.commit()
+    return jsonify(user.to_dict()), 201
+
+@app.route('api/cancel',methods=['GET', 'POST'])
+@token_required
+def cancel_premium(User):
+    if User.premium:
+        User.change()
+    else:
+        return jsonify({'message': 'User not premium'}), 401
+    db.session.commit()
+    return jsonify(user.to_dict()), 201
