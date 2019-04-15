@@ -1,8 +1,10 @@
 from functools import wraps
 from datetime import datetime, timedelta
 from werkzeug import secure_filename
-from flask import Blueprint, jsonify, request, current_app, render_template
+from flask import Blueprint, jsonify, request, current_app, render_template, flash
 from flask import send_file, Response
+from flask_mail import Mail, Message
+from.form import ContactForm
 import jwt
 import requests
 from time import perf_counter
@@ -60,6 +62,21 @@ def register():
     data = request.get_json()
     user = User(**data)
     db.session.add(user)
+    db.session.commit()
+    return jsonify(user.to_dict()), 201
+
+
+@api.route('api/edit_user', methods=('POST',))
+@token_required
+def edit(User):
+    request = json.loads(request.get_data())
+    user = User.query.filter_by(username=request.username).first()
+    user.username = request.username
+    user.email = request.email
+    user.image_file = request.image_file
+    user.name = request.name
+    user.last = request.last
+
     db.session.commit()
     return jsonify(user.to_dict()), 201
 
@@ -130,3 +147,25 @@ def get_image(User):
 @api.route('/<path:path>')
 def catch_all(path):
     return requests.get('http://localhost:3000/{}'.format(path)).text
+
+@app.route('api/contact', methods=['GET', 'POST'])
+def contact():
+  form = ContactForm()
+ 
+  if request.method == 'POST':
+    if form.validate() == False:
+      flash('All fields are required.')
+      return render_template('contact.html', form=form)
+    else:
+      msg = Message(form.subject.data, sender='the email from application', recipients=['mishel110393@gmail.com'])
+      msg.body = """
+      From: %s &lt;%s&gt;
+      %s
+      """ % (form.name.data, form.email.data, form.message.data)
+      mail.send(msg)
+ 
+      return render_template('contact.html', success=True)
+ 
+  elif request.method == 'GET':
+    return render_template('contact.html', form=form)
+
