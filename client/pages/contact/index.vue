@@ -22,7 +22,7 @@
         <v-select
           v-model="select"
           v-validate="'required'"
-          :items="items"
+          :items="devs"
           :error-messages="errors.collect('select')"
           label="Select developer"
           data-vv-name="select"
@@ -73,7 +73,7 @@ export default {
     email: "",
     text: "",
     select: null,
-    items: [
+    devs: [
       "almoggr@ac.sce.ac.il",
       "shmuemo1@ac.sce.ac.il",
       "alexwe@ac.sce.ac.il",
@@ -104,12 +104,18 @@ export default {
   methods: {
     submit() {
       this.$validator.validateAll();
+      this.$axios.post("/api/send_mail", {
+        name: this.name,
+        dev: this.select,
+        message: this.text
+      });
     },
     clear() {
       this.name = "";
       this.email = "";
       this.select = null;
       this.checkbox = null;
+      this.text = null;
       this.$validator.reset();
     }
   }

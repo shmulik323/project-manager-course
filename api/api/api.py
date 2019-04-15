@@ -1,17 +1,20 @@
 from functools import wraps
 from datetime import datetime, timedelta
 from werkzeug import secure_filename
-from flask import Blueprint, jsonify, request, current_app, render_template
+from flask import Blueprint, jsonify, request, current_app, render_template, Response
 from flask import send_file, Response
 import jwt
+from flask_cors import cross_origin
+
 import requests
 from time import perf_counter
 import os
 import base64
 import json
-
+from flask_mail import Mail, Message
 
 from .models import db, User
+
 api = Blueprint('api', __name__)
 
 
@@ -139,6 +142,56 @@ def get_image(User):
                 mimetype, image_string = data.split(';base64,')
                 image_bytes = image_string.encode('utf-8')
                 return Response(base64.decodebytes(image_bytes), mimetype=mimetype)
+
+
+@api.route("api/send_mail", methods=['POST'])
+def send_mail():
+    request_data = json.loads(request.get_data())
+    mail = Mail(current_app)
+    try:
+        msg = Message(subject="message from" + request_data["name"],
+                      sender=current_app.config.get("MAIL_USERNAME"),
+                      # replace with your email for testing
+                      recipients=[request_data["dev"]],
+                      )
+        msg.body = request_data["message"]
+        print(current_app)
+        mail.send(msg)
+
+        return 'Mail sent!'
+    except Exception as e:
+        return(str(e))
+    response = {'msg': "Hello"}
+    return jsonify(response)
+
+
+@api.route('/api/upload', methods=['GET', 'POST'])
+@cross_origin(allow_headers=['Content-Type'])
+def uploader_me():
+    if request.method == 'GET':
+        """ Show saved image """
+        if os.path.exists('file.img'):
+            with open('file.img', 'r') as rf:
+                data = rf.read()
+                mimetype, image_string = data.split(';base64,')
+                image_bytes = image_string.encode('utf-8')
+                return Response(base64.decodebytes(image_bytes), mimetype=mimetype)
+
+    if request.method == 'POST':
+        """ Receive base 64 encoded image """
+        start = perf_counter()
+        print('Request received')
+        request_data = json.loads(request.get_data())
+        data = request_data['data'][5:]
+
+        with open('file.img', 'w') as wf:
+            wf.write(data)
+
+        print('Saved in file.')
+        print('Time elapsed: {}'.format(perf_counter() - start))
+        return Response(status=200)
+
+    return render_template('index.html')
 
 
 @api.route('/', defaults={'path': ''})

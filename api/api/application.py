@@ -16,28 +16,15 @@ def create_app(app_name='API'):
     app.config.from_object('api.config.BaseConfig')
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-    mail_settings = {
-       "MAIL_SERVER": 'smtp.gmail.com',
-        "MAIL_PORT": 465,
-        "MAIL_USE_TLS": False,
-        "MAIL_USE_SSL": True,
-        "MAIL_USERNAME": 'your email',
-        "MAIL_PASSWORD": 'your password'
-    }
-
-    app.config.update(mail_settings)
-    mail = Mail(app)
-
-
-    @app.route("/")
-    def index():
-        msg = Message(subject="Hello",
-                      sender=app.config.get("MAIL_USERNAME"),
-                      recipients=["mishel326@gmail.com"], # replace with your email for testing
-                      body="This is a test email I sent with Gmail and Python!")
-        mail.send(msg)
-        response = {'msg': "Hello"}
-        return jsonify(response)
+    app.config["Mail_DEBUG"] = True
+    app.config["Mail_USE_TLS"] = True
+    app.config["Mail_DEBUG"] = True
+    # EMAIL SETTINGS
+    app.config["MAIL_SERVER"] = 'smtp.gmail.com'
+    app.config["MAIL_PORT"] = 465
+    app.config["MAIL_USE_SSL"] = True
+    app.config["MAIL_USERNAME"] = 'shmulik323@gmail.com'
+    app.config["MAIL_PASSWORD"] = 's0528481311'
 
     cors = CORS(app, resources={r"/*": {"origins": "*"}})
     from api.api import api
