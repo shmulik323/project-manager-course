@@ -1,38 +1,38 @@
 import os
+from flask import Flask
 import tempfile
 import unittest
-import run
 import uuid
-from run import app, db, User, PremiumUser
+from models import db, User, PremiumUser
+import application
+from api import api
 import requests
 TEST_DB = 'test.db'
 
 
 class test_app(unittest.TestCase):
     def setUp(self):
+        app=application.create_app()
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False
         app.config['DEBUG'] = False
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project.db'
+        
         self.app = app.test_client()
-        db.drop_all()
-        db.create_all()
+       
 
         self.assertEqual(app.debug, False)
 
-    def tearDown(self):
-        pass
-
     def register(self, name, last, username, email, password):
-        new_user = User(public_id=str(uuid.uuid4()), name=name, last=last,
-                        username=username, email=email, password=password, admin=False)
+        new_user = User(email=email, password=password,name=name, last=last,
+                               username=username)
         db.session.add(new_user)
         db.session.commit()
         return new_user
 
     def register_premium(self, name, last, username, email, password):
-        new_user = PremiumUser(public_id=str(uuid.uuid4()), name=name, last=last,
-                               username=username, email=email, password=password, admin=False)
+        new_user = PremiumUser(email=email, password=password,name=name, last=last,
+                               username=username)
         new_user.change()
         db.session.add(new_user)
         db.session.commit()
@@ -40,22 +40,22 @@ class test_app(unittest.TestCase):
 
     def test_valid_user_registration(self):
         response = self.register(
-            'alex', 'vaitz', 'alexv', 'alex@gmail.com', 'alexv32')
+            'alex@gmail.com', 'alexv32','alex', 'vaitz', 'alexv')
         user = User.query.filter_by(username='alexv').first()
         self.assertEqual(user, response)
 
     def test_valid_premium_registration(self):
         response = self.register_premium(
-            'almog', 'gro', 'almoggr', 'almog@gmail.com', 'almog32')
+            'almog@gmail.com', 'almog32','almog', 'gro', 'almoggr')
         user = User.query.filter_by(username='almoggr').first()
         self.assertEqual(user, response)
 
     def test_unique_accounts(self):
         response = self.register(
-            'alex', 'vaitz', 'alexv', 'alex@gmail.com', 'alexv32')
+            'alex@gmail.com', 'alexv32','alex', 'vaitz', 'alexv')
         user = User.query.filter_by(username='alexv').first()
         premium_response = self.register_premium(
-            'almog', 'gro', 'almoggr', 'almog@gmail.com', 'almog32')
+            'almog@gmail.com', 'almog32','almog', 'gro', 'almoggr')
         premium = User.query.filter_by(username='almoggr').first()
         self.assertNotEqual(user, premium)
 
