@@ -228,6 +228,76 @@ def render_pdf_weasyprint():
 #         response.headers['Content-Disposition'] = 'attachment; filename=pdf_out.pdf'
 #         return response
 
+@api.route('api/reset',methods=['GET'])
+@token_required
+def reset_password():
+    data = request.get_json()
+    user=User.db.query.filter_by(email=data['email']).first()
+    if user: 
+        if check_password_hash(user.password,data['old']):
+            password=generate_password_hash(data['new'], method='sha256')
+            User=password
+        else:
+            return jsonify({'message': 'Invalid password'}), 401
+    else:
+            return jsonify({'message': 'User does not exist'}), 401
+    db.session.commit()
+    return jsonify(user.to_dict()), 201
+
+@api.route('api/cancel',methods=['GET', 'POST'])
+@token_required
+def cancel_premium(User):
+    if User.premium:
+        User.change()
+    else:
+        return jsonify({'message': 'User without premium status'}), 401
+    db.session.commit()
+    return jsonify(user.to_dict()), 201
+
+@api.route('api/new_admin', methods=('POST',))
+@token_required
+def new_manager(User):
+    if User.admin:
+        data = request.get_json()
+        user = User(**data)
+        user.promote()
+    else:
+        return jsonify({'message': 'User is not an admin'}), 401
+    db.session.add(user)
+    db.session.commit()
+    return jsonify(user.to_dict()), 201
+
+@api.route('api/add_permissions', methods=('POST',))
+@token_required
+def add_permissions(User):
+    if User.admin:
+        data = request.get_json()
+        user=User.db.filter_by(email=data['email']).first()
+        if user:
+            if data['premium']:
+                user.change()
+            if data['admin']:
+                user.promote()
+        else:
+            return jsonify({'message': 'User does not exist'}), 401
+    else:
+        return jsonify({'message': 'User is not an admin'}), 401
+    db.session.add(user)
+    db.session.commit()
+    return jsonify(user.to_dict()), 201
+
+
+@api.route('api/edit_email', methods=('POST',))
+@token_required
+def edit_email(User):
+    data = request.get_json()
+    user = User.query.filter_by(email=data['new'])
+    if user:
+        return jsonify({'message': 'Email already exists'}), 401
+    else:
+        user.email=data['new email']
+    db.session.commit()
+    return jsonify(user.to_dict()), 201
 
 @api.route('/', defaults={'path': ''})
 @api.route('/<path:path>')
