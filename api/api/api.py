@@ -12,6 +12,7 @@ from werkzeug import secure_filename
 from flask import Blueprint, jsonify, request, current_app, render_template, Response, make_response, send_from_directory
 from flask import send_file
 from flask_mail import Mail, Message
+import pdfkit
 
 
 api = Blueprint('api', __name__)
@@ -72,6 +73,7 @@ def edit(User):
     request = json.loads(request.get_data())
     user = User.query.filter_by(username=request.username).first()
     user.username = request.username
+    user.email = request.email
     user.image_file = request.image_file
     user.name = request.name
     user.last = request.last
@@ -211,8 +213,10 @@ def render_pdf_weasyprint():
     def download(filename):
         uploads = os.path.join(current_app.root_path,
                                current_app.config['UPLOAD_FOLDER'])
-        return send_from_directory(directory=uploads, filename=filename)
+        return send_from_directory(directory=uploads, filename=filename, mimetype='application/pdf')
+
     return download("html.pdf")
+
 
 # def getPdf():
 

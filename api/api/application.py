@@ -13,6 +13,7 @@ def create_app(app_name='API'):
     UPLOAD_FOLDER = './uploads'
     app = Flask(app_name, static_folder="../../client/.nuxt/dist/server",
                 template_folder="../../client/.nuxt/dist/server")
+    app.config.from_object('api.config.BaseConfig')
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
     mail_settings = {

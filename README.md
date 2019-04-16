@@ -12,10 +12,9 @@ $ pip install -r requirements.txt
 # build for production and launch server
 $ pipenv shell
 $ cd <project-name> #where the manage.py is located
-$ python
->>from run import db
->>db.create_all()
-
+$ python manage.py db init
+$ python manage.py db migrate
+$ python appserver.py
 
 ```
 

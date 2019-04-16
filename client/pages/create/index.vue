@@ -10,7 +10,7 @@
       v-quill:myQuillEditor="editorOption"
     ></div>
     <div>
-      <a type="submit" @click="createPdf">Create PDF</a>
+      <a type="submit" @click="createPdf" target="_blank">Create PDF</a>
     </div>
   </section>
 </template>
@@ -83,7 +83,7 @@ export default {
         })
         .then(response => {
           const url = window.URL.createObjectURL(
-            new Blob([response.data], { type: "application/pdf" })
+            new Blob([response], { type: "application/pdf" })
           );
           console.log(response);
           const link = document.createElement("a");
