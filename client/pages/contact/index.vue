@@ -3,20 +3,11 @@
     <b-jumbotron bg-variant="denger" text-variant="white" border-variant="dark">
       <form>
         <v-text-field
-          v-model="name"
-          v-validate="'required|max:20'"
-          :counter="20"
-          :error-messages="errors.collect('name')"
-          label="Name"
-          data-vv-name="name"
-          required
-        ></v-text-field>
-        <v-text-field
-          v-model="email"
-          v-validate="'required|email'"
-          :error-messages="errors.collect('email')"
-          label="E-mail"
-          data-vv-name="email"
+          v-model="subject"
+          v-validate="'required'"
+          :error-messages="errors.collect('subject')"
+          label="subject"
+          data-vv-name="subject"
           required
         ></v-text-field>
         <v-select
@@ -29,12 +20,15 @@
           required
         ></v-select>
         <v-textarea
-          name="input-7-1"
+          name="massege"
+          v-validate="'required'"
+          :error-messages="errors.collect('massege')"
           label="Massege"
           v-model="text"
           hint="here you can send a message to the developers of this site."
         ></v-textarea>
         <v-btn @click="submit">submit</v-btn>
+
         <v-btn @click="clear">clear</v-btn>
       </form>
     </b-jumbotron>
@@ -70,13 +64,14 @@ export default {
 
   data: () => ({
     name: "",
-    email: "",
+    subject: "",
     text: "",
+    user: null,
     select: null,
     devs: [
       "almoggr@ac.sce.ac.il",
-      "shmuemo1@ac.sce.ac.il",
-      "alexwe@ac.sce.ac.il",
+      "shmulik323@gmail.com",
+      "alexawe@ac.sce.ac.il",
       "misheel@ac.sce.ac.il"
     ],
     dictionary: {
@@ -104,10 +99,10 @@ export default {
   methods: {
     submit() {
       this.$validator.validateAll();
-      this.$axios.post("/api/send_mail", {
-        name: this.name,
+      this.$axios.post("/api/Sent", {
+        name: this.subject,
         dev: this.select,
-        message: this.text
+        message: "message from:" + this.$auth.user.email + "\n" + this.text
       });
     },
     clear() {

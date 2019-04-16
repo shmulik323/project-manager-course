@@ -1,97 +1,112 @@
 <template>
-  <div>
-    <v-stepper v-model="e6" vertical>
-      <v-stepper-step :complete="e6 > 1" step="1">
-        Select an app
-        <small>
-          <v-expansion-panel>
-            <v-expansion-panel-content>
-              <template v-slot:header>
-                <div>need help?</div>
-              </template>
-              <v-card>
-                <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-card-text>
-              </v-card>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </small>
-      </v-stepper-step>
-
-      <v-stepper-content step="1">
-        <v-card color="grey lighten-1" class="mb-5" height="200px">
-          <v-flex height="200px">
-            <v-textarea
-              solo
-              name="input-7-4"
-              label="Solo textarea"
-              value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
-            ></v-textarea>
-          </v-flex>
-        </v-card>
-        <v-btn color="primary" @click="e6 = 2">Continue</v-btn>
-        <v-btn flat @click="$router.go('-1')">back</v-btn>
-      </v-stepper-content>
-
-      <v-stepper-step :complete="e6 > 2" step="2">Configure analytics for this app</v-stepper-step>
-
-      <v-stepper-content step="2">
-        <v-card color="grey lighten-1" class="mb-5" height="200px">
-          <v-flex height="200px">
-            <v-textarea
-              solo
-              name="input-7-4"
-              label="Solo textarea"
-              value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
-            ></v-textarea>
-          </v-flex>
-        </v-card>
-        <v-btn color="primary" @click="e6 = 3">Continue</v-btn>
-        <v-btn flat @click="e6 -=1">back</v-btn>
-      </v-stepper-content>
-
-      <v-stepper-step :complete="e6 > 3" step="3">Select an ad format and name ad unit</v-stepper-step>
-
-      <v-stepper-content step="3">
-        <v-card color="grey lighten-1" class="mb-5" height="200px">
-          <v-flex height="200px">
-            <v-textarea
-              solo
-              name="input-7-4"
-              label="Solo textarea"
-              value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
-            ></v-textarea>
-          </v-flex>
-        </v-card>
-        <v-btn color="primary" @click="e6 = 4">Continue</v-btn>
-        <v-btn flat @click="e6 -=1">back</v-btn>
-      </v-stepper-content>
-
-      <v-stepper-step step="4">View setup instructions</v-stepper-step>
-      <v-stepper-content step="4">
-        <v-card color="grey lighten-1" class="mb-5" height="200px">
-          <v-flex height="200px">
-            <v-textarea
-              solo
-              name="input-7-4"
-              label="Solo textarea"
-              value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
-            ></v-textarea>
-          </v-flex>
-        </v-card>
-        <v-btn color="primary" @click="e6 = 1">Continue</v-btn>
-        <v-btn flat @click="e6 -=1">back</v-btn>
-      </v-stepper-content>
-    </v-stepper>
-    <v-btn>Submit</v-btn>
-  </div>
+  <section class="container">
+    <div
+      class="quill-editor"
+      :content="content"
+      @change="onEditorChange($event)"
+      @blur="onEditorBlur($event)"
+      @focus="onEditorFocus($event)"
+      @ready="onEditorReady($event)"
+      v-quill:myQuillEditor="editorOption"
+    ></div>
+    <div>
+      <a type="submit" @click="createPdf">Create PDF</a>
+    </div>
+  </section>
 </template>
 
 <script>
+if (process.browser) {
+  const jsPDF = require("jspdf");
+  require("jspdf-autotable");
+  let doc = new jsPDF();
+  // ... you code
+}
+
+var toolbarOptions = [
+  ["bold", "italic", "underline", "strike"], // toggled buttons
+  ["blockquote", "code-block"],
+
+  [{ header: 1 }, { header: 2 }], // custom button values
+  [{ list: "ordered" }, { list: "bullet" }],
+  [{ script: "sub" }, { script: "super" }], // superscript/subscript
+  [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+  [{ direction: "rtl" }], // text direction
+
+  [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+  [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+  [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+  [{ font: [] }],
+  [{ align: [] }],
+
+  ["clean"] // remove formatting button
+];
 export default {
   data() {
     return {
-      e6: 1
+      content: "<p>I am Example</p>",
+      editorOption: {
+        // some quill options
+        modules: {
+          toolbar: toolbarOptions
+        },
+        theme: "snow"
+      }
     };
+  },
+  mounted() {
+    console.log("app init, my quill insrance object is:", this.myQuillEditor);
+    setTimeout(() => {
+      this.content = "i am changed";
+    }, 3000);
+  },
+  methods: {
+    onEditorBlur(editor) {
+      console.log("editor blur!", editor);
+    },
+    onEditorFocus(editor) {
+      console.log("editor focus!", editor);
+    },
+    onEditorReady(editor) {
+      console.log("editor ready!", editor);
+    },
+    onEditorChange({ editor, html, text }) {
+      console.log("editor change!", editor, html, text);
+      this.content = html;
+    },
+    createPdf() {
+      this.$axios
+        .post("api/pdf", {
+          html: this.content,
+          responseType: "arraybuffer"
+        })
+        .then(response => {
+          const url = window.URL.createObjectURL(
+            new Blob([response.data], { type: "application/pdf" })
+          );
+          console.log(response);
+          const link = document.createElement("a");
+          link.href = url;
+
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+    }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 50px 0;
+  .quill-editor {
+    min-height: 600px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+}
+</style>

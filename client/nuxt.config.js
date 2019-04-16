@@ -11,6 +11,7 @@ module.exports = {
    */
   head: {
     title: pkg.name,
+
     meta: [{
         charset: 'utf-8'
       },
@@ -24,6 +25,7 @@ module.exports = {
         content: pkg.description
       }
     ],
+
     link: [{
         rel: 'icon',
         type: 'image/x-icon',
@@ -50,6 +52,9 @@ module.exports = {
    ** Global CSS
    */
   css: [
+    'quill/dist/quill.snow.css',
+    'quill/dist/quill.bubble.css',
+    'quill/dist/quill.core.css',
     '~/assets/style/app.styl'
   ],
 
@@ -57,7 +62,13 @@ module.exports = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '@/plugins/vuetify'
+    '@/plugins/vuetify',
+    {
+      src: '@/plugins/quill.js',
+      ssr: false
+    }
+
+
   ],
 
   /*

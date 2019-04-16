@@ -1,19 +1,19 @@
+from .models import db, User
+import json
+import base64
+import os
+from time import perf_counter
+import requests
+from flask_cors import cross_origin
+import jwt
 from functools import wraps
 from datetime import datetime, timedelta
 from werkzeug import secure_filename
-from flask import Blueprint, jsonify, request, current_app, render_template, Response
-from flask import send_file, Response
-import jwt
-from flask_cors import cross_origin
-
-import requests
-from time import perf_counter
-import os
-import base64
-import json
+from flask import Blueprint, jsonify, request, current_app, render_template, Response, make_response, send_from_directory
+from flask import send_file
 from flask_mail import Mail, Message
+import pdfkit
 
-from .models import db, User
 
 api = Blueprint('api', __name__)
 
@@ -149,7 +149,7 @@ def send_mail():
     request_data = json.loads(request.get_data())
     mail = Mail(current_app)
     try:
-        msg = Message(subject="message from" + request_data["name"],
+        msg = Message("message from" + request_data["name"],
                       sender=current_app.config.get("MAIL_USERNAME"),
                       # replace with your email for testing
                       recipients=[request_data["dev"]],
@@ -192,6 +192,39 @@ def uploader_me():
         return Response(status=200)
 
     return render_template('index.html')
+
+
+@api.route('api/pdf', methods=['GET', 'POST'])
+def render_pdf_weasyprint():
+    request_data = json.loads(request.get_data())
+    from fpdf import FPDF, HTMLMixin
+
+    class MyFPDF(FPDF, HTMLMixin):
+        pass
+
+    pdf = MyFPDF()
+    pdf.add_page()
+    pdf.write_html(request_data["html"])
+    response = make_response(pdf.output('uploads/html.pdf', 'F'))
+    response.headers.set('Content-Disposition',
+                         'attachment', filename='html.pdf')
+    response.headers.set('Content-Type', 'application/pdf')
+
+    def download(filename):
+        uploads = os.path.join(current_app.root_path,
+                               current_app.config['UPLOAD_FOLDER'])
+        return send_from_directory(directory=uploads, filename=filename)
+    return download("html.pdf")
+
+# def getPdf():
+
+#     if request.method == 'POST':
+#         request_data = json.loads(request.get_data())
+#         pdf = pdfkit.from_string[request_data["html"], False]
+#         response = make_response(pdf)
+#         response.headers['Content-Type'] = 'application/pdf'
+#         response.headers['Content-Disposition'] = 'attachment; filename=pdf_out.pdf'
+#         return response
 
 
 @api.route('/', defaults={'path': ''})
