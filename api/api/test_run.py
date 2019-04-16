@@ -3,35 +3,36 @@ from form import ContactForm
 import tempfile
 import unittest
 import uuid
-from models import db,User, PremiumUser
+from models import User, PremiumUser,db
 from application import create_app
 import requests
 from flask import Flask, jsonify
 from flask_mail import Mail, Message
 from flask_cors import CORS
-TEST_DB = 'test.db'
+
+
+
 
 class test_app(unittest.TestCase):
     def setUp(self):
         app=create_app()
-        app.config.from_object('config.BaseConfig')
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False
         app.config['DEBUG'] = False
-        
+        SQLALCHEMY_DATABASE_URI = "sqlite://"
+        TESTING = True
         self.app = app.test_client()
-       
 
         self.assertEqual(app.debug, False)
 
-    def register(self, name, last, username, email, password):
-        new_user = User(email=email, password=password,name=name, last=last,
+    def register(self,email, password, name, last, username):
+        user = User(email=email, password=password,name=name, last=last,
                                username=username)
-        db.session.add(new_user)
+        db.session.add(user)
         db.session.commit()
         return new_user
 
-    def register_premium(self, name, last, username, email, password):
+    def register_premium(self,email, password, name, last, username):
         new_user = PremiumUser(email=email, password=password,name=name, last=last,
                                username=username)
         new_user.change()
@@ -40,14 +41,12 @@ class test_app(unittest.TestCase):
         return new_user
 
     def test_valid_user_registration(self):
-        response = self.register(
-            'alex@gmail.com', 'alexv32','alex', 'vaitz', 'alexv')
+        response = self.register('alex@gmail.com', 'alexv32','alex', 'vaitz', 'alexv')
         user = User.query.filter_by(username='alexv').first()
         self.assertEqual(user, response)
 
     def test_valid_premium_registration(self):
-        response = self.register_premium(
-            'almog@gmail.com', 'almog32','almog', 'gro', 'almoggr')
+        response = self.register_premium('almog@gmail.com', 'almog32','almog', 'gro', 'almoggr')
         user = User.query.filter_by(username='almoggr').first()
         self.assertEqual(user, response)
 

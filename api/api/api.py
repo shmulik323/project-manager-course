@@ -227,15 +227,14 @@ def add_permissions(User):
     db.session.commit()
     return jsonify(user.to_dict()), 201
 
-##TO_DO
-##finish authentication process
+
 @api.route('api/edit_email', methods=('POST',))
 @token_required
 def edit_email(User):
     data = request.get_json()
-    user = User.authenticate(**data)
-    if not user:
-        return jsonify({'message': 'Invalid credentials', 'authenticated': False}), 401
+    user = User.query.filter_by(email=data['new'])
+    if user:
+        return jsonify({'message': 'Email already exists'}), 401
     else:
         user.email=data['new email']
     db.session.commit()
