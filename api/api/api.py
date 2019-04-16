@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Blueprint, jsonify, request, current_app, render_template, flash
 from flask import send_file, Response
 from flask_mail import Mail, Message
-from.form import ContactForm
+from form import ContactForm
 import jwt
 import requests
 from time import perf_counter
@@ -14,7 +14,7 @@ import base64
 import json
 
 
-from .models import db, User
+from models import db, User
 api = Blueprint('api', __name__)
 
 
@@ -148,7 +148,7 @@ def get_image(User):
 def catch_all(path):
     return requests.get('http://localhost:3000/{}'.format(path)).text
 
-@app.route('api/contact', methods=['GET', 'POST'])
+@api.route('api/contact', methods=['GET', 'POST'])
 def contact():
   form = ContactForm()
  
@@ -169,7 +169,7 @@ def contact():
   elif request.method == 'GET':
     return render_template('contact.html', form=form)
 
-@app.route('api/reset',methods=['GET'])
+@api.route('api/reset',methods=['GET'])
 @token_required
 def reset_password():
     data = request.get_json()
@@ -185,7 +185,7 @@ def reset_password():
     db.session.commit()
     return jsonify(user.to_dict()), 201
 
-@app.route('api/cancel',methods=['GET', 'POST'])
+@api.route('api/cancel',methods=['GET', 'POST'])
 @token_required
 def cancel_premium(User):
     if User.premium:

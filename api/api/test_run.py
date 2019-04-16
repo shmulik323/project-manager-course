@@ -1,22 +1,23 @@
 import os
-from flask import Flask
+from form import ContactForm
 import tempfile
 import unittest
 import uuid
-from models import db, User, PremiumUser
-import application
-from api import api
+from models import db,User, PremiumUser
+from application import create_app
 import requests
+from flask import Flask, jsonify
+from flask_mail import Mail, Message
+from flask_cors import CORS
 TEST_DB = 'test.db'
-
 
 class test_app(unittest.TestCase):
     def setUp(self):
-        app=application.create_app()
+        app=create_app()
+        app.config.from_object('config.BaseConfig')
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False
         app.config['DEBUG'] = False
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project.db'
         
         self.app = app.test_client()
        

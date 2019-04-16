@@ -12,7 +12,7 @@ def create_app(app_name='API'):
     UPLOAD_FOLDER = './uploads'
     app = Flask(app_name, static_folder="../../client/.nuxt/dist/server",
                 template_folder="../../client/.nuxt/dist/server")
-    app.config.from_object('api.config.BaseConfig')
+    app.config.from_object('config.BaseConfig')
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
     mail_settings = {
@@ -39,8 +39,8 @@ def create_app(app_name='API'):
         return jsonify(response)
 
     cors = CORS(app, resources={r"/*": {"origins": "*"}})
-    from api.api import api
+    from api import api
     app.register_blueprint(api, url_prefix="/")
-    from api.models import db
+    from models import db
     db.init_app(app)
     return app
