@@ -12,7 +12,7 @@ from werkzeug import secure_filename
 from flask import Blueprint, jsonify, request, current_app, render_template, Response, make_response, send_from_directory
 from flask import send_file
 from flask_mail import Mail, Message
-import pdfkit
+
 
 
 api = Blueprint('api', __name__)
