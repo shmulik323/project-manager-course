@@ -6,7 +6,7 @@ from flask_testing import TestCase
 from api.models import User, PremiumUser,db
 from api.application import create_app
 import requests
-from flask import Flask, jsonify,Blueprint
+from flask import Flask, jsonify,Blueprint,abort, url_for
 from flask_mail import Mail, Message
 from flask_cors import CORS
 
@@ -24,7 +24,7 @@ class TestBase(TestCase):
         return app
 
     def setUp(self):
-    
+        self.client=create_app().test_client()
         db.session.commit()
         db.drop_all()
         db.create_all()
@@ -56,6 +56,12 @@ class Test_Models(TestBase):
         premium = User.query.filter_by(username='almog@gmail.com').first()
 
         self.assertNotEqual(user, premium)
+
+class Test_Functionality(TestBase):
+    def test_login(self):
+        user = User.query.filter_by(email='alex@gmail.com').first()
+        response=self.client.post('api/auth.login',data={'email':user.email,'password':'alexv32'},follow_redirects=True)
+        
 
 if __name__ == "__main__":
     unittest.main()
