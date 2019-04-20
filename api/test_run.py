@@ -27,8 +27,7 @@ class TestBase(TestCase):
     def setUp(self):
         self.client=create_app().test_client()
         db.session.commit()
-        db.drop_all()
-        db.create_all()
+        
        
         user = User(email='alex@gmail.com',password='alexv32',name='alex',last='vaitz',username='alexv')
 
