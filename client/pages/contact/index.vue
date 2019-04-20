@@ -27,7 +27,7 @@
           v-model="text"
           hint="here you can send a message to the developers of this site."
         ></v-textarea>
-        <v-btn @click="submit">submit</v-btn>
+        <v-btn id="submit" @click="submit">submit</v-btn>
 
         <v-btn @click="clear">clear</v-btn>
       </form>

@@ -21,11 +21,11 @@
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <template v-if="isAuthenticated">
-          <b-btn variant="success" @click="$router.push('/profile')">Hi {{$auth.user.name}}!</b-btn>
-          <b-btn variant="danger" class="navbar-item" @click="logout">Logout</b-btn>
+          <b-btn variant="success" id="success" @click="$router.push('/profile')">Hi {{$auth.user.name}}!</b-btn>
+          <b-btn variant="danger" id="logout" class="navbar-item" @click="logout">Logout</b-btn>
         </template>
         <template v-else>
-          <b-btn variant="success" class="navbar-item" @click="$router.push('/register')">Register</b-btn>
+          <b-btn variant="success" id="register" class="navbar-item" @click="$router.push('/register')">Register</b-btn>
           <b-btn variant="info" id="login_link" class="navbar-item" @click="$router.push('/login')">Login</b-btn>
         </template>
       </v-toolbar-items>

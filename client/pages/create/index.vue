@@ -10,7 +10,7 @@
       v-quill:myQuillEditor="editorOption"
     ></div>
     <div>
-      <a type="submit" @click="createPdf" target="_blank">Create PDF</a>
+      <a type="submit" id="pdf" @click="createPdf" target="_blank">Create PDF</a>
     </div>
   </section>
 </template>

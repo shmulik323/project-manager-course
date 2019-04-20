@@ -31,32 +31,33 @@
                 <div class="field">
                   <label class="label">First-name</label>
                   <div class="control">
-                    <input type="fname" class="input" name="firstname" v-model="name" required>
+                    <input type="fname" id="first" class="input" name="firstname" v-model="name" required>
                   </div>
                 </div>
 
                 <div class="field">
                   <label class="label">Last name</label>
                   <div class="control">
-                    <input type="lastname" class="input" name="last" v-model="last" required>
+                    <input type="lastname" id="last" class="input" name="last" v-model="last" required>
                   </div>
                 </div>
                 <div class="field">
                   <label class="label">Username</label>
                   <div class="control">
-                    <input type="text" class="input" name="username" v-model="username" required>
+                    <input type="text" id="username" class="input" name="username" v-model="username" required>
                   </div>
                 </div>
                 <div class="field">
                   <label class="label">Email</label>
                   <div class="control">
-                    <input type="email" class="input" name="email" v-model="email" required>
+                    <input type="email" id="email" class="input" name="email" v-model="email" required>
                   </div>
                 </div>
                 <div class="field">
                   <label class="label">Password</label>
                   <div class="control">
                     <input
+                      id="password"
                       type="password"
                       class="input"
                       name="password"
@@ -66,7 +67,7 @@
                   </div>
                 </div>
                 <div class="control">
-                  <button type="submit" class="button is-dark is-fullwidth">Register</button>
+                  <button type="submit" id="reg" class="button is-dark is-fullwidth">Register</button>
                 </div>
               </form>
 

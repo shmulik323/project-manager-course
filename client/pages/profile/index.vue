@@ -57,7 +57,7 @@
     </b-row>
     <hr>
     <b-btn-group>
-      <b-button @click="$auth.fetchUser()">Fetch User</b-button>
+      <b-button id="fetch" @click="$auth.fetchUser()">Fetch User</b-button>
       <b-button @click="$auth.logout()">Logout</b-button>
     </b-btn-group>
   </div>
