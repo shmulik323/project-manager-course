@@ -26,7 +26,7 @@
         </template>
         <template v-else>
           <b-btn variant="success" class="navbar-item" @click="$router.push('/register')">Register</b-btn>
-          <b-btn variant="info" class="navbar-item" @click="$router.push('/login')">Login</b-btn>
+          <b-btn variant="info" id="login_link" class="navbar-item" @click="$router.push('/login')">Login</b-btn>
         </template>
       </v-toolbar-items>
     </v-toolbar>

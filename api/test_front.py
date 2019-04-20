@@ -2,19 +2,24 @@ import os
 import tempfile
 import unittest
 import urllib
+from flask_testing import TestCase
 from flask_testing import LiveServerTestCase
 from selenium import webdriver
 from api.application import create_app
 from api.models import User, PremiumUser, db
-from api.models import User, PremiumUser,db
 from api.application import create_app
 import requests
 from flask import Flask, jsonify,Blueprint,abort, url_for
 from flask_mail import Mail, Message
 from flask_cors import CORS
+from multiprocessing.pool import ThreadPool
 import random, time, queue
 import multiprocessing
-multiprocessing.set_start_method('spawn')
+from webdriver_manager.chrome import ChromeDriverManager
+
+
+
+from multiprocessing.managers import BaseManager
 
 test_user_first_name = "alex"
 test_user_last_name = "vaitz"
@@ -28,40 +33,41 @@ test_user2_username = "mishel11"
 test_user2_email = "mishel@email.com"
 test_user2_password = "mishel1234"
 
-class TestBase(LiveServerTestCase):
+class TestBase(TestCase):
     
     def create_app(self):
         config_name = 'testing'
         app = create_app(config_name)
         app.config.update(
             # Specify the test database
-            SQLALCHEMY_DATABASE_URI='sqlite:///:memory:',
+            SQLALCHEMY_DATABASE_URI='sqlite:///test.db',
             
             LIVESERVER_PORT=5000
         )
+        
         return app
 
     def setUp(self):
-      
-        self.driver = webdriver.Chrome()
-        self.driver.get(self.get_server_url())
+        chromeOptions = webdriver.ChromeOptions()
+        chromeOptions.add_argument("--headless")
+        self.driver = webdriver.Chrome(ChromeDriverManager().install())
+        self.driver.get('http://127.0.0.1:5000/')
 
         db.session.commit()
-        db.drop_all()
         db.create_all()
 
         # create test admin user
         self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
        
-        db.session.add(self.admin)
-        db.session.add(self.employee)
+        db.session.add(self.user)
+        
         db.session.commit()
 
     def tearDown(self):
         self.driver.quit()
 
     def test_server_is_up_and_running(self):
-        response = urllib.urlopen(self.get_server_url())
+        response = urllib.request.urlopen('http://127.0.0.1:5000/')
         self.assertEqual(response.code, 200)
 
 class TestLogin(TestBase):
@@ -81,4 +87,12 @@ class TestLogin(TestBase):
 
        
         #username_greeting = self.driver.find_element_by_id("username_greeting").text
-       # assert "Hi, employee1!" in username_greeting
+        #assert "Hi, employee1!" in username_greeting
+class TestLogout(TestBase):
+    def test_logout(self):
+        return
+class TestRegister(TestBase):      
+    def test_register(self):
+        return
+if __name__ == '__main__':
+    unittest.main()

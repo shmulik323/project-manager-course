@@ -58,5 +58,5 @@ class User(db.Model):
 
 
 class PremiumUser(User):
-    __tanlename__ = 'premium'
+    __tablename__ = 'premium'
     credit_card = db.Column(db.String(50))

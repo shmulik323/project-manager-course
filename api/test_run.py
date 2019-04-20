@@ -8,6 +8,7 @@ import requests
 from flask import Flask, jsonify,Blueprint,abort, url_for,json
 from flask_mail import Mail, Message
 from flask_cors import CORS
+import pytest
 
 
 class TestBase(TestCase):
@@ -59,7 +60,7 @@ class Test_Functionality(TestBase):
     def test_login(self):
         with self.app.test_client() as client:
             user = User.query.filter_by(email='alex@gmail.com').first()
-            response=self.client.post('api/auth/login',data={'email':user.email,'password':'alexv32'},follow_redirects=True)
+            response=self.client.post('api/edit_email',data={'old':user.email,'new':'alexvvv@gmail.com'},follow_redirects=True)
             self.assertEqual(response.status_code,200)
 
 if __name__ == "__main__":

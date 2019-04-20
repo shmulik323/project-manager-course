@@ -295,7 +295,8 @@ def edit_email(User):
     if user:
         return jsonify({'message': 'Email already exists'}), 401
     else:
-        user.email=data['new email']
+        user.User.query.filter_by(email=data['old'])
+        user.email=data['new']
     db.session.commit()
     return jsonify(user.to_dict()), 201
 
