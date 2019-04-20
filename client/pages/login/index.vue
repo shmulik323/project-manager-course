@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-center">Login</h2>
+    <h2 id="login_link" class="text-center">Login</h2>
     <hr>
     <b-alert v-if="error" show variant="danger">{{ error + '' }}</b-alert>
     <b-alert show v-if="$auth.$state.redirect">
@@ -13,15 +13,15 @@
           <busy-overlay/>
           <form @keydown.enter="login">
             <b-form-group label="email/username">
-              <b-input v-model="email" placeholder="anything" ref="email"/>
+              <b-input v-model="email" id="email" placeholder="anything" ref="email"/>
             </b-form-group>
 
             <b-form-group label="Password">
-              <b-input type="password" v-model="password" placeholder/>
+              <b-input type="password" id="password" v-model="password" placeholder/>
             </b-form-group>
 
             <div class="text-center">
-              <b-btn @click="login" variant="primary" block>Login</b-btn>
+              <b-btn @click="login" id="login_click" variant="primary" block>Login</b-btn>
             </div>
           </form>
         </b-card>
