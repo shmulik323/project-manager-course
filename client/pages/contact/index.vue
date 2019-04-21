@@ -12,6 +12,7 @@
           required
         ></v-text-field>
         <v-select
+          id="select"
           v-model="select"
           v-validate="'required'"
           :items="devs"

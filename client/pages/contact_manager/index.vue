@@ -3,6 +3,7 @@
     <b-jumbotron bg-variant="denger" text-variant="white" border-variant="dark">
       <form>
         <v-text-field
+          id="subject"
           v-model="subject"
           v-validate="'required'"
           :error-messages="errors.collect('subject')"
@@ -11,6 +12,7 @@
           required
         ></v-text-field>
         <v-select
+          id="select"
           v-model="select"
           v-validate="'required'"
           :items="managers"
@@ -20,6 +22,7 @@
           required
         ></v-select>
         <v-textarea
+          id="message"
           name="massege"
           v-validate="'required'"
           :error-messages="errors.collect('massege')"
