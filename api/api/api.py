@@ -74,6 +74,14 @@ def register():
     db.session.commit()
     return jsonify(user.to_dict()), 201
 
+@api.route('api/edit_picture', methods=('POST',))
+def edit_picture():
+    data = request.get_json()
+    user=User.query.filter_by(email=data['email'])
+    if user:
+        user.image_file=data['image_file']
+        db.session.commit()
+    return jsonify(user.to_dict()), 201
 
 @api.route('api/edit_user', methods=('POST',))
 @token_required
