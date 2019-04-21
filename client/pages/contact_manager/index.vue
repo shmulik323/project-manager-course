@@ -12,12 +12,12 @@
           required
         ></v-text-field>
         <v-select
-          id="select"
+          id="select_manager"
           v-model="select"
           v-validate="'required'"
           :items="managers"
           :error-messages="errors.collect('select')"
-          label="Select developer"
+          label="Select Manager"
           data-vv-name="select"
           required
         ></v-select>

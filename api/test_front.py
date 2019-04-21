@@ -16,7 +16,7 @@ from multiprocessing.pool import ThreadPool
 import random, time, queue
 import multiprocessing
 from webdriver_manager.chrome import ChromeDriverManager
-
+from selenium.webdriver.support.ui import Select
 
 
 from multiprocessing.managers import BaseManager
@@ -154,8 +154,8 @@ class TestSideBar(TestBase):
         time.sleep(2)
 
         self.driver.find_element_by_id("subject").send_keys('error in something')
-        self.driver.find_element_by_id("select").click().click()
-        
+        select=Select(self.driver.find_element_by_id("select_developer"))
+        select.select_by_index(1) 
         self.driver.find_element_by_id("message").send_keys('i have a lot of errors in a lot of places please help.')
         time.sleep(1)
         assert self.driver.find_element_by_id("submit")
@@ -181,7 +181,8 @@ class TestSideBar(TestBase):
         time.sleep(2)
 
         self.driver.find_element_by_id("subject").send_keys('I have an issue')
-        self.driver.find_element_by_id("select").click()
+        select=Select(self.driver.find_element_by_id("select_manager"))
+        select.select_by_index(1) 
         self.driver.find_element_by_id("message").send_keys('i have a lot of problems in a lot of places please help.')
         time.sleep(1)
         assert self.driver.find_element_by_id("submit")
