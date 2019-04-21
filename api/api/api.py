@@ -241,7 +241,7 @@ def reset_password():
     if user: 
         if check_password_hash(user.password,data['old']):
             password=generate_password_hash(data['new'], method='sha256')
-            User=password
+            user.password=password
         else:
             return jsonify({'message': 'Invalid password'}), 401
     else:
@@ -252,8 +252,10 @@ def reset_password():
 @api.route('api/cancel',methods=['GET', 'POST'])
 @token_required
 def cancel_premium(User):
-    if User.premium:
-        User.change()
+    data = request.get_json()
+    user=User.db.query.filter_by(email=data['email']).first()
+    if user.premium:
+        user.change()
     else:
         return jsonify({'message': 'User without premium status'}), 401
     db.session.commit()
