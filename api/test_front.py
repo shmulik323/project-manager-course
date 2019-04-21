@@ -154,8 +154,7 @@ class TestSideBar(TestBase):
         time.sleep(2)
 
         self.driver.find_element_by_id("subject").send_keys('error in something')
-        select=Select(self.driver.find_element_by_id("select_developer"))
-        select.select_by_index(1) 
+        
         self.driver.find_element_by_id("message").send_keys('i have a lot of errors in a lot of places please help.')
         time.sleep(1)
         assert self.driver.find_element_by_id("submit")
@@ -181,8 +180,7 @@ class TestSideBar(TestBase):
         time.sleep(2)
 
         self.driver.find_element_by_id("subject").send_keys('I have an issue')
-        select=Select(self.driver.find_element_by_id("select_manager"))
-        select.select_by_index(1) 
+        
         self.driver.find_element_by_id("message").send_keys('i have a lot of problems in a lot of places please help.')
         time.sleep(1)
         assert self.driver.find_element_by_id("submit")
