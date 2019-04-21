@@ -13,7 +13,7 @@
         <v-select
           v-model="select"
           v-validate="'required'"
-          :items="devs"
+          :items="managers"
           :error-messages="errors.collect('select')"
           label="Select developer"
           data-vv-name="select"
@@ -40,10 +40,10 @@
 //   data () {
 //     return{
 //       title: 'The Managers',
-//       programmers:[
-//         {name:'Almog', speciality:'Admin',email:'almoggr@ac.sce.ac.il',show:false},
+//       managers:[
+//    
 //         {name:'Shmuel',speciality:'Admin',email:'shmuemo1@ac.sce.ac.il',show:false},
-//         {name:'Alex',speciality:'Admin',email:'alexwe@ac.sce.ac.il',show:false},
+//       
 //         {name:'Mishel',speciality:'Admin',email:'misheel@ac.sce.ac.il',show:false}
 //       ]
 //     }
@@ -68,10 +68,8 @@ export default {
     text: "",
     user: null,
     select: null,
-    devs: [
-      "almoggr@ac.sce.ac.il",
+    managers: [
       "shmulik323@gmail.com",
-      "alexawe@ac.sce.ac.il",
       "misheel@ac.sce.ac.il"
     ],
     dictionary: {

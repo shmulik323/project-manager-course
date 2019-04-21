@@ -42,7 +42,8 @@ export default {
       menuItems: [
         { icon: "create", title: "create form", link: "/create" },
         { icon: "fingerprint", title: "Profile", link: "/profile" },
-        { icon: "email", title: "Contact", link: "/contact" }
+        { icon: "email", title: "Contact", link: "/contact" },
+        { icon: "email", title: "Contact Manager", link: "/contact_manager" }
       ]
     };
   },
