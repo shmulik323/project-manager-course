@@ -80,9 +80,6 @@ def register():
 def edit(User):
     request = json.loads(request.get_data())
     user = User.query.filter_by(username=request.username).first()
-    user.username = request.username
-    user.email = request.email
-    user.image_file = request.image_file
     user.name = request.name
     user.last = request.last
 
@@ -305,6 +302,19 @@ def edit_email(User):
     else:
         user.User.query.filter_by(email=data['old'])
         user.email=data['new']
+    db.session.commit()
+    return jsonify(user.to_dict()), 201
+
+@api.route('api/change_username', methods=('POST',))
+@token_required
+def change_username(User):
+    data = request.get_json()
+    user = User.query.filter_by(username=data['new'])
+    if user:
+        return jsonify({'message': 'Username already exists'}), 401
+    else:
+        user.User.query.filter_by(username=data['old'])
+        user.username=data['new']
     db.session.commit()
     return jsonify(user.to_dict()), 201
 

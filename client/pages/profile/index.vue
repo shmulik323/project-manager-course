@@ -59,12 +59,12 @@
     <b-btn-group>
       <b-button id="fetch" @click="$auth.fetchUser()">Fetch User</b-button>
       <b-button @click="$auth.logout()">Logout</b-button>
-      <nuxt-link class="button" to="/password">Reset Password</nuxt-link>
-      <nuxt-link class="button" to="/email">Change Email</nuxt-link>
-      <nuxt-link class="button" to="/username">Change UserName</nuxt-link>
-      <nuxt-link class="button" to="/edit_profile">Edit Profile</nuxt-link>
-      <nuxt-link class="button" to="/picture">Edit Picture</nuxt-link>
-      <nuxt-link class="button" to="/cancel">Cancel Premium</nuxt-link>
+      <nuxt-link id="reset_password" class="button" to="/password">Reset Password</nuxt-link>
+      <nuxt-link id="change_email" class="button" to="/email">Change Email</nuxt-link>
+      <nuxt-link id="change_username" class="button" to="/username">Change UserName</nuxt-link>
+      <nuxt-link id="change_profile" class="button" to="/edit_profile">Edit Profile</nuxt-link>
+      <nuxt-link id="change_picture" class="button" to="/picture">Edit Picture</nuxt-link>
+      <nuxt-link id="cancel_premium" class="button" to="/cancel">Cancel Premium</nuxt-link>
     </b-btn-group>
   </div>
 </template>

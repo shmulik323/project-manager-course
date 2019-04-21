@@ -3,7 +3,6 @@
     <b-jumbotron bg-variant="denger" text-variant="white" border-variant="dark">
       <form>
         <v-text-field
-          id="subject"
           v-model="subject"
           v-validate="'required'"
           :error-messages="errors.collect('subject')"
@@ -21,7 +20,6 @@
           required
         ></v-select>
         <v-textarea
-          id="message"
           name="massege"
           v-validate="'required'"
           :error-messages="errors.collect('massege')"
@@ -41,12 +39,12 @@
 // export default {
 //   data () {
 //     return{
-//       title: 'The Programmers',
+//       title: 'The Managers',
 //       programmers:[
-//         {name:'Almog', speciality:'Front End',email:'almoggr@ac.sce.ac.il',show:false},
-//         {name:'Shmoel',speciality:'Front End',email:'shmuemo1@ac.sce.ac.il',show:false},
-//         {name:'Alex',speciality:'Back End',email:'alexwe@ac.sce.ac.il',show:false},
-//         {name:'Mishel',speciality:'Back End',email:'misheel@ac.sce.ac.il',show:false}
+//         {name:'Almog', speciality:'Admin',email:'almoggr@ac.sce.ac.il',show:false},
+//         {name:'Shmuel',speciality:'Admin',email:'shmuemo1@ac.sce.ac.il',show:false},
+//         {name:'Alex',speciality:'Admin',email:'alexwe@ac.sce.ac.il',show:false},
+//         {name:'Mishel',speciality:'Admin',email:'misheel@ac.sce.ac.il',show:false}
 //       ]
 //     }
 //   },
