@@ -1,5 +1,5 @@
 <template>
-  <b-card title="Contact" sub-title="contact the site devs">
+  <b-card title="Contact" sub-title="contact the site managers">
     <b-jumbotron bg-variant="denger" text-variant="white" border-variant="dark">
       <form>
         <v-text-field

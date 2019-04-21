@@ -47,7 +47,7 @@
         :rules="[rules.email]"
         box
         color="deep-purple"
-        label="Old Email address"
+        label="Email address"
         type="email"
       ></v-text-field>
     </v-form>

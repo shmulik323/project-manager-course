@@ -39,7 +39,7 @@ class TestBase(TestCase):
         config_name = 'testing'
         app = create_app(config_name)
         app.config.update(
-            # Specify the test database
+            
 
             LIVESERVER_PORT=3000
         )
@@ -61,9 +61,7 @@ class TestBase(TestCase):
     def tearDown(self):
         self.driver.quit()
 
-    #def test_server_is_up_and_running(self):
-        #response = urllib.request.urlopen('http://127.0.0.1:3000/')
-        #self.assertEqual(response.code, 200)
+
 
 class TestRegister(TestBase):      
     def test_register(self):
