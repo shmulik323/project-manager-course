@@ -1,6 +1,7 @@
 from .models import db, User
 import json
 import base64
+import pypandoc
 import os
 from time import perf_counter
 import requests
@@ -12,11 +13,18 @@ from werkzeug import secure_filename
 from flask import Blueprint, jsonify, request, current_app, render_template, Response, make_response, send_from_directory
 from flask import send_file
 from flask_mail import Mail, Message
-
+from docx import Document
 
 
 api = Blueprint('api', __name__)
 
+@api.route('api/create')
+def doc2html():
+    f = open('./api/newdoc.docx', 'rb')
+    document = Document(f)
+    f.close()
+    return jsonify(document)
+    
 
 def token_required(f):
     @wraps(f)

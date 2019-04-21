@@ -40,8 +40,7 @@ class TestBase(TestCase):
         app = create_app(config_name)
         app.config.update(
             # Specify the test database
-            
-            
+
             LIVESERVER_PORT=5000
         )
         
