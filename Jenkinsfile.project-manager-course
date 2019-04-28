@@ -11,7 +11,7 @@ pipeline {
             steps{
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     //echo 'Installing Requirements...'
-		    sh 'docker image ls'
+		  
                     sh 'pip3.7 install -U -r requirements.txt --user'
 		            
                 }
@@ -21,7 +21,7 @@ pipeline {
 stage('npm-build') {
     agent {
         docker {
-            image 'node:7.4'
+            image 'node:8'
         }
     }
  
