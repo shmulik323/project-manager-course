@@ -1,12 +1,12 @@
 pipeline {
-	stage('npm-build') {
+	
     agent {
         docker {
             image 'node:7.4'
         }
     }
- 
-    steps {
+ stages {
+   stage('npm-build') {
         echo "Branch is ${env.BRANCH_NAME}..."
  
         withNPM(npmrcConfig:'my-custom-npmrc') {
@@ -16,7 +16,8 @@ pipeline {
 	    sh 'npm run dev'
         }
     }
-    }
+}
+    
     agent { docker { image 'python:3-alpine' } }
     stages {
         stage('Git') {
