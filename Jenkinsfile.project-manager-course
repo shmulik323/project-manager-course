@@ -1,21 +1,4 @@
 pipeline {
-    agent { docker { image 'python:3-alpine' } }
-    stages {
-        stage('Git') {
-            steps{
-                // echo 'Getting the code from GitHub...'
-                git 'https://github.com/shmulik323/project-manager-course.git'
-            }
-        }
-        stage('Requirements'){
-            steps{
-                withEnv(["HOME=${env.WORKSPACE}"]) {
-                    //echo 'Installing Requirements...'
-                    sh 'pip3.7 install -U -r requirements.txt --user'
-		            
-                }
-            }
-        }
 	stage('npm-build') {
     agent {
         docker {
@@ -34,15 +17,28 @@ pipeline {
         }
     }
     }
+    agent { docker { image 'python:3-alpine' } }
+    stages {
+        stage('Git') {
+            steps{
+                // echo 'Getting the code from GitHub...'
+                git 'https://github.com/shmulik323/project-manager-course.git'
+            }
+        }
+        stage('Requirements'){
+            steps{
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    //echo 'Installing Requirements...'
+                    sh 'pip3.7 install -U -r requirements.txt --user'
+		            
+                }
+            }
+        }
+
         stage('Run Tests'){
             steps{
                 // echo 'Testing User app...'
 		withEnv(["HOME=${env.WORKSPACE}"]) {
-			sh "cd client"
-			  nodejs(nodeJSInstallationName: 'Node 6.x', configId: '<config-file-provider-id>') {
-	 	        sh "npm run dev "
-			}
-			sh "cd .. "
 			sh "cd api"
 			sh "python3.7 appserver.py"
 			sh "python3.7 test_front.py"
