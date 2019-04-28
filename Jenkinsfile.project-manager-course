@@ -26,8 +26,10 @@ stage('npm-build') {
     }
  
      steps {
-                nodejs(nodeJSInstallationName: 'Node 11.x', configId: '<config-file-provider-id>') {
+                nodejs(nodeJSInstallationName: 'Node 11.x', configId: 'package.json') {
+                    sh "cd client"
                     sh 'npm config ls'
+                    sh 'npm install'
                 }
     }
 }
