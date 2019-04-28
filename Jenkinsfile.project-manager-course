@@ -33,6 +33,7 @@ pipeline {
 	    sh 'npm run dev'
         }
     }
+    }
         stage('Run Tests'){
             steps{
                 // echo 'Testing User app...'
