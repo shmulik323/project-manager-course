@@ -28,7 +28,7 @@ stage('npm-build') {
         withNPM(npmrcConfig:'my-custom-npmrc') {
             sh 'npm install'
 	    sh 'cd client'
-	    sh 'npm run dev'
+	    sh 'npm run dev &'
         }
     }
 }
