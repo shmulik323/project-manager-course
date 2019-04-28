@@ -24,7 +24,7 @@ pipeline {
 	 	        sh "nmp run dev &"
 			sh "cd .. "
 			sh "cd api"
-			sh "python3.7 appserver.py &"
+			sh "python3.7 appserver.py"
 			sh "python3.7 test_front.py"
 			}
             }
