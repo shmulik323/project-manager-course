@@ -21,16 +21,16 @@ pipeline {
 stage('npm-build') {
     agent {
         docker {
-            image 'node:11'
+            image 'node:8'
         }
     }
  
-     steps {
-                nodejs(nodeJSInstallationName: 'Node 11.x', configId: 'package.json') {
-                    sh "cd client"
-                    sh 'npm config ls'
-                    sh 'npm install'
-                }
+    steps {
+        withNPM(npmrcConfig:'my-custom-npmrc') {
+            sh 'cd client'
+            sh 'npm install'
+	        sh 'npm run dev'
+        }
     }
 }
         stage('Run Tests'){
