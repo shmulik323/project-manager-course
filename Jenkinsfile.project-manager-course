@@ -21,7 +21,7 @@ pipeline {
                 // echo 'Testing User app...'
 		withEnv(["HOME=${env.WORKSPACE}"]) {
 			sh "cd client"
-			sh "sudo apt-get install npm"
+			bat "npm install"
 	 	        sh "npm run dev "
 			sh "cd .. "
 			sh "cd api"
