@@ -21,15 +21,16 @@ pipeline {
 stage('npm-build') {
     agent {
         docker {
-            image 'node:8'
+            image 'node:7.4'
         }
     }
- 
+
     steps {
+        echo "Branch is ${env.BRANCH_NAME}..."
+
         withNPM(npmrcConfig:'my-custom-npmrc') {
-            sh 'cd client'
+            echo "Performing npm build..."
             sh 'npm install'
-	        sh 'npm run dev'
         }
     }
 }
