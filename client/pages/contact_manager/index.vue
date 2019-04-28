@@ -38,7 +38,7 @@
   </b-card>
 </template>
 
-// <script>
+//<script>
 // export default {
 //   data () {
 //     return{
@@ -53,7 +53,7 @@
 //   },
 // }
 //
-</script>
+//</script>
 <script>
 import Vue from "vue";
 import VeeValidate from "vee-validate";

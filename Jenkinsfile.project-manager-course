@@ -25,12 +25,10 @@ stage('npm-build') {
         }
     }
  
-    steps {
-        withNPM(npmrcConfig:'my-custom-npmrc') {
-            sh 'npm install'
-	    sh 'cd client'
-	    sh 'npm run dev &'
-        }
+     steps {
+                nodejs(nodeJSInstallationName: 'Node 6.x', configId: '<config-file-provider-id>') {
+                    sh 'npm config ls'
+                }
     }
 }
         stage('Run Tests'){

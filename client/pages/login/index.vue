@@ -86,7 +86,7 @@ export default {
   methods: {
     async login() {
       this.error = null;
-      return this.$auth
+      this.$auth
         .loginWith("local", {
           data: {
             email: this.email,
@@ -95,7 +95,7 @@ export default {
           }
         })
         .then(e => {
-          this.$route.push("/");
+          return this.$route.push("/");
         })
         .catch(e => {
           this.error = e + "";

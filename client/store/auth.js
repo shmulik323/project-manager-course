@@ -1,16 +1,16 @@
-export const getters={
-    authenticated(state){
-        return state.loggedIn;
+export const getters = {
+  authenticated(state) {
+    return state.loggedIn;
 
-    },
-    user(state){
-        return state.user
-    }
+  },
+  user(state) {
+    return state.user
+  }
 }
 
-export const state= () => ({
-    busy:false,
-    loggedIn:false,
-    strategy:"local",
-    usere:false
+export const state = () => ({
+  busy: false,
+  loggedIn: false,
+  strategy: "local",
+  user: false
 })

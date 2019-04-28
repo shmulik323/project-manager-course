@@ -1,28 +1,37 @@
 <template>
-  <section class="container">
-    <div
-      class="quill-editor"
-      :content="content"
-      @change="onEditorChange($event)"
-      @blur="onEditorBlur($event)"
-      @focus="onEditorFocus($event)"
-      @ready="onEditorReady($event)"
-      v-quill:myQuillEditor="editorOption"
-    ></div>
-    <div>
-      <a type="submit" id="pdf" @click="createPdf" target="_blank">Create PDF</a>
-    </div>
-  </section>
+  <v-layout column>
+    <v-text-field label="Project Name" box v-model="pdfName"></v-text-field>
+
+    <v-layout align-center justify-center row fill-height>
+      <v-flex xs12 sm2>
+        <v-card>
+          <v-card-title>
+            <span class="title font-weight-dark">Load your prev project</span>
+          </v-card-title>
+          <v-sheet class="d-flex" color="grey lighten-3" height="600px"></v-sheet>
+        </v-card>
+      </v-flex>
+      <v-flex>
+        <section class="container">
+          <div
+            class="quill-editor"
+            :content="content"
+            @change="onEditorChange($event)"
+            @blur="onEditorBlur($event)"
+            @focus="onEditorFocus($event)"
+            @ready="onEditorReady($event)"
+            v-quill:myQuillEditor="editorOption"
+          ></div>
+          <div>
+            <a type="submit" id="pdf" @click="createPdf" target="_blank">Create PDF</a>
+          </div>
+        </section>
+      </v-flex>
+    </v-layout>
+  </v-layout>
 </template>
 
 <script>
-if (process.browser) {
-  const jsPDF = require("jspdf");
-  require("jspdf-autotable");
-  let doc = new jsPDF();
-  // ... you code
-}
-
 var toolbarOptions = [
   ["bold", "italic", "underline", "strike"], // toggled buttons
   ["blockquote", "code-block"],
@@ -43,6 +52,8 @@ var toolbarOptions = [
   ["clean"] // remove formatting button
 ];
 export default {
+  middleware: ["auth"],
+
   data() {
     return {
       content: "<p>I am Example</p>",
@@ -52,15 +63,11 @@ export default {
           toolbar: toolbarOptions
         },
         theme: "snow"
-      }
+      },
+      pdfName: "your Project name"
     };
   },
-  mounted() {
-    console.log("app init, my quill insrance object is:", this.myQuillEditor);
-    setTimeout(() => {
-      this.content = "i am changed";
-    }, 3000);
-  },
+  mounted() {},
   methods: {
     onEditorBlur(editor) {
       console.log("editor blur!", editor);
@@ -76,36 +83,79 @@ export default {
       this.content = html;
     },
     createPdf() {
-      this.$axios
-        .post("api/pdf", {
-          html: this.content,
-          responseType: "arraybuffer"
-        })
-        .then(response => {
-          const url = window.URL.createObjectURL(
-            new Blob([response], { type: "application/pdf" })
-          );
-          console.log(response);
-          const link = document.createElement("a");
-          link.href = url;
+      const vm = this;
+      this.$axios.post("api/pdf", {
+        html: this.content,
+        name: this.pdfName,
+        responseType: "arraybuffer"
+      });
+      if (process.browser) {
+        const margins = {
+          top: 70,
+          bottom: 40,
+          left: 30,
+          width: 550
+        };
+        const jsPDF = require("jspdf");
+        require("jspdf-autotable");
+        var pdf = new jsPDF("p", "pt", "a4");
+        // ... you code
+        pdf.fromHTML(
+          this.content,
+          margins.left, // x coord
+          margins.top,
+          {
+            // y coord
+            width: margins.width // max width of content on PDF
+          },
+          function(dispose) {
+            headerFooterFormatting(pdf);
+          },
+          margins
+        );
+        function headerFooterFormatting(doc) {
+          var totalPages = doc.internal.getNumberOfPages();
 
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        });
+          for (var i = totalPages; i >= 1; i--) {
+            //make this page, the current page we are currently working on.
+            doc.setPage(i);
+
+            header(doc);
+
+            footer(doc, i, totalPages);
+          }
+        }
+        function footer(doc, pageNumber, totalPages) {
+          var str = "Page " + pageNumber + " of " + totalPages;
+
+          doc.setFontSize(10);
+          doc.text(str, margins.left, doc.internal.pageSize.height - 20);
+        }
+        function header(doc) {
+          doc.setFontSize(30);
+          doc.setTextColor(40);
+          doc.setFontStyle("normal");
+
+          doc.text(vm.pdfName, margins.left + 50, 40);
+
+          doc.line(3, 70, margins.width + 43, 70); // horizontal line
+        }
+        pdf.save(this.pdfName + ".pdf");
+      }
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+@charset "UTF-8";
 .container {
-  width: 60%;
+  width: 75%;
   margin: 0 auto;
   padding: 50px 0;
   .quill-editor {
     min-height: 600px;
-    max-height: 400px;
+    max-height: 800px;
     overflow-y: auto;
   }
 }

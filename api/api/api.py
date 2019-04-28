@@ -18,13 +18,14 @@ from docx import Document
 
 api = Blueprint('api', __name__)
 
+
 @api.route('api/create')
 def doc2html():
     f = open('./api/newdoc.docx', 'rb')
     document = Document(f)
     f.close()
     return jsonify(document)
-    
+
 
 def token_required(f):
     @wraps(f)
@@ -74,14 +75,16 @@ def register():
     db.session.commit()
     return jsonify(user.to_dict()), 201
 
+
 @api.route('api/edit_picture', methods=('POST',))
 def edit_picture():
     data = request.get_json()
-    user=User.query.filter_by(email=data['email'])
+    user = User.query.filter_by(email=data['email'])
     if user:
-        user.image_file=data['image_file']
+        user.image_file = data['image_file']
         db.session.commit()
     return jsonify(user.to_dict()), 201
+
 
 @api.route('api/edit_user', methods=('POST',))
 @token_required
@@ -208,7 +211,8 @@ def uploader_me():
 
 
 @api.route('api/pdf', methods=['GET', 'POST'])
-def render_pdf_weasyprint():
+@token_required
+def render_pdf_weasyprint(User):
     request_data = json.loads(request.get_data())
     from fpdf import FPDF, HTMLMixin
 
@@ -218,56 +222,52 @@ def render_pdf_weasyprint():
     pdf = MyFPDF()
     pdf.add_page()
     pdf.write_html(request_data["html"])
-    response = make_response(pdf.output('uploads/html.pdf', 'F'))
+    response = make_response(pdf.output(
+        'uploads/'+User.username + '/' + request_data["name"]+'.pdf', 'F'))
     response.headers.set('Content-Disposition',
-                         'attachment', filename='html.pdf')
+                         'attachment', filename=request_data["name"]+'.pdf')
     response.headers.set('Content-Type', 'application/pdf')
 
     def download(filename):
+        dirName = 'uploads/'+User.username
+        if not os.path.exists(dirName):
+            os.mkdir('uploads/'+User.username)
         uploads = os.path.join(current_app.root_path,
-                               current_app.config['UPLOAD_FOLDER'])
+                               dirName)
         return send_from_directory(directory=uploads, filename=filename, mimetype='application/pdf')
 
     return download("html.pdf")
 
 
-# def getPdf():
-
-#     if request.method == 'POST':
-#         request_data = json.loads(request.get_data())
-#         pdf = pdfkit.from_string[request_data["html"], False]
-#         response = make_response(pdf)
-#         response.headers['Content-Type'] = 'application/pdf'
-#         response.headers['Content-Disposition'] = 'attachment; filename=pdf_out.pdf'
-#         return response
-
-@api.route('api/reset',methods=['GET'])
+@api.route('api/reset', methods=['GET'])
 @token_required
 def reset_password():
     data = request.get_json()
-    user=User.db.query.filter_by(email=data['email']).first()
-    if user: 
-        if check_password_hash(user.password,data['old']):
-            password=generate_password_hash(data['new'], method='sha256')
-            user.password=password
+    user = User.db.query.filter_by(email=data['email']).first()
+    if user:
+        if check_password_hash(user.password, data['old']):
+            password = generate_password_hash(data['new'], method='sha256')
+            user.password = password
         else:
             return jsonify({'message': 'Invalid password'}), 401
     else:
-            return jsonify({'message': 'User does not exist'}), 401
+        return jsonify({'message': 'User does not exist'}), 401
     db.session.commit()
     return jsonify(user.to_dict()), 201
 
-@api.route('api/cancel',methods=['GET', 'POST'])
+
+@api.route('api/cancel', methods=['GET', 'POST'])
 @token_required
 def cancel_premium(User):
     data = request.get_json()
-    user=User.db.query.filter_by(email=data['email']).first()
+    user = User.db.query.filter_by(email=data['email']).first()
     if user.premium:
         user.change()
     else:
         return jsonify({'message': 'User without premium status'}), 401
     db.session.commit()
     return jsonify(user.to_dict()), 201
+
 
 @api.route('api/new_admin', methods=('POST',))
 @token_required
@@ -282,12 +282,13 @@ def new_manager(User):
     db.session.commit()
     return jsonify(user.to_dict()), 201
 
+
 @api.route('api/add_permissions', methods=('POST',))
 @token_required
 def add_permissions(User):
     if User.admin:
         data = request.get_json()
-        user=User.db.filter_by(email=data['email']).first()
+        user = User.db.filter_by(email=data['email']).first()
         if user:
             if data['premium']:
                 user.change()
@@ -311,9 +312,10 @@ def edit_email(User):
         return jsonify({'message': 'Email already exists'}), 401
     else:
         user.User.query.filter_by(email=data['old'])
-        user.email=data['new']
+        user.email = data['new']
     db.session.commit()
     return jsonify(user.to_dict()), 201
+
 
 @api.route('api/change_username', methods=('POST',))
 @token_required
@@ -324,9 +326,10 @@ def change_username(User):
         return jsonify({'message': 'Username already exists'}), 401
     else:
         user.User.query.filter_by(username=data['old'])
-        user.username=data['new']
+        user.username = data['new']
     db.session.commit()
     return jsonify(user.to_dict()), 201
+
 
 @api.route('/', defaults={'path': ''})
 @api.route('/<path:path>')
