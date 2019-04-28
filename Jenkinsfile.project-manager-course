@@ -1,25 +1,4 @@
 pipeline {
-	/*
-    agent {
-        docker {
-            image 'node:7.4'
-        }
-    }
- stages {
-   stage('npm-build') {
-   steps{
-        git 'https://github.com/shmulik323/project-manager-course.git'
- 
-        withNPM(npmrcConfig:'my-custom-npmrc') {
-            echo "Performing npm build..."
-            sh 'npm install'
-	    sh 'cd client'
-	    sh 'npm run dev'
-	    }
-        }
-    }
-}*/
-    
     agent { docker { image 'python:3-alpine' } }
     stages {
         stage('Git') {
@@ -38,6 +17,21 @@ pipeline {
             }
         }
 
+stage('npm-build') {
+    agent {
+        docker {
+            image 'node:7.4'
+        }
+    }
+ 
+    steps {
+        withNPM(npmrcConfig:'my-custom-npmrc') {
+            sh 'npm install'
+	    sh 'cd client'
+	    sh 'npm run dev'
+        }
+    }
+}
         stage('Run Tests'){
             steps{
                 // echo 'Testing User app...'
