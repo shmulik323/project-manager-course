@@ -21,18 +21,15 @@ pipeline {
 stage('npm-build') {
     agent {
         docker {
-            image 'node:8'
+            image 'node:11'
         }
     }
  
-   stages {
-        stage('Build') {
-            steps {
-                nodejs(nodeJSInstallationName: 'Node 6.x', configId: '<config-file-provider-id>') {
+     steps {
+                nodejs(nodeJSInstallationName: 'Node 11.x', configId: '<config-file-provider-id>') {
                     sh 'npm config ls'
                 }
-            }
-        }
+    }
 }
         stage('Run Tests'){
             steps{
