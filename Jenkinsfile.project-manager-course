@@ -4,7 +4,7 @@ pipeline {
 
         stage('Front-end') {
             agent {
-                docker { image 'node:10' }
+                docker { image 'node:10.15.3' }
             }
             steps {
 	     withEnv(["HOME=${env.WORKSPACE}"]) {
