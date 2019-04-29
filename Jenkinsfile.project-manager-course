@@ -1,51 +1,37 @@
 pipeline {
-    agent { docker { image 'node:7-alpine' } }
-    agent { docker { image 'python:3-alpine' } }
-    stages {    
-        stage('Git') {
+    agent none
+    stages {
+            stage('Git') {
             steps{
 	    
                 // echo 'Getting the code from GitHub...'
                 git 'https://github.com/shmulik323/project-manager-course.git'
             }
         }
-        stage('Requirements'){
-            steps{
-                withEnv(["HOME=${env.WORKSPACE}"]) {
-                    //echo 'Installing Requirements...'
-		  
+        stage('Back-end') {
+            agent {
+                docker { image 'python:3-alpine' }
+            }
+            steps {
+              withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh 'pip3.7 install -U -r requirements.txt --user'
-		            
-                }
-            }
-        }
-	        stage('npm install'){
-            steps{
-                withEnv(["HOME=${env.WORKSPACE}"]) {
-                    //echo 'Installing Requirements...'
-		                     sh 'npm install'
-		            
-                }
-            }
-        }
-        stage('Run Tests'){
-            steps{
-                // echo 'Testing User app...'
-		withEnv(["HOME=${env.WORKSPACE}"]) {
-			sh "cd api"
+		    	sh "cd api"
 			sh "python3.7 appserver.py"
 			sh "python3.7 test_front.py"
-			}
+		            
+                }
             }
         }
-
-	stage('Run site'){
-            steps{
-                // echo 'Testing User app...'
-		withEnv(["HOME=${env.WORKSPACE}"]) {
-	 	        sh "python3.7 website.py &"
-
-			}
+        stage('Front-end') {
+            agent {
+                docker { image 'node:7-alpine' }
+            }
+            steps {
+	     withEnv(["HOME=${env.WORKSPACE}"]) {
+	     	sh 'cd client'
+                 sh 'npm install'
+		 sh 'npm run dev' 
+		 }
             }
         }
     }
