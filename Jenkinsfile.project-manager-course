@@ -9,9 +9,8 @@ pipeline {
               withEnv(["HOME=${env.WORKSPACE}"]) {
 	      git 'https://github.com/shmulik323/project-manager-course.git'
                     sh 'pip3.7 install -U -r requirements.txt --user'
-		    	sh "cd api"
-			sh "python3.7 appserver.py"
-			sh "python3.7 test_front.py"
+			sh "python3.7 api/appserver.py"
+			sh "python3.7 api/test_front.py"
 		            
                 }
             }
