@@ -18,6 +18,8 @@ import multiprocessing
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import Select
 from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
 
 
 from multiprocessing.managers import BaseManager
@@ -50,7 +52,9 @@ class TestBase(TestCase):
     def setUp(self):
         chromeOptions = webdriver.ChromeOptions()
         chromeOptions.add_argument("--headless")
-        self.driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+        cap = DesiredCapabilities().FIREFOX
+        cap["marionette"] = False
+        self.driver = webdriver.Firefox(capabilities=cap,executable_path=GeckoDriverManager().install())
         #self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.get('http://127.0.0.1:3000/')
         
