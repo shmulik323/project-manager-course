@@ -17,6 +17,7 @@ import random, time, queue
 import multiprocessing
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import Select
+from webdriver_manager.firefox import GeckoDriverManager
 
 
 from multiprocessing.managers import BaseManager
@@ -49,7 +50,8 @@ class TestBase(TestCase):
     def setUp(self):
         chromeOptions = webdriver.ChromeOptions()
         chromeOptions.add_argument("--headless")
-        self.driver = webdriver.Chrome(ChromeDriverManager().install())
+        self.driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+        #self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.get('http://127.0.0.1:3000/')
         
         db.session.commit()
