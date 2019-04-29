@@ -1,5 +1,6 @@
 pipeline {
     agent { docker { image 'node:7-alpine' } }
+    agent { docker { image 'python:3-alpine' } }
     stages {
         stage('Git') {
             steps{
@@ -20,7 +21,7 @@ pipeline {
     
         stage('Git') {
             steps{
-	    agent { docker { image 'python:3-alpine' } }
+	    
                 // echo 'Getting the code from GitHub...'
                 git 'https://github.com/shmulik323/project-manager-course.git'
             }
