@@ -8,7 +8,7 @@ pipeline {
             }
             steps {
 	     withEnv(["HOME=${env.WORKSPACE}"]) {
-	     	sh 'cd client && npm install -g npx  && npm run dev'
+	     	sh 'cd client &&sudo npm install -g npx  && npm run dev'
 		 }
             }
         }
