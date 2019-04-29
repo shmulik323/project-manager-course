@@ -24,11 +24,12 @@ withEnv(["HOME=${env.WORKSPACE}"]) {
         docker {
             image 'node:8.2'  
         }
-    }
+    }}
 
      stages {
         stage('Build') { 
             steps {
+	    withEnv(["HOME=${env.WORKSPACE}"]) {
                 sh 'npm install' 
             }
         }
