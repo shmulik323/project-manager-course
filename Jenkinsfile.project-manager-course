@@ -1,5 +1,27 @@
 pipeline {
-    agent { docker { image 'python:3-alpine maven:3.6.0-jdk-8-alpine' } }
+    agent { docker { image 'node:7-alpine' } }
+    stages {
+        stage('Git') {
+            steps{
+                // echo 'Getting the code from GitHub...'
+                git 'https://github.com/shmulik323/project-manager-course.git'
+            }
+        }
+        stage('npm install'){
+            steps{
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    //echo 'Installing Requirements...'
+		                     sh 'npm install'
+		            
+                }
+            }
+        }
+	}
+	}
+
+
+pipeline {
+    agent { docker { image 'python:3-alpine' } }
     stages {
         stage('Git') {
             steps{
