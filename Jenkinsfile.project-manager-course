@@ -1,7 +1,18 @@
 pipeline {
     agent none
     stages {
-        stage('Back-end') {
+
+        stage('Front-end') {
+            agent {
+                docker { image 'node:7.10.1' }
+            }
+            steps {
+	     withEnv(["HOME=${env.WORKSPACE}"]) {
+	     	sh 'cd client && npm install && npm run dev'
+		 }
+            }
+        }
+	        stage('Back-end') {
             agent {
                 docker { image 'python:3-alpine' }
             }
@@ -13,16 +24,6 @@ pipeline {
 			sh "python3.7 api/test_front.py "
 		            
                 }
-            }
-        }
-        stage('Front-end') {
-            agent {
-                docker { image 'node:7.10.1' }
-            }
-            steps {
-	     withEnv(["HOME=${env.WORKSPACE}"]) {
-	     	sh 'cd client && npm install && npm run dev'
-		 }
             }
         }
     }
