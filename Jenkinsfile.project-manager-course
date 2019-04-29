@@ -22,7 +22,7 @@ pipeline {
 	      git 'https://github.com/shmulik323/project-manager-course.git'
                     sh 'pip3.7 install -U -r requirements.txt --user'
 			sh "python3.7 api/appserver.py  &"
-			
+			sh 'firefox --new-tab http://127.0.0.1:5000/'
 			sh "python3.7 api/test_front.py "
 		            
                 }
