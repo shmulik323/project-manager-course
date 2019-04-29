@@ -4,12 +4,12 @@ pipeline {
 
         stage('Front-end') {
             agent {
-                docker { image 'node:8.3' }
+                docker { image 'node:10' }
             }
             steps {
 	     withEnv(["HOME=${env.WORKSPACE}"]) {
 	     	//sh 'cd client && npm install  nuxt  '
-		bat 'cd client   && npm run dev'
+		sh 'cd client   && npm run dev'
 		 }
             }
         }
