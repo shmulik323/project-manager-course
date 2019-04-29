@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'python:3-alpine' } }
+    agent { docker { image 'python:3-alpine,node:8.2' } }
     stages {
         stage('Git') {
             steps{
@@ -17,25 +17,6 @@ pipeline {
                 }
             }
         }
-
-stage('npm-build') {
-withEnv(["HOME=${env.WORKSPACE}"]) {
-  agent {
-        docker {
-            image 'node:8.2'  
-        }
-    }}
-
-     stages {
-        stage('Build') { 
-            steps {
-	    withEnv(["HOME=${env.WORKSPACE}"]) {
-                sh 'npm install' 
-            }
-        }
-    }
-    }
-}
         stage('Run Tests'){
             steps{
                 // echo 'Testing User app...'
