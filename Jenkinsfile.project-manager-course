@@ -9,7 +9,7 @@ pipeline {
             steps {
 	     withEnv(["HOME=${env.WORKSPACE}"]) {
 	     	//sh 'cd client && npm install  nuxt  '
-		sh 'cd client   && npm run dev'
+		bash 'cd client   && npm run dev'
 		 }
             }
         }
