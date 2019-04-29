@@ -6,7 +6,7 @@ config.py
 
 class BaseConfig(object):
 
-    //DEBUG = True
+    #DEBUG = True
     SQLALCHEMY_DATABASE_URI = 'sqlite:///survey.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # used for encryption and session management
