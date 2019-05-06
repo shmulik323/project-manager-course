@@ -12,13 +12,9 @@ from werkzeug import secure_filename
 from flask import Blueprint, jsonify, request, current_app, render_template, Response, make_response, send_from_directory
 from flask import send_file
 from flask_mail import Mail, Message
-
-
+from fpdf import FPDF, HTMLMixin
 
 api = Blueprint('api', __name__)
-
-
-
 
 
 def token_required(f):
@@ -41,6 +37,7 @@ def token_required(f):
         try:
             token = auth_headers[1]
             data = jwt.decode(token, current_app.config['SECRET_KEY'])
+            print(data)
             user = User.query.filter_by(username=data['sub']).first()
             if not user:
                 raise RuntimeError('User not found')
@@ -123,8 +120,7 @@ def allowed_file(filename):
 
 
 @api.route('api/uploader', methods=['POST'])
-@token_required
-def upload_me(User):
+def upload_me():
 
     if request.method == 'POST':
         """ Receive base 64 encoded image """
@@ -132,8 +128,10 @@ def upload_me(User):
         print('Request received')
         request_data = json.loads(request.get_data())
         data = request_data['data'][5:]
-
-        with open('./uploads/'+User.username+'/'+request_data['name'], 'w') as wf:
+        dirName = './uploads/'+request_data['username']+'/Profile_Pic'
+        if not os.path.exists(dirName):
+            os.mkdir(dirName)
+        with open(dirName+'/'+request_data['name'], 'w') as wf:
             wf.write(data)
 
         print('Saved in file.')
@@ -145,7 +143,7 @@ def upload_me(User):
 @token_required
 def get_image(User):
     if request.method == 'GET':
-        path = './uploads/'+User.username+'/'+User.image_file
+        path = './uploads/'+User.username+'/Profile_Pic/'+User.image_file
         """ Show saved image """
         if os.path.exists(path):
             with open(path, 'r') as rf:
@@ -176,40 +174,10 @@ def send_mail():
     return jsonify(response)
 
 
-@api.route('/api/upload', methods=['GET', 'POST'])
-@cross_origin(allow_headers=['Content-Type'])
-def uploader_me():
-    if request.method == 'GET':
-        """ Show saved image """
-        if os.path.exists('file.img'):
-            with open('file.img', 'r') as rf:
-                data = rf.read()
-                mimetype, image_string = data.split(';base64,')
-                image_bytes = image_string.encode('utf-8')
-                return Response(base64.decodebytes(image_bytes), mimetype=mimetype)
-
-    if request.method == 'POST':
-        """ Receive base 64 encoded image """
-        start = perf_counter()
-        print('Request received')
-        request_data = json.loads(request.get_data())
-        data = request_data['data'][5:]
-
-        with open('file.img', 'w') as wf:
-            wf.write(data)
-
-        print('Saved in file.')
-        print('Time elapsed: {}'.format(perf_counter() - start))
-        return Response(status=200)
-
-    return render_template('index.html')
-
-
 @api.route('api/pdf', methods=['GET', 'POST'])
 @token_required
 def render_pdf_weasyprint(User):
     request_data = json.loads(request.get_data())
-    from fpdf import FPDF, HTMLMixin
 
     class MyFPDF(FPDF, HTMLMixin):
         pass
@@ -218,15 +186,15 @@ def render_pdf_weasyprint(User):
     pdf.add_page()
     pdf.write_html(request_data["html"])
     response = make_response(pdf.output(
-        'uploads/'+User.username + '/' + request_data["name"]+'.pdf', 'F'))
+        'uploads/'+User.username + '/PDF_Files/' + request_data["name"]+'.pdf', 'F'))
     response.headers.set('Content-Disposition',
                          'attachment', filename=request_data["name"]+'.pdf')
     response.headers.set('Content-Type', 'application/pdf')
 
     def download(filename):
-        dirName = 'uploads/'+User.username
+        dirName = 'uploads/'+User.username+'/PDF_Files'
         if not os.path.exists(dirName):
-            os.mkdir('uploads/'+User.username)
+            os.mkdir(dirName)
         uploads = os.path.join(current_app.root_path,
                                dirName)
         return send_from_directory(directory=uploads, filename=filename, mimetype='application/pdf')

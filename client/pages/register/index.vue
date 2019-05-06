@@ -138,7 +138,11 @@ export default {
   methods: {
     sendUploadToBackend(name, data) {
       const path = "http://localhost:5000/api/uploader";
-      this.$axios.post(path, { name: name, data: data });
+      this.$axios.post(path, {
+        name: name,
+        data: data,
+        username: this.username
+      });
       console.log("tried code in sendUploadToBackend");
     },
     onChange(image) {
