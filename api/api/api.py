@@ -1,7 +1,6 @@
 from .models import db, User
 import json
 import base64
-import pypandoc
 import os
 from time import perf_counter
 import requests
@@ -124,7 +123,8 @@ def allowed_file(filename):
 
 
 @api.route('api/uploader', methods=['POST'])
-def upload_me():
+@token_required
+def upload_me(User):
 
     if request.method == 'POST':
         """ Receive base 64 encoded image """
@@ -133,7 +133,7 @@ def upload_me():
         request_data = json.loads(request.get_data())
         data = request_data['data'][5:]
 
-        with open('./uploads/'+request_data['name'], 'w') as wf:
+        with open('./uploads/'+User.username+'/'+request_data['name'], 'w') as wf:
             wf.write(data)
 
         print('Saved in file.')
@@ -145,7 +145,7 @@ def upload_me():
 @token_required
 def get_image(User):
     if request.method == 'GET':
-        path = './uploads/'+User.image_file
+        path = './uploads/'+User.username+'/'+User.image_file
         """ Show saved image """
         if os.path.exists(path):
             with open(path, 'r') as rf:

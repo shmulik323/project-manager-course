@@ -6,9 +6,10 @@
 
 <script>
 export default {
-  middleware: ['auth'],
+  auth: false,
+  middleware: ["auth"],
   options: {
     auth: false
   }
-}
+};
 </script>

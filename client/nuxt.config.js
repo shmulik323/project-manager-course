@@ -1,7 +1,6 @@
 const pkg = require('./package')
 
-const CKEditorWebpackPlugin = require("@ckeditor/ckeditor5-dev-webpack-plugin")
-const CKEditorStyles = require("@ckeditor/ckeditor5-dev-utils").styles
+
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 module.exports = {
@@ -67,10 +66,6 @@ module.exports = {
     {
       src: '@/plugins/quill.js',
       ssr: false
-    },
-    {
-      src: '@/plugins/ckeditor.js',
-      ssr: false
     }
 
 
@@ -132,17 +127,10 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    vendor: ['jsPDF', 'ckeditor'],
+    vendor: ['jsPDF'],
     transpile: ['vuetify/lib'],
-    plugins: [new VuetifyLoaderPlugin(), new CKEditorWebpackPlugin({
-      language: "en"
-    })],
-    postcss: CKEditorStyles.getPostCssConfig({
-      themeImporter: {
-        themePath: require.resolve("@ckeditor/ckeditor5-theme-lark")
-      },
-      minify: true
-    }),
+    plugins: [new VuetifyLoaderPlugin()],
+
     loaders: {
       stylus: {
         import: ["~assets/style/variables.styl"]
@@ -155,23 +143,7 @@ module.exports = {
      */
 
     extend(config, ctx) {
-      const filesRuleIndex = config.module.rules.findIndex(item => {
-        return `${item.test}` == "/\\.(png|jpe?g|gif|svg|webp)$/"
-      })
-      if (filesRuleIndex !== -1) {
-        config.module.rules[filesRuleIndex].test = /\.(png|jpe?g|gif|webp)$/
-        const svgRule = config.module.rules[filesRuleIndex]
-        svgRule.test = /\.svg/
-        svgRule.exclude = svgRule.exclude || []
-        svgRule.exclude.push(__dirname + "/node_modules/@ckeditor")
-        config.module.rules.push(svgRule)
-      }
-      // Vue CLI would normally use its own loader to load .svg files. The icons used by
-      // CKEditor should be loaded using raw-loader instead.
-      config.module.rules.push({
-        test: /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
-        use: ["raw-loader"]
-      }), config.node = {
+      config.node = {
         fs: 'empty'
       }
     }

@@ -7,15 +7,18 @@
 ```bash
 # install dependencies
 $ pip install pipenv
+$ pipenv shell
 $ pip install -r requirements.txt
 
-# build for production and launch server
-$ pipenv shell
-$ cd <project-name> #where the manage.py is located
+
+
+$ cd api #where the manage.py is located
 $ python manage.py db init
 $ python manage.py db migrate
+$ python manage.py db upgrade
 $ python appserver.py
 
+Then run client and register if its you first installation
 ```
 
 For detailed explanation on how things work, checkout [Flask docs](http://flask.pocoo.org/docs/1.0/).
