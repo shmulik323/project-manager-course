@@ -185,8 +185,11 @@ def render_pdf_weasyprint(User):
     pdf = MyFPDF()
     pdf.add_page()
     pdf.write_html(request_data["html"])
+    dirName = 'uploads/'+User.username+'/PDF_Files'
+    if not os.path.exists(dirName):
+        os.mkdir(dirName)
     response = make_response(pdf.output(
-        'uploads/'+User.username + '/PDF_Files/' + request_data["name"]+'.pdf', 'F'))
+        dirName+'/' + request_data["name"]+'.pdf', 'F'))
     response.headers.set('Content-Disposition',
                          'attachment', filename=request_data["name"]+'.pdf')
     response.headers.set('Content-Type', 'application/pdf')
