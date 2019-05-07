@@ -228,10 +228,13 @@ def reset_password():
 def cancel_premium(User):
     data = request.get_json()
     user = User.db.query.filter_by(email=data['email']).first()
-    if user.premium:
-        user.change()
+    if user:
+        if user.premium:
+            user.change()
+        else:
+            return jsonify({'message': 'User without premium status'}), 401
     else:
-        return jsonify({'message': 'User without premium status'}), 401
+        return jsonify({'message': 'User doesnt exist'}), 401        
     db.session.commit()
     return jsonify(user.to_dict()), 201
 
@@ -274,11 +277,11 @@ def add_permissions(User):
 @token_required
 def edit_email(User):
     data = request.get_json()
-    user = User.query.filter_by(email=data['new'])
+    user = User.query.filter_by(email=data['new']).first()
     if user:
         return jsonify({'message': 'Email already exists'}), 401
     else:
-        user.User.query.filter_by(email=data['old'])
+        user=User.query.filter_by(email=data['old']).first()
         user.email = data['new']
     db.session.commit()
     return jsonify(user.to_dict()), 201
@@ -288,14 +291,32 @@ def edit_email(User):
 @token_required
 def change_username(User):
     data = request.get_json()
-    user = User.query.filter_by(username=data['new'])
+    user = User.query.filter_by(email=data['email']).first()
     if user:
-        return jsonify({'message': 'Username already exists'}), 401
+        user = User.query.filter_by(username=data['new']).first()
+        if user:
+            return jsonify({'message': 'Username already exists'}), 401
+        else:
+            user=User.query.filter_by(email=data['email']).first()
+            user.username = data['new']
+        db.session.commit()
+        return jsonify(user.to_dict()), 201
     else:
-        user.User.query.filter_by(username=data['old'])
-        user.username = data['new']
-    db.session.commit()
-    return jsonify(user.to_dict()), 201
+        return jsonify({'message': 'Email doesnt exist'}), 401
+
+@api.route('api/delete_user',methods=('POST',))
+@token_required
+def delete_user(User):
+    data = request.get_json()
+    if User.admin:
+        user=User.query.filter_by(email=data['email']).first()
+        if user:
+            db.session.delete(user)
+            db.session.commit()
+        else:
+            return jsonify({'message': 'User doesnt exist'}), 401
+    else:
+        return jsonify({'message': 'User is not an admin'}), 401
 
 
 @api.route('/', defaults={'path': ''})
