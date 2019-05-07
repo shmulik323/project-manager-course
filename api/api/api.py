@@ -52,12 +52,6 @@ def token_required(f):
     return _verify
 
 
-@api.route('api/hello/<string:name>/')
-def say_hello(name):
-    response = {'msg': "Hello {}".format(name)}
-    return jsonify(response)
-
-
 @api.route('api/register', methods=('POST',))
 def register():
     data = request.get_json()
@@ -103,6 +97,13 @@ def login():
         'exp': datetime.utcnow() + timedelta(minutes=30)},
         current_app.config['SECRET_KEY'])
     return jsonify({'token': token.decode('UTF-8')})
+
+
+@api.route('api/auth/logout', methods=('POST', 'GET'))
+@token_required
+def say_hello(User):
+    response = {'msg': "Loged-Out :{}".format(User.username)}
+    return jsonify(response)
 
 
 @api.route('api/auth/user', methods=('OPTIONS', 'POST', 'GET'))
