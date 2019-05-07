@@ -45,6 +45,7 @@
       <v-spacer></v-spacer>
       <v-btn
         id="submit"
+        @click="submit"
         :disabled="!form"
         :loading="isLoading"
         class="white--text"
@@ -60,16 +61,24 @@
 export default {
   middleware: ["auth"],
   data: () => ({
-    agreement: false,
-    dialog: false,
-    email: undefined,
-    form: false,
-    isLoading: false,
-    password: undefined,
+    oldemail:"",
+    newemail:"",
     rules: {
       email: v => (v || "").match(/@/) || "Please enter a valid email",
       required: v => !!v || "This field is required"
     }
-  })
+  }),
+  methods:{
+      async submit(){
+        await this.$axios.post("api/edit_email",{
+          old:this.oldemail,
+          new:this.newemail
+        })
+        .then(res=>{})
+        .catch(e=>{
+          console.log(e);
+        });        
+      }
+    }
 };
 </script>

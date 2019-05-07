@@ -80,6 +80,7 @@
       <v-spacer></v-spacer>
       <v-btn
         id="submit"
+        @click="submit"
         :disabled="!form"
         :loading="isLoading"
         class="white--text"
@@ -101,16 +102,27 @@
   export default {
     data: () => ({
       agreement: false,
-      dialog: false,
-      email: undefined,
-      form: false,
-      isLoading: false,
-      password: undefined,
+      email:"",
+      newuser:"",
+      olduser:"",
       rules: {
         email: v => (v || '').match(/@/) || 'Please enter a valid email',
         length: len => v => (v || '').length >= len || `Invalid character length, required ${len}`,
         required: v => !!v || 'This field is required'
       }
-    })
+    }),
+    methods:{
+      async submit(){
+        await this.$axios.post("api/change_username",{
+          email:this.email,
+          old:this.olduser,
+          new:this.newuser
+        })
+        .then(res=>{})
+        .catch(e=>{
+          console.log(e);
+        });        
+      }
+    }
   }
 </script>
