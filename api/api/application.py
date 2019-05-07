@@ -43,6 +43,9 @@ def create_app(app_name='API'):
     cors = CORS(app, resources={r"/*": {"origins": "*"}})
     from api.api import api
     app.register_blueprint(api, url_prefix="/")
-    from .models import db
+    from api.admin import admin
+    app.register_blueprint(admin)
+    from .models import db, User, Pdf
+
     db.init_app(app)
     return app

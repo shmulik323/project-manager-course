@@ -22,7 +22,7 @@
     <v-form ref="form" v-model="form" class="pa-3 pt-4">
       <v-text-field
         id="first"
-        v-model="firstname"
+        v-model="name"
         :rules="[rules.required]"
         box
         color="deep-purple"
@@ -31,7 +31,7 @@
       ></v-text-field>
       <v-text-field
         id="last"
-        v-model="lastname"
+        v-model="last"
         :rules="[rules.required]"
         box
         color="deep-purple"
@@ -45,6 +45,7 @@
       <v-spacer></v-spacer>
       <v-btn
         id="submit"
+        @click="submit"
         :disabled="!form"
         :loading="isLoading"
         class="white--text"
@@ -60,8 +61,8 @@
 export default {
   data: () => ({
     agreement: false,
-    firstname: "",
-    lastname: "",
+    name: "",
+    last: "",
     dialog: false,
     email: null,
     form: false,
@@ -70,6 +71,21 @@ export default {
     rules: {
       required: v => !!v || "This field is required"
     }
-  })
+  }),
+
+  methods: {
+    async submit() {
+      await this.$axios
+        .post("api/edit_user", {
+          name: this.name,
+          last: this.last,
+          email: this.$auth.user.email
+        })
+        .then(res => {})
+        .catch(e => {
+          console.log(e);
+        });
+    }
+  }
 };
 </script>

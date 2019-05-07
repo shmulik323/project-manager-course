@@ -1,4 +1,4 @@
-from .models import db, User
+from .models import db, User, Pdf
 import json
 import base64
 import os
@@ -37,7 +37,6 @@ def token_required(f):
         try:
             token = auth_headers[1]
             data = jwt.decode(token, current_app.config['SECRET_KEY'])
-            print(data)
             user = User.query.filter_by(username=data['sub']).first()
             if not user:
                 raise RuntimeError('User not found')
@@ -74,13 +73,12 @@ def edit_picture():
 @api.route('api/edit_user', methods=('POST',))
 @token_required
 def edit(User):
-    request = json.loads(request.get_data())
-    user = User.query.filter_by(username=request.username).first()
-    user.name = request.name
-    user.last = request.last
-
+    request_deta = request.get_json()
+    user = User.query.filter_by(username=User.username).first()
+    user.name = request_deta['name']
+    user.last = request_deta['last']
     db.session.commit()
-    return jsonify(user.to_dict()), 201
+    return jsonify({"msg": "seccess"}), 201
 
 
 @api.route('api/auth/login', methods=('OPTIONS', 'POST', 'GET'))
@@ -144,7 +142,10 @@ def upload_me():
 @token_required
 def get_image(User):
     if request.method == 'GET':
-        path = './uploads/'+User.username+'/Profile_Pic/'+User.image_file
+        if User.image_file == 'default.jpg':
+            path = './uploads/default.jpg'
+        else:
+            path = './uploads/'+User.username+'/Profile_Pic/'+User.image_file
         """ Show saved image """
         if os.path.exists(path):
             with open(path, 'r') as rf:
@@ -178,32 +179,39 @@ def send_mail():
 @api.route('api/pdf', methods=['GET', 'POST'])
 @token_required
 def render_pdf_weasyprint(User):
-    request_data = json.loads(request.get_data())
+    if request.method == 'POST':
+        request_data = json.loads(request.get_data())
 
-    class MyFPDF(FPDF, HTMLMixin):
-        pass
+        data = request.get_json()
 
-    pdf = MyFPDF()
-    pdf.add_page()
-    pdf.write_html(request_data["html"])
-    dirName = 'uploads/'+User.username+'/PDF_Files'
-    if not os.path.exists(dirName):
-        os.mkdir(dirName)
-    response = make_response(pdf.output(
-        dirName+'/' + request_data["name"]+'.pdf', 'F'))
-    response.headers.set('Content-Disposition',
-                         'attachment', filename=request_data["name"]+'.pdf')
-    response.headers.set('Content-Type', 'application/pdf')
+        class MyFPDF(FPDF, HTMLMixin):
+            pass
 
-    def download(filename):
+        pdf = MyFPDF()
+        pdf.add_page()
+        pdf.write_html(request_data["data"])
+        pdfData = Pdf(
+            name=request_data["name"], data=request_data["data"], user_id=User.id)
+        print(pdfData)
+        db.session.add(pdfData)
+        db.session.commit()
         dirName = 'uploads/'+User.username+'/PDF_Files'
         if not os.path.exists(dirName):
             os.mkdir(dirName)
-        uploads = os.path.join(current_app.root_path,
-                               dirName)
-        return send_from_directory(directory=uploads, filename=filename, mimetype='application/pdf')
-
-    return download("html.pdf")
+        response = make_response(pdf.output(
+            dirName+'/' + request_data["name"]+'.pdf', 'F'))
+        response.headers.set('Content-Disposition',
+                             'attachment', filename=request_data["name"]+'.pdf')
+        response.headers.set('Content-Type', 'application/pdf')
+        return jsonify({"msg": "saved"}), 201
+    if request.method == 'GET':
+        pdfDataArrey = Pdf.query.filter_by(user_id=User.id).all()
+        newArrey = []
+        for pdf in pdfDataArrey:
+            temp = pdf.to_dict()
+            newArrey.append({"name":temp["name"],"data":temp["data"]})
+            print(pdf.__dict__)
+        return jsonify(pdfs=newArrey)
 
 
 @api.route('api/reset', methods=['GET'])

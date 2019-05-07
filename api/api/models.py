@@ -1,6 +1,7 @@
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 
+
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -8,7 +9,7 @@ db = SQLAlchemy()
 
 
 class User(db.Model):
-    __tablename__ = 'users'
+    __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
@@ -55,6 +56,26 @@ class User(db.Model):
 
     def to_dict(self):
         return dict(id=self.id, email=self.email, username=self.username, name=self.name, last=self.last, admin=self.admin, premium=self.premium, image_file=self.image_file)
+
+
+class Pdf(db.Model):
+    __tablename__ = "pdf"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), unique=True)
+    data = db.Column(db.String(255))
+    user_id = db.Column(db.Integer)
+
+    def __init__(self, name, data, user_id):
+        self.name = name
+        self.data = data
+        self.user_id = user_id
+
+    def __repr__(self):
+        return super().__repr__()
+
+    def to_dict(self):
+
+        return dict(id=self.id, name=self.name, data=self.data, user_id=self.user_id)
 
 
 class PremiumUser(User):

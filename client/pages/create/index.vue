@@ -8,7 +8,11 @@
           <v-card-title>
             <span class="title font-weight-dark">Load your prev project</span>
           </v-card-title>
-          <v-sheet class="d-flex" color="grey lighten-3" height="600px"></v-sheet>
+          <v-sheet class="d-flex" color="grey lighten-3" height="600px" with="300px">
+            <v-list>
+              <v-btn :key="name" v-for="pdf in pdfs" @click="content=pdf.data">{{pdf.name}}</v-btn>
+            </v-list>
+          </v-sheet>
         </v-card>
       </v-flex>
       <v-flex>
@@ -52,10 +56,10 @@ var toolbarOptions = [
   ["clean"] // remove formatting button
 ];
 export default {
-  middleware: ["auth"],
-
+  auth: true,
   data() {
     return {
+      pdfs: null,
       content: "<p>I am Example</p>",
       editorOption: {
         // some quill options
@@ -67,7 +71,13 @@ export default {
       pdfName: "your Project name"
     };
   },
-  mounted() {},
+  created() {
+    getPdf: {
+      this.$axios.get("api/pdf", {}).then(res => {
+        this.pdfs = res.data.pdfs;
+      });
+    }
+  },
   methods: {
     onEditorBlur(editor) {
       console.log("editor blur!", editor);
@@ -85,8 +95,9 @@ export default {
     createPdf() {
       const vm = this;
       this.$axios.post("api/pdf", {
-        html: this.content,
+        data: this.content,
         name: this.pdfName,
+        user_id: this.$auth.user.id,
         responseType: "arraybuffer"
       });
       if (process.browser) {

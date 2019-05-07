@@ -8,7 +8,7 @@ from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from flask_json import FlaskJSON
 from api.application import create_app
-from api.models import db, User
+from api.models import db, User, Pdf
 
 app = create_app()
 FlaskJSON(app)
