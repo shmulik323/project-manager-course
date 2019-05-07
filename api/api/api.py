@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 from werkzeug import secure_filename
 from flask import Blueprint, jsonify, request, current_app, render_template, Response, make_response, send_from_directory
 from flask import send_file
+from flask_login import login_user, logout_user
 from flask_mail import Mail, Message
 from fpdf import FPDF, HTMLMixin
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -95,12 +96,15 @@ def login():
         'iat': datetime.utcnow(),
         'exp': datetime.utcnow() + timedelta(minutes=30)},
         current_app.config['SECRET_KEY'])
+    if user.admin:
+        login_user(user)
     return jsonify({'token': token.decode('UTF-8')})
 
 
 @api.route('api/auth/logout', methods=('POST', 'GET'))
 @token_required
 def say_hello(User):
+    logout_user()
     response = {'msg': "Loged-Out :{}".format(User.username)}
     return jsonify(response)
 
@@ -325,9 +329,3 @@ def delete_user(User):
             return jsonify({'message': 'User doesnt exist'}), 401
     else:
         return jsonify({'message': 'User is not an admin'}), 401
-
-
-@api.route('/', defaults={'path': ''})
-@api.route('/<path:path>')
-def catch_all(path):
-    return requests.get('http://localhost:3000/{}'.format(path)).text

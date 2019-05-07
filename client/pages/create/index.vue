@@ -10,7 +10,7 @@
           </v-card-title>
           <v-sheet class="d-flex" color="grey lighten-3" height="600px" with="300px">
             <v-list>
-              <v-btn :key="name" v-for="pdf in pdfs" @click="content=pdf.data">{{pdf.name}}</v-btn>
+              <v-btn :key="pdf.name" v-for="pdf in pdfs" @click="content=pdf.data">{{pdf.name}}</v-btn>
             </v-list>
           </v-sheet>
         </v-card>

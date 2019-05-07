@@ -10,11 +10,11 @@ from flask_json import FlaskJSON
 from api.application import create_app
 from api.models import db, User, Pdf
 
+
 app = create_app()
 FlaskJSON(app)
 migrate = Migrate(app, db)
 manager = Manager(app)
-
 # provide a migration utility command
 manager.add_command('db', MigrateCommand)
 

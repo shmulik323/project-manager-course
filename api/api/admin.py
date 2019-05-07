@@ -1,5 +1,4 @@
-import flask_admin
-from flask import Blueprint, jsonify, request, current_app, render_template, Response, make_response, send_from_directory
+from flask import Blueprint, current_app
+from .models import db, User, Pdf
 
-
-admin = Blueprint('admin', __name__, url_prefix='/admin')
+bp = Blueprint('bp', __name__)
