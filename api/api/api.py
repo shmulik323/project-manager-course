@@ -13,6 +13,7 @@ from flask import Blueprint, jsonify, request, current_app, render_template, Res
 from flask import send_file
 from flask_mail import Mail, Message
 from fpdf import FPDF, HTMLMixin
+from werkzeug.security import generate_password_hash, check_password_hash
 
 api = Blueprint('api', __name__)
 
@@ -209,20 +210,20 @@ def render_pdf_weasyprint(User):
         newArrey = []
         for pdf in pdfDataArrey:
             temp = pdf.to_dict()
-            newArrey.append({"name":temp["name"],"data":temp["data"]})
+            newArrey.append({"name": temp["name"], "data": temp["data"]})
             print(pdf.__dict__)
         return jsonify(pdfs=newArrey)
 
 
-@api.route('api/reset', methods=['GET'])
+@api.route('api/reset', methods=['GET', 'POST'])
 @token_required
-def reset_password():
+def reset_password(User):
     data = request.get_json()
-    user = User.db.query.filter_by(email=data['email']).first()
+    user = User.query.filter_by(email=User.email).first()
     if user:
-        if check_password_hash(user.password, data['old']):
+        if check_password_hash(User.password, data['old']):
             password = generate_password_hash(data['new'], method='sha256')
-            user.password = password
+            User.password = password
         else:
             return jsonify({'message': 'Invalid password'}), 401
     else:
@@ -235,11 +236,14 @@ def reset_password():
 @token_required
 def cancel_premium(User):
     data = request.get_json()
-    user = User.db.query.filter_by(email=data['email']).first()
-    if user.premium:
-        user.change()
+    user = User.query.filter_by(email=data['email']).first()
+    if user:
+        if user.premium:
+            user.change()
+        else:
+            return jsonify({'message': 'User without premium status'}), 401
     else:
-        return jsonify({'message': 'User without premium status'}), 401
+        return jsonify({'message': 'User doesnt exist'}), 401
     db.session.commit()
     return jsonify(user.to_dict()), 201
 
@@ -282,12 +286,12 @@ def add_permissions(User):
 @token_required
 def edit_email(User):
     data = request.get_json()
-    user = User.query.filter_by(email=data['new'])
+    user = User.query.filter_by(email=data['new']).first()
     if user:
         return jsonify({'message': 'Email already exists'}), 401
     else:
-        user.User.query.filter_by(email=data['old'])
-        user.email = data['new']
+        user = User.query.filter_by(email=User.email).first()
+        User.email = data['new']
     db.session.commit()
     return jsonify(user.to_dict()), 201
 
@@ -296,14 +300,31 @@ def edit_email(User):
 @token_required
 def change_username(User):
     data = request.get_json()
-    user = User.query.filter_by(username=data['new'])
-    if user:
+    user = User.query.filter_by(email=User.email).first()
+    new_user = User.query.filter_by(username=data['new']).first()
+    if new_user:
         return jsonify({'message': 'Username already exists'}), 401
     else:
-        user.User.query.filter_by(username=data['old'])
-        user.username = data['new']
-    db.session.commit()
-    return jsonify(user.to_dict()), 201
+        User.username = data['new']
+        db.session.commit()
+        return jsonify(user.to_dict()), 201
+
+    return jsonify({'message': 'Email doesnt exist'}), 401
+
+
+@api.route('api/delete_user', methods=('POST',))
+@token_required
+def delete_user(User):
+    data = request.get_json()
+    if User.admin:
+        user = User.query.filter_by(email=data['email']).first()
+        if user:
+            db.session.delete(user)
+            db.session.commit()
+        else:
+            return jsonify({'message': 'User doesnt exist'}), 401
+    else:
+        return jsonify({'message': 'User is not an admin'}), 401
 
 
 @api.route('/', defaults={'path': ''})

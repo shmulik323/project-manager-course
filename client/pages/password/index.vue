@@ -44,10 +44,10 @@
       <v-text-field
         id="old_pass"
         v-model="oldpassword"
-        :rules="[rules.password, rules.length(6)]"
+        :rules="[rules.password, rules.length(4)]"
         box
         color="deep-purple"
-        counter="6"
+        counter="4"
         label="Old Password"
         style="min-height: 96px"
         type="password"
@@ -55,10 +55,10 @@
       <v-text-field
         id="new_pass"
         v-model="newpassword"
-        :rules="[rules.password, rules.length(6)]"
+        :rules="[rules.password, rules.length(4)]"
         box
         color="deep-purple"
-        counter="6"
+        counter="4"
         label="New Password"
         style="min-height: 96px"
         type="password"
@@ -84,6 +84,7 @@
       <v-spacer></v-spacer>
       <v-btn
         id="submit"
+        @click="submit"
         :disabled="!form"
         :loading="isLoading"
         class="white--text"
@@ -104,18 +105,28 @@
 <script>
   export default {
     data: () => ({
-      agreement: false,
-      dialog: false,
-      email: undefined,
-      form: false,
-      isLoading: false,
-      password: undefined,
+      old:"",
+      new:"",
+      email:"",
       rules: {
         email: v => (v || '').match(/@/) || 'Please enter a valid email',
         length: len => v => (v || '').length >= len || `Invalid character length, required ${len}`,
-        password: v => 6,
+        password: v => 4,
         required: v => !!v || 'This field is required'
       }
-    })
+    }),
+    methods:{
+      async submit(){
+        await this.$axios.post("api/reset",{
+          old:this.oldpassword,
+          new:this.newpassword,
+          email:this.email
+        })
+        .then(res=>{})
+        .catch(e=>{
+          console.log(e);
+        });        
+      }
+    }
   }
 </script>
