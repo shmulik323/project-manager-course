@@ -75,6 +75,9 @@ export default {
           new:this.newemail
         })
         .then(res=>{})
+        .then(e=>{
+          return this.$router.push("/profile");
+        })
         .catch(e=>{
           console.log(e);
         });        

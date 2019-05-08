@@ -82,17 +82,24 @@
 <script>
   export default {
     data: () => ({
-      agreement: false,
-      dialog: false,
-      email: undefined,
-      form: false,
-      isLoading: false,
-      password: undefined,
+      email:"",
       rules: {
-        email: v => (v || '').match(/@/) || 'Please enter a valid email',
-        length: len => v => (v || '').length >= len || `Invalid character length, required ${len}`,
-        required: v => !!v || 'This field is required'
+        email: v => (v || '').match(/@/) || 'Please enter a valid email'
       }
-    })
+    }),
+    methods:{
+      async submit(){
+        await this.$axios.post("api/cancel",{
+          email:this.email,
+        })
+        .then(res=>{})
+        .then(e=>{
+          return this.$router.push("/profile");
+        })
+        .catch(e=>{
+          console.log(e);
+        });        
+      }
+    }
   }
 </script>

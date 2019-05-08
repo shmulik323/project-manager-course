@@ -240,10 +240,10 @@ def reset_password(User):
 @token_required
 def cancel_premium(User):
     data = request.get_json()
-    user = User.query.filter_by(email=data['email']).first()
+    user = User.query.filter_by(email=User.email).first()
     if user:
-        if user.premium:
-            user.change()
+        if User.premium:
+            User.change()
         else:
             return jsonify({'message': 'User without premium status'}), 401
     else:

@@ -95,7 +95,7 @@ export default {
           }
         })
         .then(e => {
-          return this.$route.push("/");
+          return this.$router .push("/");
         })
         .catch(e => {
           this.error = e + "";
