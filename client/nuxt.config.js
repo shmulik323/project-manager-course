@@ -33,10 +33,14 @@ module.exports = {
       },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Material+Icons'
-      }, {
+        href: 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons'
+      },
+      {
         rel: 'stylesheet',
         href: 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css'
+      }, {
+        rel: 'stylesheet',
+        href: "https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css"
       }
     ]
   },

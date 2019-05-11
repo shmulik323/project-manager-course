@@ -12,12 +12,10 @@
 </template>
 
 <script>
-import Navbar from "~/components/Navbar";
 import Navdrow from "~/components/Navdrow";
 
 export default {
   components: {
-    Navbar,
     Navdrow
   }
 };

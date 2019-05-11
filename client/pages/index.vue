@@ -72,7 +72,7 @@ export default {
   }
 };
 </script>
-<style slot-scope lang="stylus">
+<style scoped lang="stylus">
 #example-custom-transition {
   .fade {
     &-enter-active, &-leave-active, &-leave-to {

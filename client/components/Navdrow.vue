@@ -21,12 +21,26 @@
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <template v-if="isAuthenticated">
-          <b-btn variant="success" id="success" @click="$router.push('/profile')">Hi {{$auth.user.name}}!</b-btn>
+          <b-btn
+            variant="success"
+            id="success"
+            @click="$router.push('/profile')"
+          >Hi {{$auth.user.name}}!</b-btn>
           <b-btn variant="danger" id="logout" class="navbar-item" @click="logout">Logout</b-btn>
         </template>
         <template v-else>
-          <b-btn variant="success" id="register" class="navbar-item" @click="$router.push('/register')">Register</b-btn>
-          <b-btn variant="info" id="login_link" class="navbar-item" @click="$router.push('/login')">Login</b-btn>
+          <b-btn
+            variant="success"
+            id="register"
+            class="navbar-item"
+            @click="$router.push('/register')"
+          >Register</b-btn>
+          <b-btn
+            variant="info"
+            id="login_link"
+            class="navbar-item"
+            @click="$router.push('/login')"
+          >Login</b-btn>
         </template>
       </v-toolbar-items>
     </v-toolbar>
@@ -40,10 +54,11 @@ export default {
     return {
       sideNav: false,
       menuItems: [
-        { icon: "create", title: "create form", link: "/create" },
+        { icon: "create", title: "Create form", link: "/create" },
         { icon: "fingerprint", title: "Profile", link: "/profile" },
         { icon: "email", title: "Contact", link: "/contact" },
-        { icon: "email", title: "Contact Manager", link: "/contact_manager" }
+        { icon: "email", title: "Contact Manager", link: "/contact_manager" },
+        { icon: "search", title: "Patent search", link: "/search" }
       ]
     };
   },
