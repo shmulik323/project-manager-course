@@ -57,7 +57,6 @@
             id="submit"
             @click="submit"
             :disabled="!form"
-            :loading="isLoading"
             class="white--text"
             color="deep-purple accent-4"
             depressed

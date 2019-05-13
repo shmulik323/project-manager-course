@@ -19,7 +19,7 @@
                   <DialogNameLast :name="name" :last="last"/>
                 </b-card-text>
                 <b-card-text>
-                  <DialogUsername :olduser="username"/>
+                  <DialogUsername :newuser="username" :olduser="username"/>
                 </b-card-text>
                 <b-card-text>
                   <v-chip color="blue" text-color="white">

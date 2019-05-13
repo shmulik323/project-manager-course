@@ -6,7 +6,7 @@
           v-b-popover.hover.bottom="'Click me to edit your user name'"
           title="Edit User Name"
           v-on="on"
-        >User-Name : {{olduser}}</b-btn>
+        >User-Name : {{newuser}}</b-btn>
       </template>
       <v-card class="mx-auto" style="max-width: 500px;">
         <v-system-bar color="deep-purple darken-4" dark>
@@ -64,7 +64,6 @@
             id="submit"
             @click="submit"
             :disabled="!form"
-            :loading="isLoading"
             class="white--text"
             color="deep-purple accent-4"
             depressed
