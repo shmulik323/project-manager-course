@@ -38,8 +38,10 @@ def token_required(f):
 
         try:
             token = auth_headers[1]
-            data = jwt.decode(token, current_app.config['SECRET_KEY'])
+            print(token)
+            data = jwt.decode(token, "ani")
             user = User.query.filter_by(username=data['sub']).first()
+            print(user.username)
             if not user:
                 raise RuntimeError('User not found')
             return f(user, *args, **kwargs)
@@ -143,6 +145,30 @@ def upload_me():
         return Response(status=200)
 
 
+@api.route('api/update-image', methods=['POST'])
+@token_required
+def update_image(User):
+
+    if request.method == 'POST':
+
+        """ Receive base 64 encoded image """
+        start = perf_counter()
+        print('Request received')
+        request_data = json.loads(request.get_data())
+        data = request_data['data'][5:]
+        dirName = './uploads/'+request_data['username']+'/Profile_Pic'
+        if not os.path.exists(dirName):
+            os.mkdir(dirName)
+        with open(dirName+'/'+request_data['name'], 'w') as wf:
+            wf.write(data)
+
+        print('Saved in file.')
+        print('Time elapsed: {}'.format(perf_counter() - start))
+    User.image_file = request_data['name']
+    db.session.commit()
+    return Response(status=200)
+
+
 @api.route('api/uploader', methods=['GET'])
 @token_required
 def get_image(User):
@@ -160,28 +186,6 @@ def get_image(User):
                 return Response(base64.decodebytes(image_bytes), mimetype=mimetype)
 
 
-@api.route("api/send_mail", methods=['POST'])
-def send_mail():
-    request_data = json.loads(request.get_data())
-    mail = Mail(current_app)
-    try:
-        msg = Message("message from" + request_data["name"],
-                      sender=current_app.config.get("MAIL_USERNAME"),
-                      # replace with your email for testing
-                      recipients=[request_data["dev"]],
-                      )
-        msg.body = request_data["message"]
-        print(current_app)
-        mail.send(msg)
-
-        return 'Mail sent!'
-    except Exception as e:
-        return(str(e))
-    response = {'msg': "Hello"}
-    return jsonify(response)
-
-
-@api.route('api/pdf', methods=['GET', 'POST'])
 @token_required
 def render_pdf_weasyprint(User):
     if request.method == 'POST':

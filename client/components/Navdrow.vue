@@ -13,7 +13,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar dark class="primary">
+    <v-toolbar dark class="primary lighten-2">
       <v-toolbar-side-icon @click.stop="sideNav = !sideNav"></v-toolbar-side-icon>
       <v-toolbar-title>
         <nuxt-link to="/" tag="span" style="cursor: pointer">Development Forms</nuxt-link>
@@ -26,7 +26,19 @@
             id="success"
             @click="$router.push('/profile')"
           >Hi {{$auth.user.name}}!</b-btn>
-          <b-btn variant="danger" id="logout" class="navbar-item" @click="logout">Logout</b-btn>
+          <b-btn
+            variant="danger"
+            id="logout"
+            v-b-modal.modal-prevent-closing
+            class="navbar-item"
+          >Logout</b-btn>
+          <b-btn
+            v-if="$auth.user.admin"
+            variant="primary"
+            id="admin"
+            href="http://127.0.0.1:5000/admin"
+            class="navbar"
+          >Admin</b-btn>
         </template>
         <template v-else>
           <b-btn
@@ -44,6 +56,9 @@
         </template>
       </v-toolbar-items>
     </v-toolbar>
+    <b-modal id="modal-prevent-closing" ref="modal" title="are you sure?" @ok="logout">
+      <h1>you will be logged out!</h1>
+    </b-modal>
   </div>
 </template>
 

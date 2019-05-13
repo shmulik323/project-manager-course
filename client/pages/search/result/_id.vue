@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-data-table :headers="headers" :items="pData.docs" :search="search">
+    <v-data-table next-icon :headers="headers" :items="pData.docs" :search="search">
       <template v-slot:items="props">
         <td>{{ props.item.title }}</td>
         <td class="text-xs-right">{{ props.item.applicationType }}</td>
@@ -15,7 +15,7 @@
           :value="true"
           color="error"
           icon="warning"
-        >Your search for "{{ search }}" found no results.</v-alert>
+        >Your search for "{{ params.id }}" found no results.</v-alert>
       </template>
     </v-data-table>
     <v-btn to="/search">Back</v-btn>
@@ -26,7 +26,6 @@ import axios from "axios";
 export default {
   data() {
     return {
-      title: "wip(Work in progress)",
       search: "",
 
       headers: [

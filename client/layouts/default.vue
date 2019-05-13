@@ -6,6 +6,8 @@
       <div class="fixed-bottom">
         User status:
         <b-badge>{{ $auth.$state.loggedIn ? $auth.$state.user.user : 'Guest' }}</b-badge>
+        <b-badge v-if="$auth.user.admin" variant="success">Admin</b-badge>
+        <b-badge v-if="$auth.user.premium" variant="warning">Premium</b-badge>
       </div>
     </div>
   </v-app>

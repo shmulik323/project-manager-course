@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import doc from "!raw-loader!../../assets/docx/doc.txt";
+
 var toolbarOptions = [
   ["bold", "italic", "underline", "strike"], // toggled buttons
   ["blockquote", "code-block"],
@@ -60,7 +62,7 @@ export default {
   data() {
     return {
       pdfs: null,
-      content: "<p>I am Example</p>",
+      content: doc,
       editorOption: {
         // some quill options
         modules: {

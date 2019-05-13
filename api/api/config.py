@@ -10,4 +10,4 @@ class BaseConfig(object):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///forms.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # used for encryption and session management
-    SECRET_KEY = 'supersecretKey'
+    SECRET_KEY = 'ani'
