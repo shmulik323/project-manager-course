@@ -41,7 +41,7 @@ def token_required(f):
             print(token)
             data = jwt.decode(token, "ani")
             user = User.query.filter_by(username=data['sub']).first()
-            print(user.username)
+
             if not user:
                 raise RuntimeError('User not found')
             return f(user, *args, **kwargs)
@@ -186,6 +186,7 @@ def get_image(User):
                 return Response(base64.decodebytes(image_bytes), mimetype=mimetype)
 
 
+@api.route('api/pdf', methods=['POST', "GET"])
 @token_required
 def render_pdf_weasyprint(User):
     if request.method == 'POST':

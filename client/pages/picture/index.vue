@@ -21,11 +21,7 @@
 </template>
 
 <script>
-import PictureInput from "vue-picture-input";
 export default {
-  components: {
-    PictureInput
-  },
   methods: {
     sendUploadToBackend(name, data) {
       const path = "http://localhost:5000/api/update-image";

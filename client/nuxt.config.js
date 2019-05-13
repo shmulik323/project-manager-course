@@ -1,6 +1,6 @@
 const pkg = require('./package')
 
-
+const webpack = require("webpack")
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 module.exports = {
@@ -135,7 +135,10 @@ module.exports = {
   build: {
     vendor: ['jsPDF'],
     transpile: ['vuetify/lib'],
-    plugins: [new VuetifyLoaderPlugin()],
+    plugins: [new VuetifyLoaderPlugin(), new webpack.ProvidePlugin({
+      'window.Quill': 'quill/dist/quill.js',
+      'Quill': 'quill/dist/quill.js'
+    })],
 
     loaders: {
       stylus: {

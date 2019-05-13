@@ -11,7 +11,7 @@
 
               <form method="post" @submit.prevent="register">
                 <div class="field">
-                  <label class="label">profile pic</label>
+                  <label class="label">Profile Pic</label>
                   <div class="control">
                     <picture-input
                       ref="pictureInput"
@@ -113,13 +113,11 @@
 
 <script>
 import Notification from "~/components/Notification";
-import PictureInput from "vue-picture-input";
 
 export default {
   auth: false,
   components: {
-    Notification,
-    PictureInput
+    Notification
   },
 
   data() {

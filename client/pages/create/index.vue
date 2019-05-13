@@ -1,10 +1,12 @@
-<template>
+<template >
   <v-layout column>
     <v-text-field label="Project Name" box v-model="pdfName"></v-text-field>
 
     <v-layout align-center justify-center row fill-height>
       <v-flex xs12 sm2>
         <v-card>
+          <v-btn @click="content=srs">SRS</v-btn>
+          <v-btn @click="content=spmp">SPMP</v-btn>
           <v-card-title>
             <span class="title font-weight-dark">Load your prev project</span>
           </v-card-title>
@@ -37,7 +39,8 @@
 
 <script>
 import doc from "!raw-loader!../../assets/docx/doc.txt";
-
+import doc1 from "!raw-loader!../../assets/docx/doc1.txt";
+import hljs from "highlight.js";
 var toolbarOptions = [
   ["bold", "italic", "underline", "strike"], // toggled buttons
   ["blockquote", "code-block"],
@@ -62,11 +65,31 @@ export default {
   data() {
     return {
       pdfs: null,
-      content: doc,
+      srs: doc,
+      spmp: doc1,
+      content: "",
       editorOption: {
         // some quill options
         modules: {
-          toolbar: toolbarOptions
+          toolbar: [
+            ["bold", "italic", "underline", "strike"],
+            ["blockquote", "code-block"],
+            [{ header: 1 }, { header: 2 }],
+            [{ list: "ordered" }, { list: "bullet" }],
+            [{ script: "sub" }, { script: "super" }],
+            [{ indent: "-1" }, { indent: "+1" }],
+            [{ direction: "rtl" }],
+            [{ size: ["small", false, "large", "huge"] }],
+            [{ header: [1, 2, 3, 4, 5, 6, false] }],
+            [{ font: [] }],
+            [{ color: [] }, { background: [] }],
+            [{ align: [] }],
+            ["clean"],
+            ["link", "image", "video"]
+          ],
+          syntax: {
+            highlight: text => hljs.highlightAuto(text).value
+          }
         },
         theme: "snow"
       },
@@ -81,17 +104,10 @@ export default {
     }
   },
   methods: {
-    onEditorBlur(editor) {
-      console.log("editor blur!", editor);
-    },
-    onEditorFocus(editor) {
-      console.log("editor focus!", editor);
-    },
-    onEditorReady(editor) {
-      console.log("editor ready!", editor);
-    },
+    onEditorBlur(editor) {},
+    onEditorFocus(editor) {},
+    onEditorReady(editor) {},
     onEditorChange({ editor, html, text }) {
-      console.log("editor change!", editor, html, text);
       this.content = html;
     },
     createPdf() {
