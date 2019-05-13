@@ -2,7 +2,11 @@
   <v-app>
     <Navdrow/>
     <div class="container">
-      <nuxt/>
+      <v-container fluid>
+        <v-fade-transition mode="out-in">
+          <nuxt/>
+        </v-fade-transition>
+      </v-container>
       <div class="fixed-bottom">
         User status:
         <b-badge>{{ $auth.$state.loggedIn ? $auth.$state.user.user : 'Guest' }}</b-badge>

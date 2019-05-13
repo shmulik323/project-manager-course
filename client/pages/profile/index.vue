@@ -22,13 +22,7 @@
                   <DialogUsername :newuser="username" :olduser="username"/>
                 </b-card-text>
                 <b-card-text>
-                  <v-chip color="blue" text-color="white">
-                    <v-avatar>
-                      <v-icon>account_circle</v-icon>
-                    </v-avatar>
-                    <h4>email:</h4>
-                    {{ email }}
-                  </v-chip>
+                  <DialogEmail :oldemail="email" :newemail="email"/>
                 </b-card-text>
                 <b-badge v-if="admin" variant="success">Admin</b-badge>
                 <b-badge v-if="premium" variant="warning">Premium</b-badge>
@@ -43,8 +37,7 @@
       <b-btn v-b-popover.hover="'click me to logout!'" title="Logout" @click="$auth.logout()">Logout</b-btn>
 
       <nuxt-link id="reset_password" class="button" to="/password">Reset Password</nuxt-link>
-      <nuxt-link id="change_email" class="button" to="/email">Change Email</nuxt-link>
-      <nuxt-link id="cancel_premium" class="button" to="/cancel">Cancel Premium</nuxt-link>
+      <nuxt-link v-if="premium" id="cancel_premium" class="button" to="/cancel">Cancel Premium</nuxt-link>
     </b-btn-group>
   </div>
 </template>
@@ -52,10 +45,12 @@
 <script>
 import DialogNameLast from "~/components/dialog-name-last";
 import DialogUsername from "~/components/dialog-username";
+import DialogEmail from "~/components/dialog-email";
 export default {
   components: {
     DialogNameLast,
-    DialogUsername
+    DialogUsername,
+    DialogEmail
   },
   middleware: ["auth"],
   data() {
@@ -70,22 +65,7 @@ export default {
         "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
     };
   },
-  methods: {
-    getProfilePic() {
-      this.$axios
-        .get("api/uploader", {
-          name: this.$auth.user.image_file
-        })
-        .then((req, res) => {
-          var myBuffer = yourFunctionReturnsBuffer();
-          res.writeHead(200, {
-            "Content-Type": "image/jpeg",
-            "Content-Length": myBuffer.length
-          });
-          res.end(myBuffer);
-        });
-    }
-  },
+  methods: {},
   computed: {
     state() {
       return JSON.stringify(this.$auth.$state, undefined, 2);
@@ -100,6 +80,7 @@ export default {
     };
     this.$axios(config, { name: this.$auth.user.image_file }).then(response => {
       var bytes = new Uint8Array(response.data);
+      var btoa = require("btoa");
       var binary = bytes.reduce(
         (data, b) => (data += String.fromCharCode(b)),
         ""
@@ -113,7 +94,6 @@ export default {
     this.email = this.$auth.user.email;
     this.admin = this.$auth.user.admin;
     this.premium = this.$auth.user.premium;
-    this.imgUrl = this.getProfilePic();
   }
 };
 </script>

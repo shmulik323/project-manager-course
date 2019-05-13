@@ -3,12 +3,13 @@
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
         <b-btn
-          id="change_profile"
-          v-b-popover.hover.bottom="'Click me to edit your full name'"
-          title="Edit Full Name"
+          id="change_email"
+          v-b-popover.hover.bottom="'Click me to edit your email'"
+          title="Edit Email"
           v-on="on"
-        >Welcome Back : {{name}} {{last}}</b-btn>
+        >Email : {{newemail}}</b-btn>
       </template>
+
       <v-card class="mx-auto" style="max-width: 500px;">
         <v-system-bar color="deep-purple darken-4" dark>
           <v-spacer></v-spacer>
@@ -20,7 +21,7 @@
           <v-btn icon>
             <v-icon>mdi-arrow-left</v-icon>
           </v-btn>
-          <v-card-title class="title font-weight-regular">Change First-name and Last-name</v-card-title>
+          <v-card-title class="title font-weight-regular">Change Email</v-card-title>
           <v-spacer></v-spacer>
           <v-btn icon>
             <v-icon>mdi-magnify</v-icon>
@@ -31,26 +32,23 @@
         </v-toolbar>
         <v-form ref="form" v-model="form" class="pa-3 pt-4">
           <v-text-field
-            id="first"
-            v-model="name"
-            :rules="[rules.required]"
+            id="old_email"
+            v-model="oldemail"
             box
             color="deep-purple"
-            label="First Name"
-            type="name"
+            label="Old Email address"
+            type="email"
           ></v-text-field>
           <v-text-field
-            id="last"
-            v-model="last"
-            :rules="[rules.required]"
+            id="new_email"
+            v-model="newemail"
             box
             color="deep-purple"
-            label="Last Name"
-            type="name"
+            label="New Email address"
+            type="email"
           ></v-text-field>
         </v-form>
         <v-divider></v-divider>
-
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
@@ -64,37 +62,30 @@
           <v-btn flat @click="$refs.form.reset()">Clear</v-btn>
           <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
         </v-card-actions>
-        <v-dialog v-model="dialog" absolute max-width="400" persistent></v-dialog>
       </v-card>
     </v-dialog>
   </v-layout>
 </template>
 <script>
 export default {
-  props: ["name", "last"],
+  props: ["oldemail", "newemail"],
   data: () => ({
     dialog: false,
-    agreement: false,
     form: false,
-    email: null,
-    form: false,
-    isLoading: false,
-    password: null,
     rules: {
+      email: v => (v || "").match(/@/) || "Please enter a valid email",
       required: v => !!v || "This field is required"
     }
   }),
   methods: {
     async submit() {
       await this.$axios
-        .post("api/edit_user", {
-          name: this.name,
-          last: this.last,
-          email: this.$auth.user.email
+        .post("api/edit_email", {
+          old: this.oldemail,
+          new: this.newemail
         })
-        .then(res => {})
         .then(e => {
-          return this.$router.push("/profile");
+          this.dialog = !this.dialog;
         })
         .catch(e => {
           console.log(e);

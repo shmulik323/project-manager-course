@@ -78,13 +78,12 @@
 </template>
 <script>
 export default {
-  props: ["email", "newuser", "olduser"],
+  props: ["newuser", "olduser"],
   data: () => ({
     dialog: false,
+    form: false,
     agreement: false,
     email: "",
-    newuser: "",
-    olduser: "",
     rules: {
       email: v => (v || "").match(/@/) || "Please enter a valid email",
       length: len => v =>
