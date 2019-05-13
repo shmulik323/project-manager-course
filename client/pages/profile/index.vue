@@ -1,26 +1,25 @@
 <template>
   <div>
-    <b-alert show variant="warning">This is a secure page!</b-alert>
     <b-row>
       <b-col md="8">
         <b-card no-body class="overflow-hidden" style="max-width: 700px;">
           <b-row no-gutters>
-            <b-col md="6">
-              <img :src="src" alt>
+            <b-col
+              md="6"
+              v-b-popover.hover.bottom="'Click me to edit profile pic'"
+              title="profile pic"
+            >
+              <b-btn id="change_picture" variant="outline-primary" to="/picture">
+                <img :src="src" alt>
+              </b-btn>
             </b-col>
             <b-col md="6">
               <b-card-body title="Profile">
                 <b-card-text>
-                  <h4>Hi:{{name}} {{last}}</h4>
+                  <DialogNameLast :name="name" :last="last"/>
                 </b-card-text>
                 <b-card-text>
-                  <v-chip color="indigo" text-color="white">
-                    <v-avatar>
-                      <v-icon>account_circle</v-icon>
-                    </v-avatar>
-                    <h4>username:</h4>
-                    {{ username }}
-                  </v-chip>
+                  <DialogUsername :olduser="username"/>
                 </b-card-text>
                 <b-card-text>
                   <v-chip color="blue" text-color="white">
@@ -31,24 +30,8 @@
                     {{ email }}
                   </v-chip>
                 </b-card-text>
-                <b-card-text v-if="admin">
-                  <v-chip color="indigo" text-color="white">
-                    <v-avatar>
-                      <v-icon>account_circle</v-icon>
-                    </v-avatar>
-                    <h4>admin:</h4>
-                    {{ admin }}
-                  </v-chip>
-                </b-card-text>
-                <b-card-text v-if="premium">
-                  <v-chip color="blue" text-color="white">
-                    <v-avatar>
-                      <v-icon>account_circle</v-icon>
-                    </v-avatar>
-                    <h4>premium:</h4>
-                    {{ premium }}
-                  </v-chip>
-                </b-card-text>
+                <b-badge v-if="admin" variant="success">Admin</b-badge>
+                <b-badge v-if="premium" variant="warning">Premium</b-badge>
               </b-card-body>
             </b-col>
           </b-row>
@@ -57,20 +40,23 @@
     </b-row>
     <hr>
     <b-btn-group>
-      <b-button id="fetch" @click="$auth.fetchUser()">Fetch User</b-button>
-      <b-button @click="$auth.logout()">Logout</b-button>
+      <b-btn v-b-popover.hover="'click me to logout!'" title="Logout" @click="$auth.logout()">Logout</b-btn>
+
       <nuxt-link id="reset_password" class="button" to="/password">Reset Password</nuxt-link>
       <nuxt-link id="change_email" class="button" to="/email">Change Email</nuxt-link>
-      <nuxt-link id="change_username" class="button" to="/username">Change UserName</nuxt-link>
-      <nuxt-link id="change_profile" class="button" to="/edit_profile">Edit Profile</nuxt-link>
-      <nuxt-link id="change_picture" class="button" to="/picture">Edit Picture</nuxt-link>
       <nuxt-link id="cancel_premium" class="button" to="/cancel">Cancel Premium</nuxt-link>
     </b-btn-group>
   </div>
 </template>
 
 <script>
+import DialogNameLast from "~/components/dialog-name-last";
+import DialogUsername from "~/components/dialog-username";
 export default {
+  components: {
+    DialogNameLast,
+    DialogUsername
+  },
   middleware: ["auth"],
   data() {
     return {

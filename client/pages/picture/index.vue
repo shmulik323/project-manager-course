@@ -1,22 +1,24 @@
 <template>
   <div>
-    <picture-input
-      ref="pictureInput"
-      width="400"
-      height="400"
-      margin="8"
-      accept="image/jpeg, image/png"
-      size="10"
-      :removable="true"
-      :customStrings="{
+    <b-card no-body class="overflow-hidden" style="max-width: 700px;">
+      <picture-input
+        ref="pictureInput"
+        width="400"
+        height="400"
+        margin="8"
+        accept="image/jpeg, image/png"
+        size="10"
+        :removable="true"
+        :customStrings="{
         upload: '<h1>Bummer!</h1>',
         drag: 'Drag a image'
       }"
-    ></picture-input>
-    <b-button-group>
-      <b-btn @click="onChange">update</b-btn>
-      <b-btn>cancel</b-btn>
-    </b-button-group>
+      ></picture-input>
+      <b-button-group>
+        <b-btn @click="onChange">update</b-btn>
+        <b-btn to="/profile">cancel</b-btn>
+      </b-button-group>
+    </b-card>
   </div>
 </template>
 
@@ -25,11 +27,18 @@ export default {
   methods: {
     sendUploadToBackend(name, data) {
       const path = "http://localhost:5000/api/update-image";
-      this.$axios.post(path, {
-        name: name,
-        data: data,
-        username: this.$auth.user.username
-      });
+      this.$axios
+        .post(path, {
+          name: name,
+          data: data,
+          username: this.$auth.user.username
+        })
+        .then(result => {
+          return this.$router.push("/profile");
+        })
+        .catch(err => {
+          console.log(err);
+        });
       console.log("tried code in sendUploadToBackend");
     },
     onChange(image) {

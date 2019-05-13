@@ -1,5 +1,8 @@
 <template>
   <div>
+    <b-alert v-if="!$nuxt.isOnline" show variant="warning">
+      <div>You are offline</div>
+    </b-alert>
     <h2 id="login_link" class="text-center">Login</h2>
     <hr>
     <b-alert v-if="error" show variant="danger">{{ error + '' }}</b-alert>
@@ -95,7 +98,7 @@ export default {
           }
         })
         .then(e => {
-          return this.$router .push("/");
+          return this.$router.push("/");
         })
         .catch(e => {
           this.error = e + "";

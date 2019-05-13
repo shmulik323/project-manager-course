@@ -156,8 +156,9 @@ def update_image(User):
         print('Request received')
         request_data = json.loads(request.get_data())
         data = request_data['data'][5:]
-        dirName = './uploads/'+request_data['username']+'/Profile_Pic'
+        dirName = './uploads/'+User.username+'/Profile_Pic'
         if not os.path.exists(dirName):
+            os.mkdir('./uploads/'+User.username)
             os.mkdir(dirName)
         with open(dirName+'/'+request_data['name'], 'w') as wf:
             wf.write(data)
