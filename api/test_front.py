@@ -21,12 +21,6 @@ from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
-
-
-
-
-from multiprocessing.managers import BaseManager
-
 test_user_first_name = "alex"
 test_user_last_name = "vaitz"
 test_user_username = "alexv111"
@@ -57,10 +51,10 @@ class TestBase(TestCase):
         chromeOptions.add_argument("--headless")
         cap = DesiredCapabilities().FIREFOX
         cap["marionette"] = False
-        binary = FirefoxBinary('/Firefox/Path')
-        self.driver = webdriver.Firefox(firefox_binary=binary,capabilities=cap,executable_path=GeckoDriverManager().install())
-        #self.driver = webdriver.Chrome(ChromeDriverManager().install())
-        self.driver.get('http://127.0.0.1:3000/')
+        #binary = FirefoxBinary('/Firefox/Path')
+        #self.driver = webdriver.Firefox(firefox_binary=binary,capabilities=cap,executable_path=GeckoDriverManager().install())
+        self.driver = webdriver.Chrome(ChromeDriverManager().install())
+        self.driver.get('http://127.0.0.1:5000/')
         
         db.session.commit()
         db.create_all()
@@ -76,7 +70,7 @@ class TestBase(TestCase):
 class TestRegister(TestBase):      
     def test_register(self):
         self.driver.find_element_by_id("register").click()
-        time.sleep(1)
+        time.sleep(2)
 
         self.driver.find_element_by_id("email").send_keys(test_user2_email)
         self.driver.find_element_by_id("username").send_keys(
@@ -90,10 +84,7 @@ class TestRegister(TestBase):
         self.driver.find_element_by_id("reg").submit()
         time.sleep(2)
 
-        self.driver.find_element_by_id("logout").click()
-        time.sleep(2)
-
-        assert self.driver.find_element_by_id("register")
+        assert self.driver.find_element_by_id("success")
 
 class TestLogin(TestBase):
     
@@ -106,7 +97,7 @@ class TestLogin(TestBase):
         db.session.commit()
         time.sleep(1)
         self.driver.find_element_by_id("login_link").click()
-        time.sleep(1)
+        time.sleep(2)
 
         
         self.driver.find_element_by_id("email").send_keys(test_user_email)
@@ -114,10 +105,8 @@ class TestLogin(TestBase):
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
 
-        self.driver.find_element_by_id("logout").click()
-        time.sleep(2)
 
-        assert self.driver.find_element_by_id("login_link")
+        assert self.driver.find_element_by_id("success")
         
 class TestSideBar(TestBase):
     def test_profile(self):
@@ -129,7 +118,7 @@ class TestSideBar(TestBase):
         db.session.commit()
         time.sleep(1)
         self.driver.find_element_by_id("login_link").click()
-        time.sleep(1)
+        time.sleep(2)
 
         
         self.driver.find_element_by_id("email").send_keys(test_user_email)
@@ -137,9 +126,9 @@ class TestSideBar(TestBase):
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
 
-        self.driver.get('http://127.0.0.1:3000/profile')
+        self.driver.get('http://127.0.0.1:5000/profile')
         time.sleep(2)
-        assert self.driver.find_element_by_id("fetch")
+        assert self.driver.find_element_by_id("change_picture")
 
     def test_contact(self):
         User.query.delete()
@@ -150,7 +139,7 @@ class TestSideBar(TestBase):
         db.session.commit()
         time.sleep(1)
         self.driver.find_element_by_id("login_link").click()
-        time.sleep(1)
+        time.sleep(2)
 
         
         self.driver.find_element_by_id("email").send_keys(test_user_email)
@@ -158,7 +147,7 @@ class TestSideBar(TestBase):
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
 
-        self.driver.get('http://127.0.0.1:3000/contact')
+        self.driver.get('http://127.0.0.1:5000/contact')
         time.sleep(2)
 
         self.driver.find_element_by_id("subject").send_keys('error in something')
@@ -176,15 +165,15 @@ class TestSideBar(TestBase):
         db.session.commit()
         time.sleep(1)
         self.driver.find_element_by_id("login_link").click()
-        time.sleep(1)
+        time.sleep(2)
 
         
         self.driver.find_element_by_id("email").send_keys(test_user_email)
         self.driver.find_element_by_id("password").send_keys(test_user_password)
         self.driver.find_element_by_id("login_click").click()
-        time.sleep(2)
+        time.sleep(3)
 
-        self.driver.get('http://127.0.0.1:3000/contact_manager')
+        self.driver.get('http://127.0.0.1:5000/contact_manager')
         time.sleep(2)
 
         self.driver.find_element_by_id("subject").send_keys('I have an issue')
@@ -202,16 +191,16 @@ class TestSideBar(TestBase):
         db.session.commit()
         time.sleep(1)
         self.driver.find_element_by_id("login_link").click()
-        time.sleep(1)
+        time.sleep(3)
 
         self.driver.find_element_by_id("email").send_keys(test_user_email)
         self.driver.find_element_by_id("password").send_keys(test_user_password)
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
-        self.driver.get('http://127.0.0.1:3000/create')
+        self.driver.get('http://127.0.0.1:5000/create')
         time.sleep(2)
 
-        self.driver.find_element_by_id("pdf")
+        assert self.driver.find_element_by_id("pdf")
 
 class TestProfileFunctions(TestBase):
     def test_reset_password(self):
@@ -223,14 +212,14 @@ class TestProfileFunctions(TestBase):
         db.session.commit()
         time.sleep(1)
         self.driver.find_element_by_id("login_link").click()
-        time.sleep(1)
+        time.sleep(2)
 
         self.driver.find_element_by_id("email").send_keys(test_user_email)
         self.driver.find_element_by_id("password").send_keys(test_user_password)
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
 
-        self.driver.get('http://127.0.0.1:3000/profile')
+        self.driver.get('http://127.0.0.1:5000/profile')
         time.sleep(2)
         self.driver.find_element_by_id("reset_password").click()
         time.sleep(2)
@@ -252,14 +241,14 @@ class TestProfileFunctions(TestBase):
         db.session.commit()
         time.sleep(1)
         self.driver.find_element_by_id("login_link").click()
-        time.sleep(1)
+        time.sleep(2)
 
         self.driver.find_element_by_id("email").send_keys(test_user_email)
         self.driver.find_element_by_id("password").send_keys(test_user_password)
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
 
-        self.driver.get('http://127.0.0.1:3000/profile')
+        self.driver.get('http://127.0.0.1:5000/profile')
         time.sleep(2)
         self.driver.find_element_by_id("change_email").click()
         time.sleep(2)
@@ -280,14 +269,14 @@ class TestProfileFunctions(TestBase):
         db.session.commit()
         time.sleep(1)
         self.driver.find_element_by_id("login_link").click()
-        time.sleep(1)
+        time.sleep(2)
 
         self.driver.find_element_by_id("email").send_keys(test_user_email)
         self.driver.find_element_by_id("password").send_keys(test_user_password)
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
 
-        self.driver.get('http://127.0.0.1:3000/profile')
+        self.driver.get('http://127.0.0.1:5000/profile')
         time.sleep(2)
         self.driver.find_element_by_id("change_username").click()
         time.sleep(2)
@@ -296,7 +285,7 @@ class TestProfileFunctions(TestBase):
         self.driver.find_element_by_id("new_user").send_keys('alex12345')
         self.driver.find_element_by_id("email").send_keys(test_user_email)
         time.sleep(1)
-        self.driver.find_element_by_id("submit").click()
+        self.driver.find_element_by_id("edit_info").click()
 
         assert self.driver.find_element_by_id("logout")
 
@@ -309,14 +298,14 @@ class TestProfileFunctions(TestBase):
         db.session.commit()
         time.sleep(1)
         self.driver.find_element_by_id("login_link").click()
-        time.sleep(1)
+        time.sleep(2)
 
         self.driver.find_element_by_id("email").send_keys(test_user_email)
         self.driver.find_element_by_id("password").send_keys(test_user_password)
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
 
-        self.driver.get('http://127.0.0.1:3000/profile')
+        self.driver.get('http://127.0.0.1:5000/profile')
         time.sleep(2)
         self.driver.find_element_by_id("change_picture").click()
         time.sleep(2)
@@ -331,51 +320,25 @@ class TestProfileFunctions(TestBase):
         db.session.commit()
         time.sleep(1)
         self.driver.find_element_by_id("login_link").click()
-        time.sleep(1)
+        time.sleep(2)
 
         self.driver.find_element_by_id("email").send_keys(test_user_email)
         self.driver.find_element_by_id("password").send_keys(test_user_password)
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
 
-        self.driver.get('http://127.0.0.1:3000/profile')
+        self.driver.get('http://127.0.0.1:5000/profile')
         time.sleep(2)
         self.driver.find_element_by_id("change_profile").click()
         time.sleep(2)
 
         self.driver.find_element_by_id("first").send_keys('alexander')
         self.driver.find_element_by_id("last").send_keys('vitzi')
-        time.sleep(1)
-        self.driver.find_element_by_id("submit").click()
+        time.sleep(2)
+        self.driver.find_element_by_id("edit_names").click()
 
         assert self.driver.find_element_by_id("logout")
     
-    def test_cancel_premium(self):
-        User.query.delete()
-        self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
-       
-        db.session.add(self.user)
-        
-        db.session.commit()
-        time.sleep(1)
-        self.driver.find_element_by_id("login_link").click()
-        time.sleep(1)
-
-        self.driver.find_element_by_id("email").send_keys(test_user_email)
-        self.driver.find_element_by_id("password").send_keys(test_user_password)
-        self.driver.find_element_by_id("login_click").click()
-        time.sleep(2)
-
-        self.driver.get('http://127.0.0.1:3000/profile')
-        time.sleep(2)
-        self.driver.find_element_by_id("cancel_premium").click()
-        time.sleep(2)
-        self.driver.find_element_by_id("email")
-        self.driver.find_element_by_id("email").send_keys(test_user_email)
-        time.sleep(1)
-        self.driver.find_element_by_id("submit").click()
-
-        assert self.driver.find_element_by_id("logout")
 
 if __name__ == '__main__':
     unittest.main()

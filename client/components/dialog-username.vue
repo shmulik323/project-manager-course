@@ -3,6 +3,7 @@
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
         <b-btn
+          id="change_username"
           v-b-popover.hover.bottom="'Click me to edit your user name'"
           title="Edit User Name"
           v-on="on"
@@ -61,7 +62,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            id="submit"
+            id="edit_info"
             @click="submit"
             :disabled="!form"
             class="white--text"

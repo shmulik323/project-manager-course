@@ -54,7 +54,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            id="submit"
+            id="edit_names"
             @click="submit"
             :disabled="!form"
             class="white--text"
