@@ -5,7 +5,7 @@
         <td>{{ props.item.title }}</td>
         <td id="type" class="text-xs-right">{{ props.item.applicationType }}</td>
         <td class="text-xs-right">{{ props.item.publicationDate }}</td>
-        <td class="text-xs-right">{{ props.item.documentDate }}</td>
+        <td id="date" class="text-xs-right">{{ props.item.documentDate }}</td>
         <td class="text-xs-right">{{ props.item.applicant }}</td>
         <td class="text-xs-right">{{ props.item.inventor }}</td>
         <td class="text-xs-right">{{props.item.archiveUrl}}</td>
