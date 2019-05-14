@@ -56,7 +56,7 @@ class TestBase(TestCase):
         #self.driver = webdriver.Firefox(firefox_binary=binary,capabilities=cap,executable_path=GeckoDriverManager().install())
         self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.get('http://127.0.0.1:3000/')
-        
+        self.driver.maximize_window()
         db.session.commit()
         db.create_all()
 
