@@ -9,7 +9,7 @@
       <v-text-field id="name" v-model="searchText" append-icon="search" label="Search" hide-details></v-text-field>
     </v-card-title>
     <div>
-      <v-btn id="search" @click="search()">Search</v-btn>
+      <v-btn id="start_search" @click="search()">Search</v-btn>
     </div>
   </v-card>
 </template>

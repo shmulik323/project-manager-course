@@ -29,7 +29,7 @@
             v-quill:myQuillEditor="editorOption"
           ></div>
           <div>
-            <a type="submit" id="pdf" @click="createPdf" target="_blank">Create PDF</a>
+            <v-btn id="download_pdf" type="submit" @click="createPdf" target="_blank">Create PDF</v-btn>
           </div>
         </section>
       </v-flex>

@@ -49,6 +49,7 @@ class TestBase(TestCase):
     def setUp(self):
         chromeOptions = webdriver.ChromeOptions()
         chromeOptions.add_argument("--headless")
+        chromeOptions.add_argument("--start-fullscreen")
         cap = DesiredCapabilities().FIREFOX
         cap["marionette"] = False
         #binary = FirefoxBinary('/Firefox/Path')
@@ -200,7 +201,7 @@ class TestSideBar(TestBase):
         self.driver.get('http://127.0.0.1:3000/create')
         time.sleep(2)
 
-        assert self.driver.find_element_by_id("pdf")
+        assert self.driver.find_element_by_id("download_pdf")
 
 class TestProfileFunctions(TestBase):
     def test_reset_password(self):
@@ -356,101 +357,14 @@ class TestFileOptions(TestBase):
         self.driver.get('http://127.0.0.1:3000/create')
         time.sleep(2)
 
-        self.driver.find_element_by_id("spmp")
+        self.driver.find_element_by_id("spmp").click()
         time.sleep(2)
-        self.driver.find_element_by_id("pdf").click()
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+        time.sleep(1)
+        self.driver.find_element_by_id("download_pdf").click()
         time.sleep(2)
 
         assert self.driver.find_element_by_id("spmp")
-    
-    def test_spmp(self):
-        User.query.delete()
-        self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
-        db.session.add(self.user)
-        db.session.commit()
-        time.sleep(1)
-        self.driver.find_element_by_id("login_link").click()
-        time.sleep(3)
-
-        self.driver.find_element_by_id("email").send_keys(test_user_email)
-        self.driver.find_element_by_id("password").send_keys(test_user_password)
-        self.driver.find_element_by_id("login_click").click()
-        time.sleep(2)
-        self.driver.get('http://127.0.0.1:3000/create')
-        time.sleep(2)
-
-        self.driver.find_element_by_id("srs")
-        time.sleep(2)
-        self.driver.find_element_by_id("pdf").click()
-        time.sleep(2)
-
-        assert self.driver.find_element_by_id("spmp")
-    
-    def test_search_category(self):
-        User.query.delete()
-        self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
-        db.session.add(self.user)
-        db.session.commit()
-        time.sleep(1)
-        self.driver.find_element_by_id("login_link").click()
-        time.sleep(3)
-
-        self.driver.find_element_by_id("email").send_keys(test_user_email)
-        self.driver.find_element_by_id("password").send_keys(test_user_password)
-        self.driver.find_element_by_id("login_click").click()
-        time.sleep(2)
-        self.driver.get('http://127.0.0.1:3000/search')
-        time.sleep(2)  
-
-        self.driver.find_element_by_id("search").click()
-        time.sleep(2) 
-
-        assert self.driver.find_element_by_id("type") 
-    
-
-    def test_search_name(self):
-        User.query.delete()
-        self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
-        db.session.add(self.user)
-        db.session.commit()
-        time.sleep(1)
-        self.driver.find_element_by_id("login_link").click()
-        time.sleep(3)
-
-        self.driver.find_element_by_id("email").send_keys(test_user_email)
-        self.driver.find_element_by_id("password").send_keys(test_user_password)
-        self.driver.find_element_by_id("login_click").click()
-        time.sleep(2)
-        self.driver.get('http://127.0.0.1:3000/search')
-        time.sleep(2)  
-
-        self.driver.find_element_by_id("name").send_keys("cool stuff")
-        time.sleep(1)
-        self.driver.find_element_by_id("search").click()
-        time.sleep(2) 
-
-        self.driver.find_element_by_id("type").click()
-
-    def test_search_category(self):
-        User.query.delete()
-        self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
-        db.session.add(self.user)
-        db.session.commit()
-        time.sleep(1)
-        self.driver.find_element_by_id("login_link").click()
-        time.sleep(3)
-
-        self.driver.find_element_by_id("email").send_keys(test_user_email)
-        self.driver.find_element_by_id("password").send_keys(test_user_password)
-        self.driver.find_element_by_id("login_click").click()
-        time.sleep(2)
-        self.driver.get('http://127.0.0.1:3000/search')
-        time.sleep(2)  
-
-        self.driver.find_element_by_id("search").click()
-        time.sleep(2) 
-
-        self.driver.find_element_by_id("date").click()
 
 if __name__ == '__main__':
     unittest.main()
