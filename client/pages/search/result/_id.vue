@@ -3,7 +3,7 @@
     <v-data-table next-icon :headers="headers" :items="pData.docs" :search="search">
       <template v-slot:items="props">
         <td>{{ props.item.title }}</td>
-        <td class="text-xs-right">{{ props.item.applicationType }}</td>
+        <td id="type" class="text-xs-right">{{ props.item.applicationType }}</td>
         <td class="text-xs-right">{{ props.item.publicationDate }}</td>
         <td class="text-xs-right">{{ props.item.documentDate }}</td>
         <td class="text-xs-right">{{ props.item.applicant }}</td>

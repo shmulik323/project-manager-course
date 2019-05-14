@@ -379,8 +379,10 @@ class TestFileOptions(TestBase):
         self.driver.get('http://127.0.0.1:3000/search')
         time.sleep(2)  
 
-        self.driver.find_element_by_id("pdf").click()
-        time.sleep(2)  
+        self.driver.find_element_by_id("search").click()
+        time.sleep(2) 
+
+        assert self.driver.find_element_by_id("type") 
 
 if __name__ == '__main__':
     unittest.main()
