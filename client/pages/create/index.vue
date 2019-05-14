@@ -5,8 +5,8 @@
     <v-layout align-center justify-center row fill-height>
       <v-flex xs12 sm2>
         <v-card>
-          <v-btn @click="content=srs">SRS</v-btn>
-          <v-btn @click="content=spmp">SPMP</v-btn>
+          <v-btn id="spmp" @click="content=srs">SRS</v-btn>
+          <v-btn id="srs" @click="content=spmp">SPMP</v-btn>
           <v-card-title>
             <span class="title font-weight-dark">Load your prev project</span>
           </v-card-title>
