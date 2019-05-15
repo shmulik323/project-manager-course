@@ -1,7 +1,5 @@
 
-<font color="#000088"><font size=-1>The following template is based on IEEE 1058.1-1987.
-<br>This material is copied and/or
-adapted from the Survival Guide Website at <a href="http://www.construx.com/survivalguide/" target="_top">www.construx.com/survivalguide/</a>.</font></font>
+
 <br>
 <hr>
 <h2>
@@ -53,473 +51,473 @@ Revision Chart
 <hr>
 <h3>
 Revision Chart</h3>
-<i><font color="#000080"><font size=+0>This chart contains a history of
+<i>=This chart contains a history of
 this document�s revisions. The entries below are provided solely for purposes
 of illustration. Entries should be deleted until the revision they refer
-to has actually been created.</font></font></i>
-<p><i><font color="#000080"><font size=+0>The document itself should be
+to has actually been created.</i>
+<p><i>The document itself should be
 stored in revision control, and a brief description of each version should
 be entered in the revision control system. That brief description can be
 repeated in this section. Revisions do not need to be described elsewhere
-in the document except inasmuch as they explain the development plan itself.</font></font></i>
+in the document except inasmuch as they explain the development plan itself.</i>
 <br>&nbsp;
 <br>&nbsp;
 <table BORDER CELLPADDING=2 >
 <tr>
-<td WIDTH="21%" BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Version</font></font></b></td>
+<td WIDTH="21%" BGCOLOR="#FFFFFF"><b>Version</b></td>
 
-<td WIDTH="20%" BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Primary
-Author(s)</font></font></b></td>
+<td WIDTH="20%" BGCOLOR="#FFFFFF"><b>Primary
+Author(s)</b></td>
 
-<td WIDTH="41%" BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Description
-of Version</font></font></b></td>
+<td WIDTH="41%" BGCOLOR="#FFFFFF"><b>Description
+of Version</b></td>
 
-<td WIDTH="18%" BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Date
-Completed</font></font></b></td>
+<td WIDTH="18%" BGCOLOR="#FFFFFF"><b>Date
+Completed</b></td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>Draft</font></td>
+<td WIDTH="21%">Draft</td>
 
-<td WIDTH="20%"><font size=-1>TBD</font></td>
+<td WIDTH="20%">TBD</td>
 
-<td WIDTH="41%"><font size=-1>Initial draft created for distribution and
-review comments</font></td>
+<td WIDTH="41%">Initial draft created for distribution and
+review comments</td>
 
-<td WIDTH="18%"><font size=-1>TBD</font></td>
+<td WIDTH="18%">TBD</td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>Preliminary</font></td>
+<td WIDTH="21%">Preliminary</td>
 
-<td WIDTH="20%"><font size=-1>TBD</font></td>
+<td WIDTH="20%">TBD</td>
 
-<td WIDTH="41%"><font size=-1>Second draft incorporating initial review
-comments, distributed for final review</font></td>
+<td WIDTH="41%">Second draft incorporating initial review
+comments, distributed for final review</td>
 
-<td WIDTH="18%"><font size=-1>TBD</font></td>
+<td WIDTH="18%">TBD</td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>Final</font></td>
+<td WIDTH="21%">Final</td>
 
-<td WIDTH="20%"><font size=-1>TBD</font></td>
+<td WIDTH="20%">TBD</td>
 
-<td WIDTH="41%"><font size=-1>First complete draft, which is placed under
-change control</font></td>
+<td WIDTH="41%">First complete draft, which is placed under
+change control</td>
 
-<td WIDTH="18%"><font size=-1>TBD</font></td>
+<td WIDTH="18%">TBD</td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>Revision 1</font></td>
+<td WIDTH="21%">Revision 1</td>
 
-<td WIDTH="20%"><font size=-1>TBD</font></td>
+<td WIDTH="20%">TBD</td>
 
-<td WIDTH="41%"><font size=-1>Revised draft, revised according to the change
-control process and maintained under change control</font></td>
+<td WIDTH="41%">Revised draft, revised according to the change
+control process and maintained under change control</td>
 
-<td WIDTH="18%"><font size=-1>TBD</font></td>
+<td WIDTH="18%">TBD</td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>Revision 2</font></td>
+<td WIDTH="21%">Revision 2</td>
 
-<td WIDTH="20%"><font size=-1>TBD</font></td>
+<td WIDTH="20%">TBD</td>
 
-<td WIDTH="41%"><font size=-1>Revised draft, revised according to the change
-control process and maintained under change control</font></td>
+<td WIDTH="41%">Revised draft, revised according to the change
+control process and maintained under change control</td>
 
-<td WIDTH="18%"><font size=-1>TBD</font></td>
+<td WIDTH="18%">TBD</td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>etc.</font></td>
+<td WIDTH="21%">etc.</td>
 
-<td WIDTH="20%"><font size=-1>TBD</font></td>
+<td WIDTH="20%">TBD</td>
 
-<td WIDTH="41%"><font size=-1>TBD</font></td>
+<td WIDTH="41%">TBD</td>
 
-<td WIDTH="18%"><font size=-1>TBD</font></td>
+<td WIDTH="18%">TBD</td>
 </tr>
 </table>
 
 <h3>
 Preface</h3>
-<i><font color="#000080"><font size=+0>The preface contains an introduction
-to the document. It is optional and can be deleted if desired.</font></font></i>
+<i>The preface contains an introduction
+to the document. It is optional and can be deleted if desired.</i>
 <h3>
 Contents</h3>
-<i><font color="#000080"><font size=+0>List the document contents by page
-number.</font></font></i>
+<i>List the document contents by page
+number.</i>
 <h3>
 List of Figures</h3>
-<i><font color="#000080"><font size=+0>List the figures in the document
-by page number.</font></font></i>
+<i>List the figures in the document
+by page number.</i>
 <h2>
 1.0 Introduction</h2>
-<i><font color="#000080"><font size=+0>This section should describe the
+<i>This section should describe the
 project and the software product being to be built. No text is necessary
-between the heading above and the heading below unless otherwise desired.</font></font></i>
+between the heading above and the heading below unless otherwise desired.</i>
 <h3>
 1.1 Project Overview</h3>
-<i><font color="#000080"><font size=+0>Give a short summary of the project
+<i>Give a short summary of the project
 objectives, the software to be delivered, major activities, major deliverables,
 major milestones, required resources, and top-level schedule and budget.
-Describe the relationship of this project to other projects, if appropriate.</font></font></i>
+Describe the relationship of this project to other projects, if appropriate.</i>
 <h3>
 1.2 Project Deliverables</h3>
-<i><font color="#000080"><font size=+0>List all of the major items to be
-delivered to the customer (external customer, in-house user, etc.).</font></font></i>
-<p><i><font color="#000080"><font size=+0>List the deliverables, delivery
+<i>List all of the major items to be
+delivered to the customer (external customer, in-house user, etc.).</i>
+<p><i>List the deliverables, delivery
 dates, delivery locations, delivery method (email, FTP, CD, etc.), and
-quantities necessary to satisfy the project�s requirements.</font></font></i>
-<p><i><font color="#000080"><font size=+0>[Refer to course syllabus].</font></font></i>
+quantities necessary to satisfy the project�s requirements.</i>
+<p><i>[Refer to course syllabus].</i>
 <h3>
 1.3 Evolution of the Software Project Management Plan</h3>
-<i><font color="#000080"><font size=+0>Describe how you expect this document
+<i>Describe how you expect this document
 to evolve over time. This section should be very similar to the "Revision
 Chart" earlier in the document. The revision chart should list what has
 already been done to this document. This section should list what is expected
-to be done to this document.</font></font></i>
-<p><i><font color="#000080"><font size=+0>This chart contains a plan for
+to be done to this document.</i>
+<p><i>This chart contains a plan for
 the document�s revisions. The entries below are provided for purposes of
 illustration. The progression from "Draft" to "Preliminary" to "Final"
-and then through a section of "Revisions" is one typical approach.</font></font></i>
+and then through a section of "Revisions" is one typical approach.</i>
 <br>&nbsp;
 <br>&nbsp;
 <table BORDER CELLPADDING=2 >
 <tr>
-<td WIDTH="21%" BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Version</font></font></b></td>
+<td WIDTH="21%" BGCOLOR="#FFFFFF"><b>Version</b></td>
 
-<td WIDTH="19%" BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Primary
-Author(s)</font></font></b></td>
+<td WIDTH="19%" BGCOLOR="#FFFFFF"><b>Primary
+Author(s)</b></td>
 
-<td WIDTH="42%" BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Description
-of Version</font></font></b></td>
+<td WIDTH="42%" BGCOLOR="#FFFFFF"><b>Description
+of Version</b></td>
 
-<td WIDTH="18%" BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Date
-Expected</font></font></b></td>
+<td WIDTH="18%" BGCOLOR="#FFFFFF"><b>Date
+Expected</b></td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>Draft</font></td>
+<td WIDTH="21%">Draft</td>
 
-<td WIDTH="19%"><font size=-1>TBD</font></td>
+<td WIDTH="19%">TBD</td>
 
-<td WIDTH="42%"><font size=-1>Initial draft created for distribution and
-review comments</font></td>
+<td WIDTH="42%">Initial draft created for distribution and
+review comments</td>
 
-<td WIDTH="18%"><font size=-1>TBD</font></td>
+<td WIDTH="18%">TBD</td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>Preliminary</font></td>
+<td WIDTH="21%">Preliminary</td>
 
-<td WIDTH="19%"><font size=-1>TBD</font></td>
+<td WIDTH="19%">TBD</td>
 
-<td WIDTH="42%"><font size=-1>Second draft incorporating initial review
-comments, distributed for final review</font></td>
+<td WIDTH="42%">Second draft incorporating initial review
+comments, distributed for final review</td>
 
-<td WIDTH="18%"><font size=-1>TBD</font></td>
+<td WIDTH="18%">TBD</td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>Final</font></td>
+<td WIDTH="21%">Final</td>
 
-<td WIDTH="19%"><font size=-1>TBD</font></td>
+<td WIDTH="19%">TBD</td>
 
-<td WIDTH="42%"><font size=-1>First complete draft, which is placed under
-change control</font></td>
+<td WIDTH="42%">First complete draft, which is placed under
+change control</td>
 
-<td WIDTH="18%"><font size=-1>TBD</font></td>
+<td WIDTH="18%">TBD</td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>Revision 1</font></td>
+<td WIDTH="21%">Revision 1</td>
 
-<td WIDTH="19%"><font size=-1>TBD</font></td>
+<td WIDTH="19%">TBD</td>
 
-<td WIDTH="42%"><font size=-1>Revised draft, revised according to the change
-control process and maintained under change control</font></td>
+<td WIDTH="42%">Revised draft, revised according to the change
+control process and maintained under change control</td>
 
-<td WIDTH="18%"><font size=-1>TBD</font></td>
+<td WIDTH="18%">TBD</td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>etc.</font></td>
+<td WIDTH="21%">etc.</td>
 
-<td WIDTH="19%"><font size=-1>TBD</font></td>
+<td WIDTH="19%">TBD</td>
 
-<td WIDTH="42%"><font size=-1>TBD</font></td>
+<td WIDTH="42%">TBD</td>
 
-<td WIDTH="18%"><font size=-1>TBD</font></td>
+<td WIDTH="18%">TBD</td>
 </tr>
 </table>
 
 <h3>
 1.4 Reference Materials</h3>
-<i><font color="#000080"><font size=+0>List all the documents and other
+<i>List all the documents and other
 materials referenced in this document. This section is like the bibliography
-in a published book.</font></font></i>
+in a published book.</i>
 <h3>
 1.5 Definitions and Acronyms</h3>
-<i><font color="#000080"><font size=+0>Provide definitions or references
+<i>Provide definitions or references
 to all the definitions of the special terms and acronyms used within this
-document.</font></font></i>
+document.</i>
 <h2>
 2.0 Project Organization</h2>
-<i><font color="#000080"><font size=+0>In this section, describe the process
+<i>In this section, describe the process
 model (e.g., lifecycle model), the organizational structure (e.g., chain
 of command or management reporting structure), and responsibilities of
-individuals on the project.</font></font></i>
-<p><i><font color="#000080"><font size=+0>No text is necessary between
-the heading above and the heading below unless otherwise desired.</font></font></i>
+individuals on the project.</i>
+<p><i>No text is necessary between
+the heading above and the heading below unless otherwise desired.</i>
 <h3>
 2.1 Process Model</h3>
-<i><font color="#000080"><font size=+0>Describe the following items:</font></font></i>
+<i>Describe the following items:</i>
 <ul>
 <li>
-<i><font color="#000080"><font size=+0>The project�s lifecycle model (e.g.,
-waterfall model, spiral model, evolutionary prototyping model, etc.)</font></font></i></li>
+<i>The project�s lifecycle model (e.g.,
+waterfall model, spiral model, evolutionary prototyping model, etc.)</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>The project�s major milestones (content
+<i>The project�s major milestones (content
 and dates/timing). This should include a text description of the meaning
 of each milestone plus a Gantt chart or other high-level description of
-the project�s schedule.</font></font></i></li>
+the project�s schedule.</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Major work products, including content
-and timing. These should be listed in a table like the following one:</font></font></i></li>
+<i>Major work products, including content
+and timing. These should be listed in a table like the following one:</i></li>
 </ul>
 
 <table BORDER CELLPADDING=9 >
 <tr>
-<td WIDTH="41%" BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Work
-Product Name</font></font></b></td>
+<td WIDTH="41%" BGCOLOR="#FFFFFF"><b>Work
+Product Name</b></td>
 
-<td WIDTH="14%" BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Planned
-Completion Date</font></font></b></td>
+<td WIDTH="14%" BGCOLOR="#FFFFFF"><b>Planned
+Completion Date</b></td>
 
-<td WIDTH="13%" BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Placed
-Under Change Control?</font></font></b></td>
+<td WIDTH="13%" BGCOLOR="#FFFFFF"><b>Placed
+Under Change Control?</b></td>
 
-<td WIDTH="11%" BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Deliverable
-to Customer?</font></font></b></td>
+<td WIDTH="11%" BGCOLOR="#FFFFFF"><b>Deliverable
+to Customer?</b></td>
 
-<td WIDTH="20%" BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>People
-Who Must Sign Off on the Work Product</font></font></b></td>
+<td WIDTH="20%" BGCOLOR="#FFFFFF"><b>People
+Who Must Sign Off on the Work Product</b></td>
 </tr>
 
 <tr>
-<td WIDTH="41%"><font size=-1>Software Project Management Plan</font>
-<p><font size=-1>This is the controlling document for managing a software
+<td WIDTH="41%">Software Project Management Plan
+<p>This is the controlling document for managing a software
 project, and it defines the technical and managerial processes necessary
-to deliver the project requirements.</font></td>
+to deliver the project requirements.</td>
 
-<td WIDTH="14%"><font size=-1>TBD</font></td>
+<td WIDTH="14%">TBD</td>
 
-<td WIDTH="13%"><font size=-1>Yes</font></td>
+<td WIDTH="13%">Yes</td>
 
-<td WIDTH="11%"><font size=-1>No</font></td>
+<td WIDTH="11%">No</td>
 
-<td WIDTH="20%"><font size=-1>Project Manager, Engineering Lead, QA Lead,
-Documentation Lead</font></td>
+<td WIDTH="20%">Project Manager, Engineering Lead, QA Lead,
+Documentation Lead</td>
 </tr>
 
 <tr>
-<td WIDTH="41%"><font size=-1>TBD</font></td>
+<td WIDTH="41%">TBD</td>
 
-<td WIDTH="14%"><font size=-1>TBD</font></td>
+<td WIDTH="14%">TBD</td>
 
-<td WIDTH="13%"><font size=-1>TBD</font></td>
+<td WIDTH="13%">TBD</td>
 
-<td WIDTH="11%"><font size=-1>TBD</font></td>
+<td WIDTH="11%">TBD</td>
 
-<td WIDTH="20%"><font size=-1>TBD</font></td>
+<td WIDTH="20%">TBD</td>
 </tr>
 </table>
 
-<p><i><font color="#000080"><font size=+0>You should consider including
+<p><i>You should consider including
 all of the top-level work products described in "Software Project Survival
-Guide", including:</font></font></i>
+Guide", including:</i>
 <ul>
 <li>
-<i><font color="#000080"><font size=+0>Change Control Plan</font></font></i></li>
+<i>Change Control Plan</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Change Proposals</font></font></i></li>
+<i>Change Proposals</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Vision statement</font></font></i></li>
+<i>Vision statement</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Top 10 Risks List</font></font></i></li>
+<i>Top 10 Risks List</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Software Development Plan, including
-project cost and schedule estimates</font></font></i></li>
+<i>Software Development Plan, including
+project cost and schedule estimates</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>User Interface Style Guide</font></font></i></li>
+<i>User Interface Style Guide</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>User Manual/Requirements Specification</font></font></i></li>
+<i>User Manual/Requirements Specification</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Quality Assurance Plan</font></font></i></li>
+<i>Quality Assurance Plan</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Software Architecture</font></font></i></li>
+<i>Software Architecture</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Software Integration Procedure</font></font></i></li>
+<i>Software Integration Procedure</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Staged Delivery Plan</font></font></i></li>
+<i>Staged Delivery Plan</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Individual Stage Plans, including
-miniature milestone schedules</font></font></i></li>
+<i>Individual Stage Plans, including
+miniature milestone schedules</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Coding Standard</font></font></i></li>
+<i>Coding Standard</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Detailed Design Documents</font></font></i></li>
+<i>Detailed Design Documents</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Software Construction Plans</font></font></i></li>
+<i>Software Construction Plans</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Deployment Document (Cutover Handbook)</font></font></i></li>
+<i>Deployment Document (Cutover Handbook)</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Release Checklist</font></font></i></li>
+<i>Release Checklist</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Release Sign-Off Form</font></font></i></li>
+<i>Release Sign-Off Form</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Software Project Log</font></font></i></li>
+<i>Software Project Log</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Software Project History Document</font></font></i></li>
+<i>Software Project History Document</i></li>
 </ul>
-<i><font color="#000080"><font size=+0>The items in this section (and,
+<i>The items in this section (and,
 in general, in this document) can be fully described here, or, if they
 are described in sufficient detail elsewhere, that description can simply
-be referenced here.&nbsp; [Try to avoid redundancy with section 4.2].</font></font></i>
+be referenced here.&nbsp; [Try to avoid redundancy with section 4.2].</i>
 <h3>
 2.2 Organizational Structure</h3>
-<i><font color="#000080"><font size=+0>Describe the internal management
+<i>Describe the internal management
 structure of the project. Use org charts, matrix diagrams, or other appropriate
 notations to describe the lines of authority, responsibility, and communication
-within the project.</font></font></i>
-<br><i><font color="#000080"><font size=+0>[It is NOT necessary to show
-the organization of the entire company, only this project].</font></font></i>
-<br><i><font color="#000080"><font size=+0>[This section lists project
+within the project.</i>
+<br><i>[It is NOT necessary to show
+the organization of the entire company, only this project].</i>
+<br><i>[This section lists project
 roles or jobs, but does not mention who is assigned to them.&nbsp; Actual
-personnel assignments are shown in section 3.5].</font></font></i>
-<br><i><font color="#000080"><font size=+0>[Refer to <a href="http://www.csc.calpoly.edu/~jdalbey/205/Mgmt/jobs.html">Job
-Descriptions</a>].</font></font></i>
+personnel assignments are shown in section 3.5].</i>
+<br><i>[Refer to <a href="http://www.csc.calpoly.edu/~jdalbey/205/Mgmt/jobs.html">Job
+Descriptions</a>].</i>
 <h3>
 2.3 Organizational Boundaries and Interfaces</h3>
-<i><font color="#000080"><font size=+0>Describe the relationships between
-the project and each of the following organizations:</font></font></i>
+<i>Describe the relationships between
+the project and each of the following organizations:</i>
 <ul>
 <li>
-<i><font color="#000080"><font size=+0>Parent organization (upper management)</font></font></i></li>
+<i>Parent organization (upper management)</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Customer organization (internal
-or external)</font></font></i></li>
+<i>Customer organization (internal
+or external)</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Subcontracting organization(s) (if
-any)</font></font></i></li>
+<i>Subcontracting organization(s) (if
+any)</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>QA organization, if separate</font></font></i></li>
+<i>QA organization, if separate</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Documentation organization, if separate</font></font></i></li>
+<i>Documentation organization, if separate</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>End-user support organization, if
-separate</font></font></i></li>
+<i>End-user support organization, if
+separate</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Any other organizations the project
-interacts with</font></font></i></li>
+<i>Any other organizations the project
+interacts with</i></li>
 </ul>
-<i><font color="#000080"><font size=+0>This list should include a description
+<i>This list should include a description
 of a specific person or project role that is responsible for maintaining
-the interface between the project and each of these other organizations.</font></font></i>
-<p><i><font color="#000080"><font size=+0>[In CPE 205 the two important
-interfaces are Analyst -> Customer and Team Leader -> Course Instructor].</font></font></i>
+the interface between the project and each of these other organizations.</i>
+<p><i>[In CPE 205 the two important
+interfaces are Analyst -> Customer and Team Leader -> Course Instructor].</i>
 <h3>
 2.4 Project Responsibilities</h3>
-<i><font color="#000080"><font size=+0>[Refer to <a href="http://www.csc.calpoly.edu/~jdalbey/205/Mgmt/jobs.html">Job
+<i>[Refer to <a href="http://www.csc.calpoly.edu/~jdalbey/205/Mgmt/jobs.html">Job
 Descriptions</a>]. Identify and describe each major project function and
 activity, and identify the person(s) responsible for each function and
 activity. If appropriate, you might use a table like the one below, otherwise
-just write a narrative description.</font></font></i>
-<br><i><font color="#000080"><font size=+0></font></font></i>&nbsp;
+just write a narrative description.</i>
+<br><i></i>&nbsp;
 <table BORDER CELLPADDING=2 >
 <tr>
-<td  BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>&nbsp;</font></font></b></td>
+<td  BGCOLOR="#FFFFFF"><b>&nbsp;</b></td>
 
-<td  BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Manager</font></font></b></td>
+<td  BGCOLOR="#FFFFFF"><b>Manager</b></td>
 
-<td  BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>QA</font></font></b></td>
+<td  BGCOLOR="#FFFFFF"><b>QA</b></td>
 
-<td  BGCOLOR="#FFFFFF"><b><font face="Arial"><font size=-2>Analyst</font></font></b></td>
+<td  BGCOLOR="#FFFFFF"><b>Analyst</b></td>
 
-<td BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-2>Designer</font></font></td>
+<td BGCOLOR="#FFFFFF">Designer</td>
 
-<td BGCOLOR="#FFFFFF"><font face="Arial,Helvetica"><font size=-2>User Interface</font></font></td>
+<td BGCOLOR="#FFFFFF">User Interface</td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>Liaison Responsibility</font></td>
+<td WIDTH="21%">Liaison Responsibility</td>
 
-<td WIDTH="20%"><font size=-1>VP Engineering&nbsp;</font></td>
+<td WIDTH="20%">VP Engineering&nbsp;</td>
 
-<td WIDTH="41%"><font size=-1>&nbsp;</font></td>
+<td WIDTH="41%">&nbsp;</td>
 
-<td WIDTH="18%"><font size=-1>Customer&nbsp;</font></td>
+<td WIDTH="18%">Customer&nbsp;</td>
 
-<td><font size=-1>Software engineering lab&nbsp;</font></td>
+<td>Software engineering lab&nbsp;</td>
 
-<td><font size=-1>&nbsp;</font></td>
+<td>&nbsp;</td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>Document Responsibility</font></td>
+<td WIDTH="21%">Document Responsibility</td>
 
-<td WIDTH="20%"><font size=-1>SPMP</font></td>
+<td WIDTH="20%">SPMP</td>
 
-<td WIDTH="41%"><font size=-1>SQAP</font></td>
+<td WIDTH="41%">SQAP</td>
 
-<td WIDTH="18%"><font size=-1>SRS</font></td>
+<td WIDTH="18%">SRS</td>
 
-<td><font size=-1>SDD</font></td>
+<td>SDD</td>
 
-<td><font size=-1>UI Prototype</font></td>
+<td>UI Prototype</td>
 </tr>
 
 <tr>
-<td WIDTH="21%"><font size=-1>Other Responsibilities</font></td>
+<td WIDTH="21%">Other Responsibilities</td>
 
-<td WIDTH="20%"><font size=-1>&nbsp;</font></td>
+<td WIDTH="20%">&nbsp;</td>
 
-<td WIDTH="41%"><font size=-1>FTR's</font></td>
+<td WIDTH="41%">FTR's</td>
 
-<td WIDTH="18%"><font size=-1>&nbsp;</font></td>
+<td WIDTH="18%">&nbsp;</td>
 
-<td><font size=-1>&nbsp;</font></td>
+<td>&nbsp;</td>
 
 <td>&nbsp;</td>
 </tr>
@@ -527,243 +525,243 @@ just write a narrative description.</font></font></i>
 
 <h2>
 3.0 Managerial Process</h2>
-<i><font color="#000080"><font size=+0>Describe management objectives,
+<i>Describe management objectives,
 priorities, project assumptions, dependencies, constraints, risk management
-techniques, monitoring and controlling mechanisms, and the staffing plan.</font></font></i>
-<p><i><font color="#000080"><font size=+0>No text is necessary between
-the heading above and the heading below unless otherwise desired.</font></font></i>
+techniques, monitoring and controlling mechanisms, and the staffing plan.</i>
+<p><i>No text is necessary between
+the heading above and the heading below unless otherwise desired.</i>
 <h3>
 3.1 Management Objectives and Priorities</h3>
-<i><font color="#000080"><font size=+0>Describe the philosophy, goals,
+<i>Describe the philosophy, goals,
 and priorities for management during the project. Consider including the
-following items:</font></font></i>
+following items:</i>
 <ul>
 <li>
-<i><font color="#000080"><font size=+0>relative priorities among functionality,
-schedule, budget [e.g., student hours worked], and quality.</font></font></i></li>
+<i>relative priorities among functionality,
+schedule, budget [e.g., student hours worked], and quality.</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>risk management procedures</font></font></i></li>
+<i>risk management procedures</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>approach to acquiring third party
-software</font></font></i></li>
+<i>approach to acquiring third party
+software</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>approach to modifying or using existing
-software</font></font></i></li>
+<i>approach to modifying or using existing
+software</i></li>
 </ul>
 
 <h3>
 3.2 Assumptions, Dependencies, and Constraints</h3>
-<i><font color="#000080"><font size=+0>Describe the assumptions upon which
+<i>Describe the assumptions upon which
 the project plans are based, the dependencies of the project plans, and
 the constraints upon the project plans (e.g., schedule, budget, quality,
-functionality, etc.)</font></font></i>
+functionality, etc.)</i>
 <h3>
 3.3 Risk Management</h3>
-<i><font color="#000080"><font size=+0>Describe how risks will be identified,
+<i>Describe how risks will be identified,
 tracked and monitored. Identify the risk manager and his/her duties. The
 actual risks themselves are contained in a separate document, the Risks
-List, that will be updated weekly. Place a link here to the Risks List.</font></font></i>
+List, that will be updated weekly. Place a link here to the Risks List.</i>
 <h3>
 3.4 Monitoring and Controlling Mechanisms</h3>
-<i><font color="#000080"><font size=+0>Describe how project cost, schedule,
+<i>Describe how project cost, schedule,
 quality, and functionality will be tracked throughout the project. Consider
-describing the following:</font></font></i>
+describing the following:</i>
 <ul>
 <li>
-<i><font color="#000080"><font size=+0>Status and Progress Report contents/formats</font></font></i></li>
+<i>Status and Progress Report contents/formats</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Reporting structure and frequency</font></font></i></li>
+<i>Reporting structure and frequency</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Meeting structure and frequency</font></font></i></li>
+<i>Meeting structure and frequency</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Audit mechanisms</font></font></i></li>
+<i>Audit mechanisms</i></li>
 </ul>
 
 <h3>
 3.5 Staffing Plan</h3>
-<i><font color="#000080"><font size=+0>Describe the numbers and types of
+<i>Describe the numbers and types of
 personnel needed to conduct the project. Describe the required skill levels,
 start times, duration on the project, method of obtaining the personnel,
 training required, and phasing out of project personnel. [Once staff have
-been hired, list their names and roles here.]</font></font></i>
+been hired, list their names and roles here.]</i>
 <h2>
 4.0 Technical Process</h2>
-<i><font color="#000080"><font size=+0>This section describes the top-level
+<i>This section describes the top-level
 technical processes used on the project including the technical methods,
 tools, and techniques; major software documents; and supporting activities
-such as configuration management and quality assurance.</font></font></i>
-<p><i><font color="#000080"><font size=+0>No text is necessary between
-the heading above and the heading below unless otherwise desired.</font></font></i>
+such as configuration management and quality assurance.</i>
+<p><i>No text is necessary between
+the heading above and the heading below unless otherwise desired.</i>
 <h3>
 4.1 Methods, Tools, and Techniques</h3>
-<i><font color="#000080"><font size=+0>Describe the following:</font></font></i>
+<i>Describe the following:</i>
 <ul>
 <li>
-<i><font color="#000080"><font size=+0>The computing system environment
-including hardware and operating system environment;</font></font></i></li>
+<i>The computing system environment
+including hardware and operating system environment;</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Software tools including design
+<i>Software tools including design
 tools, source code control, time accounting, compiler or IDE, debugging
-aids, defect tracking, and so on</font></font></i></li>
+aids, defect tracking, and so on</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Development methodologies including
+<i>Development methodologies including
 requirements development practices, design methodologies and notations,
 programming language, coding standards, documentation standards, system
 integration procedure, and so on (these will not all be defined when the
 first draft of the project plan is created; the section should be updated
-as the plans become more detailed)</font></font></i></li>
+as the plans become more detailed)</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Quality assurance practices including
+<i>Quality assurance practices including
 methods of technical peer review, unit testing, stepping through code in
-a debugger, system testing, automated regression tests, and so on</font></font></i></li>
+a debugger, system testing, automated regression tests, and so on</i></li>
 </ul>
 
 <h3>
 4.2 Software Documentation</h3>
-<i><font color="#000080"><font size=+0>List the documents that will be
+<i>List the documents that will be
 developed for the project, including milestones, reviews, and signoffs
 for each document. If they are described in sufficient detail elsewhere,
 that description can simply be referenced here. The documentation list
-might include the follow documents:</font></font></i>
+might include the follow documents:</i>
 <ul>
 <li>
-<i><font color="#000080"><font size=+0>Change Control Plan</font></font></i></li>
+<i>Change Control Plan</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Change Proposals</font></font></i></li>
+<i>Change Proposals</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Vision statement</font></font></i></li>
+<i>Vision statement</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Top 10 Risks List</font></font></i></li>
+<i>Top 10 Risks List</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Software Development Plan, including
-project cost and schedule estimates</font></font></i></li>
+<i>Software Development Plan, including
+project cost and schedule estimates</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>User Interface Style Guide</font></font></i></li>
+<i>User Interface Style Guide</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>User Manual/Requirements Specification</font></font></i></li>
+<i>User Manual/Requirements Specification</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Quality Assurance Plan</font></font></i></li>
+<i>Quality Assurance Plan</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Software Architecture</font></font></i></li>
+<i>Software Architecture</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Software Integration Procedure</font></font></i></li>
+<i>Software Integration Procedure</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Staged Delivery Plan</font></font></i></li>
+<i>Staged Delivery Plan</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Individual Stage Plans, including
-miniature milestone schedules</font></font></i></li>
+<i>Individual Stage Plans, including
+miniature milestone schedules</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Coding Standard</font></font></i></li>
+<i>Coding Standard</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Detailed Design Documents</font></font></i></li>
+<i>Detailed Design Documents</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Software Construction Plans</font></font></i></li>
+<i>Software Construction Plans</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Deployment Document (Cutover Handbook)</font></font></i></li>
+<i>Deployment Document (Cutover Handbook)</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Release Checklist</font></font></i></li>
+<i>Release Checklist</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Release Sign-Off Form</font></font></i></li>
+<i>Release Sign-Off Form</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Software Project Log</font></font></i></li>
+<i>Software Project Log</i></li>
 
 <li>
-<i><font color="#000080"><font size=+0>Software Project History Document</font></font></i></li>
+<i>Software Project History Document</i></li>
 </ul>
 
 <h3>
 4.3 Project Support Functions</h3>
-<i><font color="#000080"><font size=+0>Describe or give references to other
+<i>Describe or give references to other
 documents that describe the plans for functions that support the software
 development effort, including configuration management, quality assurance,
 and end user documentation. Whether included in this document or described
 elsewhere, the plans for these supporting functions should be developed
 in as much detail as the plans for the software itself are. (This includes
-responsibilities, resource requirements, schedule, budget, and so on.)</font></font></i>
+responsibilities, resource requirements, schedule, budget, and so on.)</i>
 <h2>
 5.0 Work Packages, Schedule, and Budget</h2>
-<i><font color="#000080"><font size=+0>No text is necessary between the
-heading above and the heading below unless otherwise desired.</font></font></i>
+<i>No text is necessary between the
+heading above and the heading below unless otherwise desired.</i>
 <h3>
 5.1 Work Packages</h3>
-<i><font color="#000080"><font size=+0>Describe the work package (i.e.,
+<i>Describe the work package (i.e.,
 task or collection of tasks) that must be completed to complete the software.
 Identify each work package with a unique number, and provide a diagram
-showing the breakdown of work packages into sub-packages.</font></font></i>
+showing the breakdown of work packages into sub-packages.</i>
 <h3>
 5.2 Dependencies</h3>
-<i><font color="#000080"><font size=+0>Describe the dependencies both among
-work packages and between the project�s work packages and external events.</font></font></i>
+<i>Describe the dependencies both among
+work packages and between the project�s work packages and external events.</i>
 <h3>
 5.3 Resource Requirements</h3>
-<i><font color="#000080"><font size=+0>Describe the resources required
+<i>Describe the resources required
 for the project week by week or month by month, depending on the length
 of the project. Describe the numbers and type of personnel that are used,
 number of computers and software used, office facilities used, training
-needed, budget used, and so on over the whole course of the project.</font></font></i>
+needed, budget used, and so on over the whole course of the project.</i>
 <h3>
 5.4 Budget and Resource Allocation</h3>
-<i><font color="#000080"><font size=+0>Describe the portion of the project�s
+<i>Describe the portion of the project�s
 budget allocated to different functions (e.g., engineering, quality assurance,
 documentation, management). Describe how the budget will be expended over
-the course of the project.</font></font></i>
+the course of the project.</i>
 <h3>
 5.5 Schedule</h3>
-<i><font color="#000080"><font size=+0>Describe the schedule for the various
+<i>Describe the schedule for the various
 project functions, activities, and tasks, taking into account the various
 dependencies and required milestone dates and deliverable dates. You can
 express schedules either as absolute calendar dates or as times relative
-to key project milestones (e.g., "requirements signed off + 60 days").</font></font></i>
-<p><i><font color="#000080"><font size=+0>[The schedule is updated frequently
+to key project milestones (e.g., "requirements signed off + 60 days").</i>
+<p><i>[The schedule is updated frequently
 and may be more appropriately maintained as a separate document, in which
-case include a link here. ]</font></font></i>
+case include a link here. ]</i>
 <h2>
 6.0 Additional Components</h2>
-<i><font color="#000080"><font size=+0>Include additional components needed
+<i>Include additional components needed
 to manage your specific project. Possibilities include subcontractor management
 plans, security plans, training plans, hardware procurement plans, facilities
-plans, installation plans, cutover plans, and software maintenance plans.</font></font></i>
+plans, installation plans, cutover plans, and software maintenance plans.</i>
 <h2>
 7.0 Index</h2>
-<i><font color="#000080"><font size=+0>The index is optional according
+<i>The index is optional according
 to the IEEE standard. If the document is made available in electronic form,
-readers can search for terms electronically.</font></font></i>
+readers can search for terms electronically.</i>
 <h2>
 8.0 Appendices</h2>
-<i><font color="#000080"><font size=+0>Include supporting detail that would
-be too distracting to include in the main body of the document.</font></font></i>
+<i>Include supporting detail that would
+be too distracting to include in the main body of the document.</i>
 <br>
 <hr>
-<p><font color="#000088"><font size=-1>This material is copied and/or adapted
+<p>This material is copied and/or adapted
 from the Survival Guide Website at <a href="http://www.construx.com/survivalguide/" target="_top">www.construx.com/survivalguide/</a>.
 This material is copyright &copy; 1993-1998 Steven C. McConnell. Permission
 is hereby given to copy, adapt, and distribute this material as long as
 this notice is included on all such materials and the materials are not
-sold, licensed, or otherwise distributed for commercial gain.</font></font>
+sold, licensed, or otherwise distributed for commercial gain.

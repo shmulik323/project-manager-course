@@ -7,16 +7,16 @@
           v-b-popover.hover.bottom="'Click me to edit your user name'"
           title="Edit User Name"
           v-on="on"
-        >User-Name : {{newuser}}</b-btn>
+        >User-Name : {{olduser}}</b-btn>
       </template>
       <v-card class="mx-auto" style="max-width: 500px;">
-        <v-system-bar color="deep-purple darken-4" dark>
+        <v-system-bar>
           <v-spacer></v-spacer>
           <v-icon small>mdi-square</v-icon>
           <v-icon class="ml-1" small>mdi-circle</v-icon>
           <v-icon class="ml-1" small>mdi-triangle</v-icon>
         </v-system-bar>
-        <v-toolbar color="deep-purple accent-4" cards dark flat>
+        <v-toolbar cards flat>
           <v-btn icon>
             <v-icon>mdi-arrow-left</v-icon>
           </v-btn>
@@ -66,7 +66,7 @@
             @click="submit"
             :disabled="!form"
             class="white--text"
-            color="deep-purple accent-4"
+            color="blue accent-4"
             depressed
           >Submit</v-btn>
           <v-btn flat @click="$refs.form.reset()">Clear</v-btn>
@@ -100,9 +100,8 @@ export default {
           old: this.olduser,
           new: this.newuser
         })
-        .then(res => {})
         .then(e => {
-          return this.$router.push("/profile");
+          this.dialog = !this.dialog;
         })
         .catch(e => {
           console.log(e);

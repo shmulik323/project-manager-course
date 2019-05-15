@@ -19,10 +19,10 @@
                   <DialogNameLast :name="name" :last="last"/>
                 </b-card-text>
                 <b-card-text>
-                  <DialogUsername :newuser="username" :olduser="username"/>
+                  <DialogUsername :olduser="username"/>
                 </b-card-text>
                 <b-card-text>
-                  <DialogEmail :oldemail="email" :newemail="email"/>
+                  <DialogEmail :oldemail="email"/>
                 </b-card-text>
                 <b-badge v-if="admin" variant="success">Admin</b-badge>
                 <b-badge v-if="premium" variant="warning">Premium</b-badge>
@@ -46,13 +46,14 @@
 import DialogNameLast from "~/components/dialog-name-last";
 import DialogUsername from "~/components/dialog-username";
 import DialogEmail from "~/components/dialog-email";
+
 export default {
   components: {
     DialogNameLast,
     DialogUsername,
     DialogEmail
   },
-  middleware: ["auth"],
+
   data() {
     return {
       name: null,
@@ -71,22 +72,24 @@ export default {
       return JSON.stringify(this.$auth.$state, undefined, 2);
     }
   },
-  created() {
+  async created() {
     let config = {
       // example url
       url: "api/uploader",
       method: "GET",
       responseType: "arraybuffer"
     };
-    this.$axios(config, { name: this.$auth.user.image_file }).then(response => {
-      var bytes = new Uint8Array(response.data);
-      var btoa = require("btoa");
-      var binary = bytes.reduce(
-        (data, b) => (data += String.fromCharCode(b)),
-        ""
-      );
-      this.src = "data:image/jpeg;base64," + btoa(binary);
-    });
+    await this.$axios(config, { name: this.$auth.user.image_file }).then(
+      response => {
+        var bytes = new Uint8Array(response.data);
+        var btoa = require("btoa");
+        var binary = bytes.reduce(
+          (data, b) => (data += String.fromCharCode(b)),
+          ""
+        );
+        this.src = "data:image/jpeg;base64," + btoa(binary);
+      }
+    );
     this.$auth.fetchUser();
     this.username = this.$auth.user.user;
     this.name = this.$auth.user.name;
@@ -94,6 +97,7 @@ export default {
     this.email = this.$auth.user.email;
     this.admin = this.$auth.user.admin;
     this.premium = this.$auth.user.premium;
-  }
+  },
+  mounted() {}
 };
 </script>

@@ -7,17 +7,17 @@
           v-b-popover.hover.bottom="'Click me to edit your email'"
           title="Edit Email"
           v-on="on"
-        >Email : {{newemail}}</b-btn>
+        >Email : {{oldemail}}</b-btn>
       </template>
 
       <v-card class="mx-auto" style="max-width: 500px;">
-        <v-system-bar color="deep-purple darken-4" dark>
+        <v-system-bar>
           <v-spacer></v-spacer>
           <v-icon small>mdi-square</v-icon>
           <v-icon class="ml-1" small>mdi-circle</v-icon>
           <v-icon class="ml-1" small>mdi-triangle</v-icon>
         </v-system-bar>
-        <v-toolbar color="deep-purple accent-4" cards dark flat>
+        <v-toolbar color="accent-4" cards flat>
           <v-btn icon>
             <v-icon>mdi-arrow-left</v-icon>
           </v-btn>
@@ -56,7 +56,7 @@
             @click="submit"
             :disabled="!form"
             class="white--text"
-            color="deep-purple accent-4"
+            color="blue accent-4"
             depressed
           >Submit</v-btn>
           <v-btn flat @click="$refs.form.reset()">Clear</v-btn>

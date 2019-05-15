@@ -1,6 +1,13 @@
 <template>
   <v-layout row justify-center>
     <v-dialog v-model="dialog" persistent max-width="600px">
+      <b-toast id="my-toast" variant="warning" solid>
+        <div slot="toast-title" class="d-flex flex-grow-1 align-items-baseline">
+          <b-img blank blank-color="#ff5555" class="mr-2" width="12" height="12"></b-img>
+          <strong class="mr-auto">Notice!</strong>
+        </div>This is the content of the toast.
+        It is short and to the point.
+      </b-toast>
       <template v-slot:activator="{ on }">
         <b-btn
           id="change_profile"
@@ -10,13 +17,13 @@
         >Welcome Back : {{name}} {{last}}</b-btn>
       </template>
       <v-card class="mx-auto" style="max-width: 500px;">
-        <v-system-bar color="deep-purple darken-4" dark>
+        <v-system-bar>
           <v-spacer></v-spacer>
           <v-icon small>mdi-square</v-icon>
           <v-icon class="ml-1" small>mdi-circle</v-icon>
           <v-icon class="ml-1" small>mdi-triangle</v-icon>
         </v-system-bar>
-        <v-toolbar color="deep-purple accent-4" cards dark flat>
+        <v-toolbar cards flat>
           <v-btn icon>
             <v-icon>mdi-arrow-left</v-icon>
           </v-btn>
@@ -80,6 +87,7 @@ export default {
     form: false,
     isLoading: false,
     password: null,
+    error: "",
     rules: {
       required: v => !!v || "This field is required"
     }
@@ -92,12 +100,14 @@ export default {
           last: this.last,
           email: this.$auth.user.email
         })
-        .then(res => {})
+
         .then(e => {
-          return this.$router.push("/profile");
+          this.dialog = !this.dialog;
         })
         .catch(e => {
-          console.log(e);
+          this.error = e;
+          this.dialog = !this.dialog;
+          this.$bvToast.show("my-toast");
         });
     }
   }
