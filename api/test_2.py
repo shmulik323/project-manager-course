@@ -91,14 +91,31 @@ class TestFileOptions(TestBase):
 
         self.driver.find_element_by_id("spmp").click()
         time.sleep(2)
-        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
-        time.sleep(1)
-        self.driver.find_element_by_id("download_pdf").click()
-        time.sleep(2)
 
         assert self.driver.find_element_by_id("spmp")
     
     def test_srs(self):
+        User.query.delete()
+        self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
+        db.session.add(self.user)
+        db.session.commit()
+        time.sleep(1)
+        self.driver.find_element_by_id("login_link").click()
+        time.sleep(3)
+
+        self.driver.find_element_by_id("email").send_keys(test_user_email)
+        self.driver.find_element_by_id("password").send_keys(test_user_password)
+        self.driver.find_element_by_id("login_click").click()
+        time.sleep(2)
+        self.driver.get('http://127.0.0.1:3000/create')
+        time.sleep(2)
+
+        self.driver.find_element_by_id("srs").click()
+        time.sleep(2)
+
+        assert self.driver.find_element_by_id("spmp")
+
+    def test_download(self):
         User.query.delete()
         self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
         db.session.add(self.user)
@@ -167,7 +184,9 @@ class TestFileOptions(TestBase):
         time.sleep(3) 
 
         self.driver.find_element_by_id("type").click()
-        time.sleep(2)
+        time.sleep(1)
+
+        assert self.driver.find_element_by_id("type")
 
     def test_search_date(self):
         User.query.delete()
@@ -189,6 +208,9 @@ class TestFileOptions(TestBase):
         time.sleep(3) 
 
         self.driver.find_element_by_id("date").click()
-        time.sleep(2)
+        time.sleep(1)
+
+        assert self.driver.find_element_by_id("date")
+
 if __name__ == '__main__':
     unittest.main()
