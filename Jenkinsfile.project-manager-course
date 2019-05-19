@@ -41,7 +41,7 @@ pipeline {
         }
         stage('Tests-2') {
             agent {
-                docker { image 'gnahckire/python-selenium-chromedriver' }
+                docker { image 'digitalgenius/ubuntu-node-chrome-selenium' }
             }
             steps {
               withEnv(["HOME=${env.WORKSPACE}"]) {
