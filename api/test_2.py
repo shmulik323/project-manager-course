@@ -66,12 +66,6 @@ class TestBase(TestCase):
     def tearDown(self):
         self.driver.quit()
 
-
-
-
-
-
-
 class TestFileOptions(TestBase):
     def test_spmp(self):
         User.query.delete()
