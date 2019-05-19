@@ -53,7 +53,7 @@ class TestBase(TestCase):
         cap["marionette"] = False
         #binary = FirefoxBinary('/Firefox/Path')
         #self.driver = webdriver.Firefox(firefox_binary=binary,capabilities=cap,executable_path=GeckoDriverManager().install())
-        self.driver = webdriver.Chrome(ChromeDriverManager().install())
+        self.driver = webdriver.Chrome(options=chromeOptions)
         self.driver.get('http://127.0.0.1:3000/')
         self.driver.maximize_window()
         db.session.commit()
