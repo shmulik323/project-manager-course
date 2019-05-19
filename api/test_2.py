@@ -47,8 +47,9 @@ class TestBase(TestCase):
 
     def setUp(self):
         chromeOptions = webdriver.ChromeOptions()
-        ChromeOptions options=new ChromeOptions();
+        ChromeOptions options=new ChromeOptions()
         chromeOptions.add_argument("--headless")
+        chromeOptions.add_argument( '--no-sandbox')
         chromeOptions.add_argument("--start-fullscreen")
         chromeOptions.add_argument('--disable-dev-shm-usage')
         options.setBinary('C:\Program Files (x86)\Google\Chrome\Application')
