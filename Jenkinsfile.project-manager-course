@@ -41,7 +41,11 @@ pipeline {
         }
         stage('Tests-2') {
             agent {
+<<<<<<< HEAD
                 docker { image 'joyzoursky/python-chromedriver:3.7-alpine3.8' }
+=======
+                docker { image 'digitalgenius/ubuntu-node-chrome-selenium' }
+>>>>>>> 11c61892401e8f53d6c13a63b3d1186e4901bb9d
             }
             steps {
               withEnv(["HOME=${env.WORKSPACE}"]) {
