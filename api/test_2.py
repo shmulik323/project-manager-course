@@ -53,7 +53,7 @@ class TestBase(TestCase):
         cap["marionette"] = False
         #binary = FirefoxBinary('/Firefox/Path')
         #self.driver = webdriver.Firefox(firefox_binary=binary,capabilities=cap,executable_path=GeckoDriverManager().install())
-        self.driver = webdriver.Chrome(options=chromeOptions)
+        self.driver = webdriver.Chrome()
         self.driver.get('http://127.0.0.1:3000/')
         self.driver.maximize_window()
         db.session.commit()
@@ -152,7 +152,7 @@ class TestFileOptions(TestBase):
         self.driver.find_element_by_id("start_search").click()
         time.sleep(3) 
 
-        assert self.driver.find_element_by_id("type") 
+        assert self.driver.find_element_by_id("sort_button") 
     
 
     def test_search_name(self):
@@ -176,10 +176,7 @@ class TestFileOptions(TestBase):
         self.driver.find_element_by_id("start_search").click()
         time.sleep(3) 
 
-        self.driver.find_element_by_id("type").click()
-        time.sleep(1)
-
-        assert self.driver.find_element_by_id("type")
+        assert self.driver.find_element_by_id("sort_button")
 
     def test_search_date(self):
         User.query.delete()
@@ -198,12 +195,9 @@ class TestFileOptions(TestBase):
         time.sleep(2)  
 
         self.driver.find_element_by_id("start_search").click()
-        time.sleep(3) 
+        time.sleep(3)
 
-        self.driver.find_element_by_id("date").click()
-        time.sleep(1)
-
-        assert self.driver.find_element_by_id("date")
+        assert self.driver.find_element_by_id("sort_button")
 
 if __name__ == '__main__':
     unittest.main()

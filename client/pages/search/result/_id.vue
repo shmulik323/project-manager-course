@@ -89,6 +89,7 @@
             class="mr-1"
           >Info modal</b-button>
           <b-button
+            id="sort_button"
             size="sm"
             @click="row.toggleDetails"
           >{{ row.detailsShowing ? 'Hide' : 'Show' }} Details</b-button>
