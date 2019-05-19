@@ -49,11 +49,9 @@ class TestBase(TestCase):
         chromeOptions = webdriver.ChromeOptions()
         chromeOptions.add_argument("--headless")
         chromeOptions.add_argument("--start-fullscreen")
-        cap = DesiredCapabilities().FIREFOX
-        cap["marionette"] = False
-        #binary = FirefoxBinary('/Firefox/Path')
-        #self.driver = webdriver.Firefox(firefox_binary=binary,capabilities=cap,executable_path=GeckoDriverManager().install())
-        self.driver = webdriver.Chrome()
+        chromeOptions.add_argument('--disable-dev-shm-usage')
+        
+        self.driver = webdriver.Chrome(chrome_options=chromeOptions)
         self.driver.get('http://127.0.0.1:3000/')
         self.driver.maximize_window()
         db.session.commit()
