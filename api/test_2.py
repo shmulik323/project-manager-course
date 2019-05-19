@@ -2,8 +2,6 @@ import os
 import tempfile
 import unittest
 import urllib
-from flask_testing import TestCase
-from flask_testing import LiveServerTestCase
 from selenium import webdriver
 from api.application import create_app
 from api.models import User, PremiumUser, db
@@ -13,6 +11,7 @@ from flask import Flask, jsonify,Blueprint,abort, url_for
 from flask_mail import Mail, Message
 from flask_cors import CORS
 from multiprocessing.pool import ThreadPool
+from flask_testing import TestCase
 import random, time, queue
 import multiprocessing
 from webdriver_manager.chrome import ChromeDriverManager
