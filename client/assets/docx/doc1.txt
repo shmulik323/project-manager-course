@@ -1,767 +1,1218 @@
-
-
-<br>
-<hr>
-<h2>
-Software Project Management Plan (SPMP) template</h2>
-<a href="#TopLevelContents">Outline</a>
-<p><a href="#DetailedContents">Detailed Contents</a>
-<br>
-<hr>
-<h2>
-<a NAME="TopLevelContents"></a>Outline</h2>
-Revision Chart
-<br>Preface
-<br>Contents
-<p><b>1. Introduction</b>
-<blockquote>1.1 Project Overview
-<br>1.2 Project Deliverables
-<br>1.3 Evolution of the Software Project Management Plan
-<br>1.4 Reference Materials
-<br>1.5 Definitions and Acronyms</blockquote>
-<b>2. Project Organization</b>
-<blockquote>2.1 Process Model
-<br>2.2 Organizational Structure
-<br>2.3 Organizational Boundaries and Interfaces
-<br>2.4 Project Responsibilities</blockquote>
-<b>3. Managerial Process</b>
-<blockquote>3.1 Management Objectives and Priorities
-<br>3.2 Assumptions, Dependencies, and Constraints
-<br>3.3 Risk Management
-<br>3.4 Monitoring and Controlling Mechanisms
-<br>3.5 Staffing Plan</blockquote>
-<b>4. Technical Process</b>
-<blockquote>4.1 Methods, Tools, and Techniques
-<br>4.2 Software Documentation
-<br>4.3 Project Support Functions</blockquote>
-<b>5. Work Packages, Schedule, and Budget</b>
-<blockquote>5.1 Work Packages
-<br>5.2 Dependencies
-<br>5.3 Resource Requirements
-<br>5.4 Budget and Resource Allocation
-<br>5.5 Schedule</blockquote>
-<b>6. Additional Components</b>
-<p><b>7. Index</b>
-<p><b>8. Appendices</b>
-<br>
-<hr>
-<h2>
-<a NAME="DetailedContents"></a>Detailed Contents</h2>
-
-<hr>
-<h3>
-Revision Chart</h3>
-<i>=This chart contains a history of
-this document�s revisions. The entries below are provided solely for purposes
-of illustration. Entries should be deleted until the revision they refer
-to has actually been created.</i>
-<p><i>The document itself should be
-stored in revision control, and a brief description of each version should
-be entered in the revision control system. That brief description can be
-repeated in this section. Revisions do not need to be described elsewhere
-in the document except inasmuch as they explain the development plan itself.</i>
-<br>&nbsp;
-<br>&nbsp;
-<table BORDER CELLPADDING=2 >
-<tr>
-<td WIDTH="21%" BGCOLOR="#FFFFFF"><b>Version</b></td>
-
-<td WIDTH="20%" BGCOLOR="#FFFFFF"><b>Primary
-Author(s)</b></td>
-
-<td WIDTH="41%" BGCOLOR="#FFFFFF"><b>Description
-of Version</b></td>
-
-<td WIDTH="18%" BGCOLOR="#FFFFFF"><b>Date
-Completed</b></td>
+<p align="center"><br /><br /></p>
+<p align="center"><span style="font-size: large;"><strong>project management plan</strong></span></p>
+<p align="center"><span style="font-size: large;"><strong>for the</strong></span></p>
+<p align="center"><span style="font-size: large;"><strong>[[project Name]] </strong></span></p>
+<p align="center"><span style="font-size: large;"><strong>[[document configuration identifier]]</strong></span></p>
+<p align="center"><span style="font-size: large;"><strong>[[DATE]]</strong></span></p>
+<p class="western" align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p align="center"><br /><br /></p>
+<p class="western" align="center"><span style="font-size: large;"><em><strong>Place project logo here</strong></em></span></p>
+<p class="western" align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p class="western">Team Name:</p>
+<p class="western">Team Member 1:</p>
+<p class="western">Team Member 2:</p>
+<p class="western">Team Member 3:</p>
+<p class="western">Team Member 4:</p>
+<p class="western">Team Member 5:</p>
+<p class="western"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p align="center"><span style="font-size: medium;"><strong>[[Project Name, Code]]</strong></span></p>
+<p align="center"><br /><br /></p>
+<p align="center"><br /><br /></p>
+<p align="center"><span style="font-size: medium;"><strong>Preface</strong></span></p>
+<p class="western">This Project Management Plan (PMP) is intended to provide guidance on the management of the [[Project Name]].</p>
+<p class="western">The template conforms to the Institute of Electrical and Electronics Engineers (IEEE) Standard for Software Project Management Plans, IEEE Std 1058-1998, for format and content. The template and its standard were selected as they are flexible enough to be applied to any type of project. The management, technical, and supporting processes comply with the guidance provided by Standard for Information Technology - Software Life Cycle Processes, IEEE/Electronic Industries Association (EIA) 12207 Series; Systems Engineering &ndash; System Life Cycle Processes, International Organization for Standardization (ISO)/International Electrotechnical Commission (IEC) 15288; or the Processes for Engineering a System, Electronic Industries Alliance (EIA) Standard 632.</p>
+<p align="center"><span style="font-size: medium;"><strong>DOCUMENT CONVENTIONS</strong></span></p>
+<p class="western">The outline of this Project Management Plan (PMP) has been tailored from the Institute of Electrical and Electronics Engineers (IEEE) Standard for Software Project Management Plans, IEEE Std 1058-1998.</p>
+<p>Standard conventions are used within this document to direct the reader to specific sections of the text. These sections provide instructions and explanations and require users to insert their own project-specific information. The conventions used in this document are shown below.</p>
+<p>[[text]] Global changes. Items that appear in regular text and are surrounded by double brackets represent changes that can be made globally throughout the document.</p>
+<p><em>Italics</em> Instructions and explanations. Each section of the template has been annotated with a guidance box, derived from the IEEE 1058-1998 standard, to assist the reader in drafting the content. For example:</p>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance </strong></em></p>
+<p>The guidance box provides instructions and explanations from the IEEE 1058-1998 Standard, in italics, as required to assist the user in drafting their own information.</p>
+<p class="western">Guidance boxes should be deleted from the final PMP.</p>
+<p class="western">RECORD OF CHANGES</p>
+<p class="western" align="right">*A - ADDED M - MODIFIED D &ndash; DELETED</p>
+<table width="636" cellspacing="0" cellpadding="5"><colgroup><col width="72" /> <col width="62" /> <col width="123" /> <col width="34" /> <col width="191" /> <col width="91" /> </colgroup>
+<tbody>
+<tr valign="top">
+<td width="72">
+<p class="western" align="center"><span style="font-size: small;">VERSION NUMBER</span></p>
+</td>
+<td width="62">
+<p class="western" align="center"><span style="font-size: small;">DATE</span></p>
+</td>
+<td width="123">
+<p class="western" align="center"><span style="font-size: small;">NUMBER OF FIGURE, TABLE OR PARAGRAPH</span></p>
+</td>
+<td width="34">
+<p class="western" align="center"><span style="font-size: small;"><strong>A*<br />M<br />D</strong></span></p>
+</td>
+<td width="191">
+<p class="western"><span style="font-size: small;">TITLE OR BRIEF DESCRIPTION</span></p>
+</td>
+<td width="91">
+<p class="western" align="center"><span style="font-size: small;">CHANGE<br />REQUEST<br />NUMBER</span></p>
+</td>
 </tr>
-
-<tr>
-<td WIDTH="21%">Draft</td>
-
-<td WIDTH="20%">TBD</td>
-
-<td WIDTH="41%">Initial draft created for distribution and
-review comments</td>
-
-<td WIDTH="18%">TBD</td>
+</tbody>
+<tbody>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p>&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
 </tr>
-
-<tr>
-<td WIDTH="21%">Preliminary</td>
-
-<td WIDTH="20%">TBD</td>
-
-<td WIDTH="41%">Second draft incorporating initial review
-comments, distributed for final review</td>
-
-<td WIDTH="18%">TBD</td>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
 </tr>
-
-<tr>
-<td WIDTH="21%">Final</td>
-
-<td WIDTH="20%">TBD</td>
-
-<td WIDTH="41%">First complete draft, which is placed under
-change control</td>
-
-<td WIDTH="18%">TBD</td>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
 </tr>
-
-<tr>
-<td WIDTH="21%">Revision 1</td>
-
-<td WIDTH="20%">TBD</td>
-
-<td WIDTH="41%">Revised draft, revised according to the change
-control process and maintained under change control</td>
-
-<td WIDTH="18%">TBD</td>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
 </tr>
-
-<tr>
-<td WIDTH="21%">Revision 2</td>
-
-<td WIDTH="20%">TBD</td>
-
-<td WIDTH="41%">Revised draft, revised according to the change
-control process and maintained under change control</td>
-
-<td WIDTH="18%">TBD</td>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
 </tr>
-
-<tr>
-<td WIDTH="21%">etc.</td>
-
-<td WIDTH="20%">TBD</td>
-
-<td WIDTH="41%">TBD</td>
-
-<td WIDTH="18%">TBD</td>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
 </tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr valign="top">
+<td width="72">
+<p class="western">&nbsp;</p>
+</td>
+<td width="62">
+<p class="western">&nbsp;</p>
+</td>
+<td width="123">
+<p class="western">&nbsp;</p>
+</td>
+<td width="34">
+<p class="western">&nbsp;</p>
+</td>
+<td width="191">
+<p class="western">&nbsp;</p>
+</td>
+<td width="91">
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+</tbody>
 </table>
-
-<h3>
-Preface</h3>
-<i>The preface contains an introduction
-to the document. It is optional and can be deleted if desired.</i>
-<h3>
-Contents</h3>
-<i>List the document contents by page
-number.</i>
-<h3>
-List of Figures</h3>
-<i>List the figures in the document
-by page number.</i>
-<h2>
-1.0 Introduction</h2>
-<i>This section should describe the
-project and the software product being to be built. No text is necessary
-between the heading above and the heading below unless otherwise desired.</i>
-<h3>
-1.1 Project Overview</h3>
-<i>Give a short summary of the project
-objectives, the software to be delivered, major activities, major deliverables,
-major milestones, required resources, and top-level schedule and budget.
-Describe the relationship of this project to other projects, if appropriate.</i>
-<h3>
-1.2 Project Deliverables</h3>
-<i>List all of the major items to be
-delivered to the customer (external customer, in-house user, etc.).</i>
-<p><i>List the deliverables, delivery
-dates, delivery locations, delivery method (email, FTP, CD, etc.), and
-quantities necessary to satisfy the project�s requirements.</i>
-<p><i>[Refer to course syllabus].</i>
-<h3>
-1.3 Evolution of the Software Project Management Plan</h3>
-<i>Describe how you expect this document
-to evolve over time. This section should be very similar to the "Revision
-Chart" earlier in the document. The revision chart should list what has
-already been done to this document. This section should list what is expected
-to be done to this document.</i>
-<p><i>This chart contains a plan for
-the document�s revisions. The entries below are provided for purposes of
-illustration. The progression from "Draft" to "Preliminary" to "Final"
-and then through a section of "Revisions" is one typical approach.</i>
-<br>&nbsp;
-<br>&nbsp;
-<table BORDER CELLPADDING=2 >
-<tr>
-<td WIDTH="21%" BGCOLOR="#FFFFFF"><b>Version</b></td>
-
-<td WIDTH="19%" BGCOLOR="#FFFFFF"><b>Primary
-Author(s)</b></td>
-
-<td WIDTH="42%" BGCOLOR="#FFFFFF"><b>Description
-of Version</b></td>
-
-<td WIDTH="18%" BGCOLOR="#FFFFFF"><b>Date
-Expected</b></td>
+<p align="center"><br /><br /></p>
+<p align="center"><span style="font-size: medium;"><strong>Table of Contents</strong></span></p>
+<p align="left"><strong>Section Page</strong></p>
+<div id="Table of Contents1" dir="ltr">
+<p><a href="#__RefHeading___Toc257388665"><span lang="en-US">SECTION 1. OVERVIEW 1</span></a></p>
+<p><a href="#__RefHeading___Toc257388666"><span lang="en-US">1.1</span> <span lang="en-US">Project Summary 1</span></a></p>
+<p><a href="#__RefHeading___Toc257388667"><span lang="en-US">1.1.1</span> <span lang="en-US">Purpose, Scope, and Objectives 1</span></a></p>
+<p><a href="#__RefHeading___Toc257388668"><span lang="en-US">1.1.2</span> <span lang="en-US">Assumptions and Constraints 1</span></a></p>
+<p><a href="#__RefHeading___Toc257388669"><span lang="en-US">1.1.3</span> <span lang="en-US">Project Deliverables 1</span></a></p>
+<p><a href="#__RefHeading___Toc257388670"><span lang="en-US">1.1.4</span> <span lang="en-US">Master Schedule and Budget Summary 1</span></a></p>
+<p><a href="#__RefHeading___Toc257388671"><span lang="en-US">1.2</span> <span lang="en-US">Evolution of the Plan 2</span></a></p>
+<p><a href="#__RefHeading___Toc257388672"><span lang="en-US">1.3</span> <span lang="en-US">Document Structure 2</span></a></p>
+<p><a href="#__RefHeading___Toc257388673"><span lang="en-US">SECTION 2. REFERENCES 4</span></a></p>
+<p><a href="#__RefHeading___Toc257388674"><span lang="en-US">2.1</span> <span lang="en-US">Standards and Documents 4</span></a></p>
+<p><a href="#__RefHeading___Toc257388675"><span lang="en-US">SECTION 3. DEFINITIONS 5</span></a></p>
+<p><a href="#__RefHeading___Toc257388676"><span lang="en-US">SECTION 4. PROJECT ORGANIZATION 6</span></a></p>
+<p><a href="#__RefHeading___Toc257388677"><span lang="en-US">4.1</span> <span lang="en-US">External Interfaces 6</span></a></p>
+<p><a href="#__RefHeading___Toc257388678"><span lang="en-US">4.2</span> <span lang="en-US">Internal Structure 6</span></a></p>
+<p><a href="#__RefHeading___Toc257388679"><span lang="en-US">4.2.1</span> <span lang="en-US">The Project Manager 6</span></a></p>
+<p><a href="#__RefHeading___Toc257388680"><span lang="en-US">4.3</span> <span lang="en-US">Project Roles and Responsibilities 6</span></a></p>
+<p><a href="#__RefHeading___Toc257388681"><span lang="en-US">SECTION 5. MANAGEment PROCESS 7</span></a></p>
+<p><a href="#__RefHeading___Toc257388682"><span lang="en-US">5.1</span> <span lang="en-US">Start-up 7</span></a></p>
+<p><a href="#__RefHeading___Toc257388683"><span lang="en-US">5.1.1</span> <span lang="en-US">Estimation 7</span></a></p>
+<p><a href="#__RefHeading___Toc257388684"><span lang="en-US">5.1.2</span> <span lang="en-US">Staffing 7</span></a></p>
+<p><a href="#__RefHeading___Toc257388685"><span lang="en-US">5.1.3</span> <span lang="en-US">Resource Acquisition 7</span></a></p>
+<p><a href="#__RefHeading___Toc257388686"><span lang="en-US">5.1.4</span> <span lang="en-US">Staff Training 8</span></a></p>
+<p><a href="#__RefHeading___Toc257388687"><span lang="en-US">5.2</span> <span lang="en-US">Work Planning 8</span></a></p>
+<p><a href="#__RefHeading___Toc257388688"><span lang="en-US">5.2.1</span> <span lang="en-US">Work Activities 8</span></a></p>
+<p><a href="#__RefHeading___Toc257388689"><span lang="en-US">5.2.2</span> <span lang="en-US">Schedule Allocation 8</span></a></p>
+<p><a href="#__RefHeading___Toc257388690"><span lang="en-US">5.2.3</span> <span lang="en-US">Resource Allocation 9</span></a></p>
+<p><a href="#__RefHeading___Toc257388691"><span lang="en-US">5.2.4</span> <span lang="en-US">Budget Allocation 9</span></a></p>
+<p><a href="#__RefHeading___Toc257388692"><span lang="en-US">5.3</span> <span lang="en-US">Project Controls 9</span></a></p>
+<p><a href="#__RefHeading___Toc257388693"><span lang="en-US">5.3.1</span> <span lang="en-US">Requirements Control 9</span></a></p>
+<p><a href="#__RefHeading___Toc257388694"><span lang="en-US">5.3.2</span> <span lang="en-US">Schedule Control 10</span></a></p>
+<p><a href="#__RefHeading___Toc257388695"><span lang="en-US">5.3.3</span> <span lang="en-US">Budget Control 10</span></a></p>
+<p><a href="#__RefHeading___Toc257388696"><span lang="en-US">5.3.4</span> <span lang="en-US">Quality Control 11</span></a></p>
+<p><a href="#__RefHeading___Toc257388697"><span lang="en-US">5.3.5</span> <span lang="en-US">Project Reporting and Communication 11</span></a></p>
+<p><a href="#__RefHeading___Toc257388698"><span lang="en-US">5.3.6</span> <span lang="en-US">Metrics Collection 11</span></a></p>
+<p><a href="#__RefHeading___Toc257388699"><span lang="en-US">5.4</span> <span lang="en-US">Risk Management 12</span></a></p>
+<p><a href="#__RefHeading___Toc257388700"><span lang="en-US">5.5</span> <span lang="en-US">Project Closeout 12</span></a></p>
+<p><a href="#__RefHeading___Toc257388701"><span lang="en-US">SECTION 6. TECHNICAL PROCESS 13</span></a></p>
+<p><a href="#__RefHeading___Toc257388702"><span lang="en-US">6.1</span> <span lang="en-US">Process Model 13</span></a></p>
+<p><a href="#__RefHeading___Toc257388703"><span lang="en-US">6.2</span> <span lang="en-US">Methods, Tools and Techniques 13</span></a></p>
+<p><a href="#__RefHeading___Toc257388704"><span lang="en-US">6.3</span> <span lang="en-US">Project Infrastructure 13</span></a></p>
+<p><a href="#__RefHeading___Toc257388705"><span lang="en-US">6.4</span> <span lang="en-US">Product Acceptance 13</span></a></p>
+<p><a href="#__RefHeading___Toc257388706"><span lang="en-US">SECTION 7. SUPPORTING PROCESSES 15</span></a></p>
+<p><a href="#__RefHeading___Toc257388707"><span lang="en-US">7.1</span> <span lang="en-US">Configuration Management 15</span></a></p>
+<p><a href="#__RefHeading___Toc257388708"><span lang="en-US">7.2</span> <span lang="en-US">Independent Verification and Validation 15</span></a></p>
+<p><a href="#__RefHeading___Toc257388709"><span lang="en-US">7.3</span> <span lang="en-US">Documentation 15</span></a></p>
+<p><a href="#__RefHeading___Toc257388710"><span lang="en-US">7.4</span> <span lang="en-US">Quality Assurance 16</span></a></p>
+<p><a href="#__RefHeading___Toc257388711"><span lang="en-US">7.5</span> <span lang="en-US">Reviews and Audits 16</span></a></p>
+<p><a href="#__RefHeading___Toc257388712"><span lang="en-US">7.6</span> <span lang="en-US">Problem Resolution 16</span></a></p>
+<p><a href="#__RefHeading___Toc257388713"><span lang="en-US">7.7</span> <span lang="en-US">Contractor Management 16</span></a></p>
+<p><a href="#__RefHeading___Toc257388714"><span lang="en-US">7.7.1</span> <span lang="en-US">Contracting Process 17</span></a></p>
+<p><a href="#__RefHeading___Toc257388715"><span lang="en-US">7.7.2</span> <span lang="en-US">Contractor Performance Monitoring 17</span></a></p>
+<p><a href="#__RefHeading___Toc257388716"><span lang="en-US">7.8</span> <span lang="en-US">Process Improvement 17</span></a></p>
+<p><a href="#__RefHeading___Toc257388717"><span lang="en-US">7.8.1</span> <span lang="en-US">Systems/Software Process Improvement Lead 17</span></a></p>
+<p><a href="#__RefHeading___Toc257388718"><span lang="en-US">7.8.2</span> <span lang="en-US">Systems Engineering Process Group 17</span></a></p>
+<p><a href="#__RefHeading___Toc257388719"><span lang="en-US">SECTION 8. Additional Plans 18</span></a></p>
+<p><a href="#__RefHeading___Toc257388720"><span lang="en-US">Appendix A. [[Project Name]]</span> <span lang="en-US">Master Schedule (Microsoft Project) 2</span></a></p>
+<p><a href="#__RefHeading___Toc257388721"><span lang="en-US">Appendix B. [[Project Name]]</span> <span lang="en-US">Facilities Plan 3</span></a></p>
+<p><a href="#__RefHeading___Toc257388722"><span lang="en-US">Appendix C. [[Project Name]]</span> <span lang="en-US">Project Training Plan 4</span></a></p>
+<p><a href="#__RefHeading___Toc257388723"><span lang="en-US">Appendix D. [[Project Name]] Measurement Plan 5</span></a></p>
+<p><a href="#__RefHeading___Toc257388724"><span lang="en-US">Appendix E. [[Project Name]] Product Engineering and Qualification Process 6</span></a></p>
+<p><a href="#__RefHeading___Toc257388725"><span lang="en-US">Appendix F. [[Project Name]]</span> <span lang="en-US">Quality Assurance Plan 7</span></a></p>
+<p><a href="#__RefHeading___Toc257388726"><span lang="en-US">Appendix G. [[Project Name]]</span> <span lang="en-US">Configuration Management Plan 8</span></a></p>
+</div>
+<p class="western" lang="sv-SE"><br /><br /></p>
+<p align="center"><span style="font-size: medium;"><strong>List of Figures</strong></span></p>
+<p align="left"><strong>Figure Page</strong></p>
+<p class="western" align="center"><br /><br /></p>
+<p align="center"><span style="font-size: medium;"><strong>List of Tables</strong></span></p>
+<p align="left"><strong>Table Page</strong></p>
+<div id="Table of Contents1" dir="ltr">
+<p><a href="#__RefHeading___Toc115065445"><span lang="en-US">Table 7-1. [[Project Name]] Documentation</span><span lang="en-US"> 16</span></a></p>
+</div>
+<p lang="en-US" align="center"><br /><br /></p>
+<p class="western" align="center"><br /><br /></p>
+<p><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388665"></a> SECTION 1. OVERVIEW</h1>
+<h2 class="western"><a name="__RefHeading___Toc257388666"></a>1.1 Project Summary</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western">The IEEE Std 1058-1998 provides no specific guidance on Project Summary (Subclause1.1). This section may be tailored as needed to provide additional subsections in which a project may be more fully described. For example, 1.1 Project Summary, 1.1.1 System Overview, 1.1.2 Purpose, Scope, and Objectives, etc.</p>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388667"></a>1.1.1 Purpose, Scope, and Objectives</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 1.1.1) Purpose, scope, and objectives </strong></em></p>
+<p>This subclause shall define the purpose, scope, and objectives of the project. This shall include a brief statement of the business or system needs to be satisfied by the project, with a concise summary of the project objectives, the products to be delivered to satisfy those objectives, and the methods by which satisfaction will be determined. The project statement of purpose shall describe the relationship of this project to other projects, and, as appropriate, how this project will be integrated with other projects or ongoing work processes.</p>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388668"></a>1.1.2 Assumptions and Constraints</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 1.1.2) Assumptions and constraints </strong></em></p>
+<p>This subclause shall describe the assumptions on which the project is based and imposed constraints on project factors such as the schedule, budget, resources, components to be reused, acquirer components to be incorporated, technology to be employed, and product interfaces to other products.</p>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388669"></a>1.1.3 Project Deliverables</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 1.1.3) Project deliverables </strong></em></p>
+<p>This subclause shall list the work products that will be delivered to the acquirer, the delivery dates, delivery locations, and quantities required to satisfy the terms of the project agreement. In addition, this subclause shall specify the delivery media and any special instructions for packaging and handling. The list of project deliverables may be incorporated into the document directly or by reference to an external document such as a Contract Data Requirements List (CDRL) or a Product Parts List (PPL).</p>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388670"></a>1.1.4 Master Schedule and Budget Summary</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 1.1.4) Schedule and budget summary </strong></em></p>
+<p>This subclause shall provide a summary of the schedule and budget for the project. The level of detail should be restricted to an itemization of the major work activities and supporting processes as, for example, those depicted by the top level of the work breakdown structure.</p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388671"></a>1.2 Evolution of the Plan</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 1.2) Evolution of the Plan</strong></em></p>
+<p>This subclause shall specify the plans for producing both scheduled and unscheduled updates to this planning document. Methods of disseminating the updates shall be specified. This subclause shall also specify the mechanisms used to place the initial version under configuration management and to control subsequent changes to the planning document.</p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388672"></a>1.3 Document Structure</h2>
+<p class="western"><em><strong>General Guidance</strong></em></p>
+<p class="western">This section has been added to the template to help provide the reader of the final planning document an understanding of the structure and content of the document without having to reference the IEEE Std 1058-1998.</p>
+<p class="western">This plan is organized as follows:</p>
+<ol type="a">
+<li>
+<p>Section 1, Project Overview. This section provides an overview of the scope and objectives of the project, the project&rsquo;s assumptions and constraints, reference to the project deliverables, schedule and budget, and a description of the evolution of the plan.</p>
+</li>
+<li>
+<p>Section 2, References. This section provides a list of all documents, policies, templates, processes, and other sources of information referenced in the plan.</p>
+</li>
+<li>
+<p>Section 3, Definitions. This section contains the abbreviations and acronyms required to properly understand this planning document.</p>
+</li>
+<li>
+<p>Section 4, Project Organization. This section identifies interfaces to organizational entities external to the project, the project&rsquo;s internal organizational structure, and defines roles and responsibilities for the project.</p>
+</li>
+<li>
+<p>Section 5, Management Process. This section describes the planning, measurement, tracking, reporting, risk control mechanisms needed to provide management control over the technical processes and product quality, and appropriate project initiation and closeout procedures.</p>
+</li>
+<li>
+<p>Section 6, Technical Process. This section describes the technical solution in terms of a process model and implementation methods, tools, and techniques to be used to develop the various work products, plans for establishing and maintaining the project infrastructure, and the product acceptance.</p>
+</li>
+<li>
+<p>Section 7, Supporting Processes. This section describes processes that are employed to facilitate and control the technical processes and the state of the product. These include, but are not limited to, configuration management, verification and validation, documentation, quality assurance, reviews and audits, problem resolution, and contractor management, and methods to ensure continuous process improvement.</p>
+</li>
+<li>
+<p>Section 8, Additional Plans. This section addresses the logistic support strategy to be applied to increase the system&rsquo;s operational effectiveness.</p>
+</li>
+<li>
+<p>Appendix A. [[Project Name]] Master Schedule (Microsoft Project)</p>
+</li>
+<li>
+<p>Appendix B. [[Project Name]] Facilities Plan</p>
+</li>
+<li>
+<p>Appendix C. [[Project Name]] Project Training Plan</p>
+</li>
+<li>
+<p>Appendix D. [[Project Name]] Measurement Plan</p>
+</li>
+<li>
+<p>Appendix E. [[Project Name]] Product Engineering and Qualification Process</p>
+</li>
+<li>
+<p>Appendix F. [[Project Name]] Quality Assurance Plan</p>
+</li>
+<li>
+<p>Appendix G. [[Project Name]] Configuration Management Plan</p>
+</li>
+</ol>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388673"></a> SECTION 2. REFERENCES</h1>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Clause 2) References </strong></em></p>
+<p class="western"><em>This clause shall provide a complete list of all documents and other sources of information referenced in the document. Each document should be identified by title, report number, date, author, path/name for electronic access, and publishing organization. Other sources of information, such as electronic files, shall be identified using unique identifiers such as date and version number. Any deviations from referenced standards or policies shall be identified and justifications shall be provided.</em></p>
+<h2 class="western"><a name="__RefHeading___Toc257388674"></a>2.1 Standards and Documents</h2>
+<p class="western">The standards and documents listed below are referenced in this document:</p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388675"></a> SECTION 3. DEFINITIONS</h1>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Clause 3) Definitions</strong></em></p>
+<p>This clause shall define, or provide references to, documents containing the definition of all terms and acronyms required to properly understand this planning document.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388676"></a> SECTION 4. PROJECT ORGANIZATION</h1>
+<p class="western" align="center"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388677"></a>4.1 External Interfaces</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 4.1) External interfaces </strong></em></p>
+<p>This subclause shall describe the organizational boundaries between the project and external entities. This should include, but is not limited to, the following: the parent organization, the acquiring organization, subcontracted organizations, and other organizational entities that interact with the project. Representations such as organizational charts and diagrams may be used to depict the project&rsquo;s external interfaces.</p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388678"></a>4.2 Internal Structure</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 4.2) Internal structure</strong></em></p>
+<p>This subclause shall describe the internal structure of the project organization to include the interfaces among the units of the development team. In addition, the organizational interfaces between the project and organizational entities that provide supporting processes, such as configuration management, quality assurance, and verification and validation, shall be specified in this subclause. Graphical devices such as organizational charts or diagrams should be used to depict the lines of authority, responsibility, and communication within the project.</p>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388679"></a>4.2.1 The Project Manager</h3>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>4.2.1.1 Scope of Authority</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>4.2.1.2 Scope of Responsibility</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>4.2.1.3 Internal Responsibilities</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>4.2.1.4 External Responsibilities</strong>.</p>
+<h2 class="western"><a name="__RefHeading___Toc257388680"></a>4.3 Project Roles and Responsibilities</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 4.3) Roles and responsibilities </strong></em></p>
+<p>This subclause shall identify and state the nature of each major work activity and supporting process and identify the organizational units that are responsible for those processes and activities. A matrix of work activities and supporting processes vs. organizational units may be used to depict project roles and responsibilities.</p>
+<p><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388681"></a> SECTION 5. MANAGEment PROCESS</h1>
+<h2 class="western"><a name="__RefHeading___Toc257388682"></a>5.1 Start-up</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.1) Project start-up plan </strong></em></p>
+<p>This subclause shall specify the estimation plan, staffing plan, resource acquisition plan, and training plan. Depending on the size and scope of the project, these plans may be incorporated directly or by reference to other plans.</p>
+<p class="western">.</p>
+<h3 class="western"><a name="__RefHeading___Toc257388683"></a>5.1.1 Estimation</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.1.1) Estimation plan </strong></em></p>
+<p>This subclause shall specify the cost and schedule for conducting the project as well as methods, tools, and techniques used to estimate project cost, schedule, resource requirements, and associated confidence levels. In addition, the basis of estimation shall be specified to include techniques such as analogy, rule of thumb, or local history and the sources of data. This subclause shall also specify the methods, tools, and techniques that will be used to periodically re-estimate the cost, schedule, and resources needed to complete the project. Re-estimation may be done on a monthly basis and/or periodically as necessary.</p>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388684"></a>5.1.2 Staffing</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.1.2) Staffing plan </strong></em></p>
+<p>This subclause shall specify the number of staff required by skill level, the project phases in which the numbers of personnel and types of skills are needed, the source of personnel and the duration of need. Resource Gantt charts, resource histograms, spreadsheets, and tables may be used to depict the staffing plan by skill level, by project phase, and by aggregations of skill levels and project phases.</p>
+<p><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388685"></a> 5.1.3 Resource Acquisition</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.1.3) Resource acquisition plan </strong></em></p>
+<p>This subclause shall specify the plan for acquiring the resources in addition to personnel needed to successfully complete the project. The resource acquisition plan should include a description of the resource acquisition process, including assignment of responsibility for all aspects of resource acquisition. The plan should include, but not be limited to, acquisition plans for equipment, computer hardware and software, training, service contracts, transportation, facilities, and administrative and janitorial services. The plan should specify the points in the project schedule when the various acquisition activities will be required. Constraints on acquiring the necessary resources shall be specified.</p>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388686"></a>5.1.4 Staff Training</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.1.4) Project staff training plan </strong></em></p>
+<p>This subclause shall specify the training needed to ensure that necessary skill levels in sufficient numbers are available to successfully conduct the project. The training schedule shall include the types of training to be provided, numbers of personnel to be trained, entry and exit criteria for training, and the training method (e.g., lectures, consultations, mentoring, or computer-assisted training). The training plan should include training as needed in both technical and managerial skills.</p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388687"></a>5.2 Work Planning</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.2) Work plan </strong></em></p>
+<p>This clause shall specify the work activities, schedule, resources, and budget details for the project.</p>
+<p class="western">The following paragraphs provide a working management plan for the acquisition of the [[Project Name]].</p>
+<h3 class="western"><a name="__RefHeading___Toc257388688"></a>5.2.1 Work Activities</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.2.1) Work activities </strong></em></p>
+<p>This subclause shall specify the various work activities to be performed in the project. A work breakdown structure shall be used to depict the work activities and the relationships among work activities. Work activities should be decomposed to a level that exposes all project risk factors and allows accurate estimate of resource requirements and schedule duration for each work activity. Work packages should be used to specify, for each work activity, factors such as the necessary resources, estimated duration, work products to be produced, acceptance criteria for the work products, and predecessor and successor work activities. The level of decomposition for different work activities in the work breakdown structure may be different depending on factors such as the quality of the requirements, familiarity of the work, and novelty of the technology to be used.</p>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388689"></a>5.2.2 Schedule Allocation</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.2.2) Schedule allocation </strong></em></p>
+<p>This subclause shall provide scheduling relationships among work activities in a manner that depicts the time-sequencing constraints and illustrates opportunities for concurrent work activities. Any constraints on scheduling of particular work activities caused by factors external to the project shall be indicated in the work activity schedule. The schedule should include frequent milestones that can be assessed for achievement using objective indicators to assess the scope and quality of work products completed at those milestones. Techniques for depicting schedule relationships may include milestone charts, activity lists, activity Gantt charts, activity networks, critical path networks, and PERT.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388690"></a>5.2.3 Resource Allocation</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.2.3) Resource allocation </strong></em></p>
+<p class="western"><em>This subclause shall provide a detailed itemization of the resources allocated to each major work activity in the project work breakdown structure. Resources shall include the numbers and required skill levels of personnel for each work activity. Resource allocation may include, as appropriate, personnel by skill level and factors such as computing resources, tools, special testing and simulation facilities, and administrative support. A separate line item should be provided for each type of resource for each work activity. A summary of resource requirements for the various work activities should be collected from the work packages of the work breakdown structure and presented in tabular form.</em></p>
+<h3 class="western"><br /><br /></h3>
+<h3 class="western"><a name="__RefHeading___Toc257388691"></a>5.2.4 Budget Allocation</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.2.4) Budget allocation </strong></em></p>
+<p class="western"><em>This subclause shall provide a detailed breakdown of necessary resource budgets for each of the major work activities in the work breakdown structure. The activity budget shall include the estimated cost for activity personnel and may include, as appropriate, costs for factors such as travel, meetings, computing resources, tools, special testing and simulation facilities, and administrative support. A separate line item shall be provided for each type of resource in each activity budget. The work activity budget may be developed using a spreadsheet and presented in tabular form.</em></p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388692"></a>5.3 Project Controls</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.3) Control plan </strong></em></p>
+<p>This subclause shall specify the metrics, reporting mechanisms, and control procedures necessary to measure, report, and control the product requirements, the project schedule, budget, and resources, and the quality of work processes and work products. All elements of the control plan should be consistent with the organization&rsquo;s standards, policies, and procedures for project control as well as with any contractual agreements for project control.</p>
+<p align="left"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388693"></a>5.3.1 Requirements Control</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.3.1) Requirements control plan </strong></em></p>
+<p>This subclause shall specify the control mechanisms for measuring, reporting, and controlling changes to the product requirements. This subclause shall also specify the mechanisms to be used in assessing the impact of requirements changes on product scope and quality, and the impacts of requirements changes on project schedule, budget, resources, and risk factors. Configuration management mechanisms shall include change control procedures and a change control board. Techniques that may be used for requirements control include traceability, prototyping and modeling, impact analysis, and reviews.</p>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388694"></a>5.3.2 Schedule Control</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.3.2) Schedule control plan </strong></em></p>
+<p>This subclause shall specify the control mechanisms to be used to measure the progress of work completed at the major and minor project milestones, to compare actual progress to planned progress, and to implement corrective action when actual progress does not conform to planned progress. The schedule control plan shall specify the methods and tools that will be used to measure and control schedule progress. Achievement of schedule milestones should be assessed using objective criteria to measure the scope and quality of work products completed at each milestone.</p>
+<p class="western">The following paragraphs define the management approach for schedule control of the [[Project Name]].</p>
+<p class="western"><strong>5.3.2.1 Schedule Tracking</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.2.2 Schedule Performance Reports</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.2.3 Schedule Reviews</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.2.4 Progress Variance Monitoring</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.2.5 Progress Variance Resolution</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.2.6 Follow‑Up on Corrective Action</strong>.</p>
+<h3 class="western"><br /><br /></h3>
+<h3 class="western"><a name="__RefHeading___Toc257388695"></a>5.3.3 Budget Control</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.3.3) Budget control plan </strong></em></p>
+<p>This subclause shall specify the control mechanisms to be used to measure the cost of work completed, compare planned cost to budgeted cost, and implement corrective action when actual cost does not conform to budgeted cost. The budget control plan shall specify the intervals at which cost reporting will be done and the methods and tools that will be used to manage the budget. The budget plan should include frequent milestones that can be assessed for achievement using objective indicators to assess the scope and quality of work products completed at those milestones. A mechanism such as earned value tracking should be used to report the budget and schedule plan, schedule progress, and the cost of work completed.</p>
+<p class="western">The following paragraphs define the management approach for budget control of the The following paragraphs define the management approach for schedule control of the [[Project Name]].</p>
+<p class="western">.</p>
+<p class="western"><strong>5.3.3.1 Cost Management</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.3.2 Methods to Ensure Cost Adherence</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.3.3 Cost Control</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.3.4 Contractor Cost Control</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.3.5 Cost Variance Measurement</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.3.6 Cost Variance Corrective Action</strong>.</p>
+<p class="western">&nbsp;</p>
+<h3 class="western"><a name="__RefHeading___Toc257388696"></a>5.3.4 Quality Control</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.3.4) Quality control plan </strong></em></p>
+<p>This subclause shall specify the mechanisms to be used to measure and control the quality of the work processes and the resulting work products. Quality control mechanisms may include quality assurance of work processes, verification and validation, joint reviews, audits, and process assessment.</p>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388697"></a>5.3.5 Project Reporting and Communication</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.3.5) Reporting plan </strong></em></p>
+<p>This subclause shall specify the reporting mechanisms, report formats, and information flows to be used in communicating the status of requirements, schedule, budget, quality, and other desired or required status metrics within the project and to entities external to the project. The methods, tools, and techniques of communication shall be specified in this subclause. The frequency and detail of communications related to project measurement and control shall be consistent with the project scope, criticality, risk, and visibility.</p>
+<p class="western">The following paragraphs define the management plan for ensuring the broadest communication of needed information for project coordination.</p>
+<p class="western"><strong>5.3.5.1 Electronic Media</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.5.2 Meetings</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.5.3 Information Repository</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.5.4 Reviews</strong>.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><strong>5.3.5.5 Status Reporting</strong>.</p>
+<h3 class="western"><br /><br /></h3>
+<h3 class="western"><a name="__RefHeading___Toc257388698"></a>5.3.6 Metrics Collection</h3>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.3.6) Metrics collection plan </strong></em></p>
+<p>This subclause shall specify the methods, tools, and techniques to be used in collecting and retaining project metrics. The metrics collection plan shall specify the metrics to be collected, the frequency of collection, and the methods to be used in validating, analyzing, and reporting the metrics.</p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388699"></a>5.4 Risk Management</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.4) Risk management plan </strong></em></p>
+<p class="western"><em>This subclause shall specify the risk management plan for identifying, analyzing, and prioritizing project risk factors. This subclause shall also describe the procedures for contingency planning, and the methods to be used in tracking the various risk factors, evaluating changes in the levels of risk factors, and the responses to those changes.</em></p>
+<p>Risk factors that should be considered include risks in the acquirer-supplier relationship, contractual risks, technological risks, risks caused by the size and complexity of the product, risks in the development and target environments, risks in personnel acquisition, skill levels and retention, risks to schedule and budget, and risks in achieving acquirer acceptance of the product.</p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388700"></a>5.5 Project Closeout</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 5.5) Project closeout plan</strong></em></p>
+<p>This subclause shall contain the plans necessary to ensure orderly closeout of the project. Items in the closeout plan should include a staff reassignment plan, a plan for archiving project materials, a plan for postmortem debriefings of project personnel, and preparation of a final report to include lessons learned and analysis of project objectives achieved.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388701"></a> SECTION 6. TECHNICAL PROCESS</h1>
+<h2 class="western"><a name="__RefHeading___Toc257388702"></a>6.1 Process Model</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 6.1) Process model </strong></em></p>
+<p>This subclause shall define the relationships among major project work activities and supporting processes by specifying the flow of information and work products among activities and functions, the timing of work products to be generated, reviews to be conducted, major milestones to be achieved, baselines to be established, project deliverables to be completed, and required approvals that span the duration of the project. The process model for the project shall include project initiation and project termination activities. To describe the process model, a combination of graphical and textual notations may be used. Any tailoring of an organization&rsquo;s standard process model for a project shall be indicated in this subclause.</p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388703"></a>6.2 Methods, Tools and Techniques</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 6.2) Methods, tools, and techniques </strong></em></p>
+<p>This subclause shall specify the development methodologies, programming languages and other notations, and the tools and techniques to be used to specify, design, build, test, integrate, document, deliver, modify and maintain the project deliverable and non-deliverable work products. In addition, the technical standards, policies, and procedures governing development and/or modification of the work products shall be specified.</p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388704"></a>6.3 Project Infrastructure</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 6.3) Infrastructure plan </strong></em></p>
+<p>This subclause shall specify the plan for establishing and maintaining the development environment (hardware, operating system, network, and software), and the policies, procedures, standards, and facilities required to conduct the project. These resources may include workstations, local area networks, tools for analysis, design, implementation, testing, and project management, desks, office space, and provisions for physical security, administrative personnel, and janitorial services.</p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388705"></a>6.4 Product Acceptance</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 6.4) Product acceptance plan </strong></em></p>
+<p>This subclause shall specify the plan for acquirer acceptance of the deliverable work products generated by the project. Objective criteria for determining acceptability of the deliverable work products shall be specified in this plan and a formal agreement of the acceptance criteria shall be signed by representatives of the development organization and the acquiring organization. Any technical processes, methods, or tools required for product acceptance shall be specified in the product acceptance plan. Methods such as testing, demonstration, analysis, and inspection should be specified in this plan.</p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388706"></a> SECTION 7. SUPPORTING PROCESSES</h1>
+<h2 class="western"><a name="__RefHeading___Toc257388707"></a>7.1 Configuration Management</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 7.1) Configuration management plan </strong></em></p>
+<p>This subclause shall contain the configuration management plan for the project, to include the methods that will be used to provide configuration identification, control, status accounting, evaluation, and release management. In addition, this subclause shall specify the processes of configuration management to include procedures for initial baselining of work products, logging and analysis of change requests, change control board procedures, tracking of changes in progress, and procedures for notifying concerned parties when baselines are first established or later changed. The configuration management process should be supported by one or more automated configuration management tools.</p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388708"></a>7.2 Independent Verification and Validation</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 7.2) Verification and validation plan </strong></em></p>
+<p class="western"><em>This subclause shall contain the verification and validation plan for the project to include scope, tools, techniques, and responsibilities for the verification and validation work activities. The organizational relationships and degrees of independence between development activities and verification and validation activities shall be specified. Verification planning should result in specification of techniques such as traceability, milestone reviews, progress reviews, peer reviews, prototyping, simulation, and modeling. Validation planning should result in specification of techniques such as testing, demonstration, analysis, and inspection. Automated tools to be used in verification and validation should be specified.</em></p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388709"></a>7.3 Documentation</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 7.3) Documentation plan </strong></em></p>
+<p>This subclause shall contain the documentation plan for the project, to include plans for generating non-deliverable and deliverable work products. Organizational entities responsible for providing input information, generating, and reviewing the various documents shall be specified in the documentation plan. The documentation plan should include a list of documents to be prepared, the controlling template or standard for each document, who will prepare it, who will review it, due dates for review copy and initial baseline version, and a distribution list for review copies and baseline versions.</p>
+<p class="western"><br /><br /></p>
+<p align="center"><a name="__RefHeading___Toc115065445"></a> Table 7-1. [[Project Name]] Documentation</p>
+<center>
+<table width="622" cellspacing="0" cellpadding="7"><colgroup><col width="221" /> <col width="137" /> <col width="77" /> <col width="129" /> </colgroup>
+<thead>
+<tr valign="top">
+<td width="221">
+<p class="western" align="center"><strong>Document Type</strong></p>
+</td>
+<td width="137">
+<p class="western" align="center"><strong>Format Standard</strong></p>
+</td>
+<td width="77">
+<p class="western" align="center"><strong>Estimated Page Count</strong></p>
+</td>
+<td width="129">
+<p class="western" align="center"><strong>Peer Review Type</strong></p>
+</td>
 </tr>
-
-<tr>
-<td WIDTH="21%">Draft</td>
-
-<td WIDTH="19%">TBD</td>
-
-<td WIDTH="42%">Initial draft created for distribution and
-review comments</td>
-
-<td WIDTH="18%">TBD</td>
+</thead>
+<tbody>
+<tr valign="top">
+<td width="221">
+<p class="western">&nbsp;</p>
+</td>
+<td width="137">
+<p class="western">&nbsp;</p>
+</td>
+<td width="77">
+<p class="western" align="center">&nbsp;</p>
+</td>
+<td width="129">
+<p class="western">&nbsp;</p>
+</td>
 </tr>
-
-<tr>
-<td WIDTH="21%">Preliminary</td>
-
-<td WIDTH="19%">TBD</td>
-
-<td WIDTH="42%">Second draft incorporating initial review
-comments, distributed for final review</td>
-
-<td WIDTH="18%">TBD</td>
+<tr valign="top">
+<td width="221">
+<p class="western">&nbsp;</p>
+</td>
+<td width="137">
+<p class="western">&nbsp;</p>
+</td>
+<td width="77">
+<p class="western" align="center">&nbsp;</p>
+</td>
+<td width="129">
+<p class="western">&nbsp;</p>
+</td>
 </tr>
-
-<tr>
-<td WIDTH="21%">Final</td>
-
-<td WIDTH="19%">TBD</td>
-
-<td WIDTH="42%">First complete draft, which is placed under
-change control</td>
-
-<td WIDTH="18%">TBD</td>
-</tr>
-
-<tr>
-<td WIDTH="21%">Revision 1</td>
-
-<td WIDTH="19%">TBD</td>
-
-<td WIDTH="42%">Revised draft, revised according to the change
-control process and maintained under change control</td>
-
-<td WIDTH="18%">TBD</td>
-</tr>
-
-<tr>
-<td WIDTH="21%">etc.</td>
-
-<td WIDTH="19%">TBD</td>
-
-<td WIDTH="42%">TBD</td>
-
-<td WIDTH="18%">TBD</td>
-</tr>
+</tbody>
 </table>
-
-<h3>
-1.4 Reference Materials</h3>
-<i>List all the documents and other
-materials referenced in this document. This section is like the bibliography
-in a published book.</i>
-<h3>
-1.5 Definitions and Acronyms</h3>
-<i>Provide definitions or references
-to all the definitions of the special terms and acronyms used within this
-document.</i>
-<h2>
-2.0 Project Organization</h2>
-<i>In this section, describe the process
-model (e.g., lifecycle model), the organizational structure (e.g., chain
-of command or management reporting structure), and responsibilities of
-individuals on the project.</i>
-<p><i>No text is necessary between
-the heading above and the heading below unless otherwise desired.</i>
-<h3>
-2.1 Process Model</h3>
-<i>Describe the following items:</i>
-<ul>
-<li>
-<i>The project�s lifecycle model (e.g.,
-waterfall model, spiral model, evolutionary prototyping model, etc.)</i></li>
-
-<li>
-<i>The project�s major milestones (content
-and dates/timing). This should include a text description of the meaning
-of each milestone plus a Gantt chart or other high-level description of
-the project�s schedule.</i></li>
-
-<li>
-<i>Major work products, including content
-and timing. These should be listed in a table like the following one:</i></li>
-</ul>
-
-<table BORDER CELLPADDING=9 >
-<tr>
-<td WIDTH="41%" BGCOLOR="#FFFFFF"><b>Work
-Product Name</b></td>
-
-<td WIDTH="14%" BGCOLOR="#FFFFFF"><b>Planned
-Completion Date</b></td>
-
-<td WIDTH="13%" BGCOLOR="#FFFFFF"><b>Placed
-Under Change Control?</b></td>
-
-<td WIDTH="11%" BGCOLOR="#FFFFFF"><b>Deliverable
-to Customer?</b></td>
-
-<td WIDTH="20%" BGCOLOR="#FFFFFF"><b>People
-Who Must Sign Off on the Work Product</b></td>
+</center>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388710"></a>7.4 Quality Assurance</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 7.4) Quality assurance plan</strong></em></p>
+<p>This subclause shall provide the plans for assuring that the project fulfills its commitments to the process and the product as specified in the requirements specification, the document, supporting plans, and any standards, procedures, or guidelines to which the process or the product must adhere. Quality assurance procedures may include analysis, inspections, reviews, audits, and assessments. The quality assurance plan should indicate the relationships among the quality assurance, verification and validation, review, audit, configuration management, system engineering, and assessment processes.</p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388711"></a>7.5 Reviews and Audits</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 7.5) Reviews and audits plan </strong></em></p>
+<p>This subclause shall specify the schedule, resources, and methods and procedures to be used in conducting project reviews and audits. The plan should specify plans for joint acquirer-supplier reviews, management progress reviews, developer peer reviews, quality assurance audits, and acquirer-conducted reviews and audits. The plan should list the external agencies that approve or regulate any product of the project.</p>
+<p><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388712"></a>7.6 Problem Resolution</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 7.6) Problem resolution plan </strong></em></p>
+<p>This subclause shall specify the resources, methods, tools, techniques, and procedures to be used in reporting, analyzing, prioritizing, and processing problem reports generated during the project. The problem resolution plan should indicate the roles of development, configuration management, the change control board, and verification and validation in problem resolution work activities. Effort devoted to problem reporting, analysis, and resolution should be separately reported so that rework can be tracked and process improvement accomplished.</p>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388713"></a>7.7 Contractor Management</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 7.7) Subcontractor management plans </strong></em></p>
+<p>This subclause shall contain plans for selecting and managing any subcontractors that may contribute work products to the project. The criteria for selecting subcontractors shall be specified and the management plan for each subcontract shall be generated using a tailored version of this standard. Tailored plans should include the items necessary to ensure successful completion of each subcontract. In particular, requirements management, monitoring of technical progress, schedule and budget control, product acceptance criteria, and risk management procedures shall be included in each subcontractor plan. Additional topics should be added as needed to ensure successful completion of the subcontract. A reference to the official subcontract and prime contractor/subcontractor points of contact shall be specified.</p>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388714"></a>7.7.1 Contracting Process</h3>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388715"></a>7.7.2 Contractor Performance Monitoring</h3>
+<p class="western"><br /><br /></p>
+<h2 class="western"><a name="__RefHeading___Toc257388716"></a>7.8 Process Improvement</h2>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Subclause 7.8) Process improvement plan </strong></em></p>
+<p>This subclause shall include plans for periodically assessing the project, determining areas for improvement, and implementing improvement plans. The process improvement plan should be closely related to the problem resolution plan; for example, root cause analysis of recurring problems may lead to simple process improvements that can significantly reduce rework during the remainder of the project. Implementation of improvement plans should be examined to identify those processes that can be improved without serious disruptions to an ongoing project and to identify those processes that can best be improved by process improvement initiatives at the organizational level.</p>
+<p class="western">The following paragraphs provide data on the [[Project Name]] efforts for continuing process improvement.</p>
+<h3 class="western"><a name="__RefHeading___Toc257388717"></a>7.8.1 Systems/Software Process Improvement Lead</h3>
+<p class="western"><br /><br /></p>
+<h3 class="western"><a name="__RefHeading___Toc257388718"></a>7.8.2 Systems Engineering Process Group</h3>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388719"></a> SECTION 8. Additional Plans</h1>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em><strong>(Clause 8) Additional plans </strong></em></p>
+<p class="western"><em>This clause shall contain additional plans, or activities, required to satisfy product requirements and contractual terms.</em></p>
+<p class="western"><em>Additional plans for a particular project may include plans for assuring that safety, privacy, and security requirements for the product are met, special facilities or equipment, product installation plans, user training plans, integration plans, data conversion plans, system transition plans, product maintenance plans, logistic engineering approach, or product support plans.</em></p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western" align="center"><span style="font-size: large;"><strong>APPENDICES</strong></span></p>
+<p class="western"><em><strong>IEEE Std 1058-1998 Guidance</strong></em></p>
+<p class="western"><em>Annexes may be included, either directly or by reference to other documents, to provide supporting details that could detract from the document if included in the body.</em></p>
+<p class="western"><em><strong>General Guidance</strong></em></p>
+<h6 class="western"><span style="font-family: Times New Roman, serif;">In this template, the following appendices are used for reference purposes only. It should not be assumed that the referenced documents exist as an example. </span></h6>
+<h1 class="western"><a name="__RefHeading___Toc257388720"></a>Appendix A. [[Project Name]] Master Schedule (Microsoft Project)</h1>
+<p class="western"><em><strong>Guidance</strong></em></p>
+<p class="western"><em>The objective of the [[Project Name]] master schedule is to provide management with the task map and tracking tool needed to guide the project in the performance of its mission.</em></p>
+<p class="western">The [[Project Name]]<em> master schedule&rsquo;s Microsoft Project representation of the WBS would be tailored from the templates available from the SSC Pacific Process Asset Library (PAL) in the &ldquo;SW-CMM Archive&rdquo;. Draft Microsoft Project templates are found under the &ldquo;Process Assets by SW-CMM KPA&rdquo;, &ldquo;Software Project Planning (SPP)&rdquo; in the &ldquo;Tools&rdquo; section. These templates can be tailored up or down to meet specific project needs.</em></p>
+<p class="western"><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388721"></a>Appendix B. [[Project Name]] Facilities Plan</h1>
+<p class="western"><em><strong>Guidance</strong></em></p>
+<p class="western"><em>The objective of the [[Project Name]] Facilities Plan is to document the environmental needs of the project. These needs include space, equipments, security, safety, support tools, and the staff necessary to maintain and operate an environment needed for project operations. </em></p>
+<p>The facilities requirements for projects vary broadly, often with several projects sharing both facilities and computer resources. There currently are no templates available from the SSC Pacific PAL to assist in developing a facilities plan. However, recommended issues to address in a Facilities Plan would include, but not be limited to, the following list:</p>
+<p><span style="font-size: small;"><em>1. Facility Objectives/General Description&nbsp;</em></span></p>
+<p class="western"><em>2. Facility Locations (i.e., Building Locations)</em></p>
+<p class="western"><em>3. Facility Diagrams&nbsp;</em></p>
+<p><span style="font-size: small;"><em> a. Floor Plans (i.e., lab, work cubicles)</em></span></p>
+<p><span style="font-size: small;"><em> b. Environmental Requirements i.e. Heating, Lighting</em></span></p>
+<p><span style="font-size: small;"><em>4. Facilities Equipment Requirements</em></span></p>
+<p class="western"><em> a. Equipment Lists (i.e., work stations, development, test)</em></p>
+<p class="western"><em> b. Equipment Interface Diagrams</em></p>
+<p class="western"><em> c. Space Equipment Layouts</em></p>
+<p class="western"><em> d. Inspections and Records Requirements&nbsp;</em></p>
+<p><span style="font-size: small;"><em>5. Facilities Software Requirements</em></span></p>
+<p><span style="font-size: small;"><em> a. Software by Development/Test Host Equipment</em></span></p>
+<p><span style="font-size: small;"><em> b. Software by Workstation </em></span></p>
+<p class="western"><em>6. Facilities Operating Personnel Requirements</em></p>
+<p class="western"><em>7. Facilities Operating Personnel Training Requirements&nbsp;</em></p>
+<p class="western"><em>8. Security Measures&nbsp;</em></p>
+<p><span style="font-size: small;"><em> a. Internal</em></span></p>
+<p class="western"><em> b. External</em></p>
+<p class="western"><em> 9. Safety Measures</em></p>
+<p class="western"><em>10. Maintenance Requirements (i.e., spaces, per equipment)</em></p>
+<p class="western"><em>11. Facilities Performance Measurements</em></p>
+<p class="western"><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388722"></a>Appendix C. [[Project Name]] Project Training Plan</h1>
+<p class="western"><em><strong>Guidance</strong></em></p>
+<p class="western"><em>The objective of the [[Project Name]] Project Training Plan is to develop the skills and knowledge of the project staff so they can perform their roles effectively and efficiently.</em></p>
+<p class="western"><em>The [[Project Name]] Project Training Plan would be tailored from the <a href="http://sepo.spawar.navy.mil/Department_Project_Training_Plan_Template.doc">Department/Project Training Plan Template</a> available from the SSC Pacific Process Asset Library (PAL). The template is located in the &ldquo;Process Assets&rdquo; sub-page under the &ldquo;Organizational Training&rdquo; PA in the &ldquo;Plans&rdquo; section. The template can be tailored up or down to meet specific project needs.</em></p>
+<p class="western"><br /><br /></p>
+<p><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388723"></a>Appendix D. [[Project Name]] Measurement Plan</h1>
+<p class="western"><em><strong>Guidance</strong></em></p>
+<p class="western"><em>The objective of the [[Project Name]] Measurement Plan is to develop and present the data needed to support project management information needs necessary to ensure objective decision-making.</em></p>
+<p class="western"><em>The [[Project Name]] Measurement Plan would be tailored from the Software Measurement Plan Template available from the SSC Pacific Process Asset Library (PAL) in the &ldquo;SW-CMM Archive&rdquo;. This template can be found under the &rdquo;Process Assets by SW-CMM KPA&rdquo;, &ldquo;Software Project Tracking and Oversight (SPTO)&rdquo; KPA in the &ldquo;Tools&rdquo; section. The template can be tailored up or down to meet specific project needs.</em></p>
+<p class="western"><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388724"></a>Appendix E. [[Project Name]] Product Engineering and Qualification Process</h1>
+<p class="western"><em><strong>Guidance</strong></em></p>
+<p class="western"><em>The objective of the [[Project Name]] Product Engineering and Qualification (PE&amp;Q) Process is to document the processes comprising a technical solution for development, maintenance, test, and product qualification.</em></p>
+<p class="western"><em>The [[Project Name]] PE&amp;Q Process would be tailored from the Product Engineering and Qualification Process available from the SSC Pacific Process Asset Library (PAL). The process is located in the &ldquo;Process Assets&rdquo; sub-page under the &ldquo;Technical Solution&rdquo; PA in the &ldquo;Process&rdquo; section. The PE&amp;Q Process can be tailored up or down to meet specific project needs.</em></p>
+<p class="western"><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388725"></a>Appendix F. [[Project Name]] Quality Assurance Plan</h1>
+<p class="western"><em><strong>Guidance</strong></em></p>
+<p class="western"><em>The objective of the [[Project Name]] Quality Assurance Plan is to provide staff and management with objective insights into processes and associated work products, ensuring their conformance to documented requirements. </em></p>
+<p class="western"><em>The [[Project Name]] Quality Assurance Plan would be tailored from the Quality Assurance Plan Template available from the SSC Pacific Process Asset Library (PAL). The process is located in the &ldquo;Process Assets&rdquo; sub-page under the &ldquo;Process and Product Quality Assurance (PPQA)&rdquo; PA in the &ldquo;Plans&rdquo; section. The template can be tailored up or down to meet specific project needs.</em></p>
+<p class="western"><br /><br /></p>
+<h1 class="western"><a name="__RefHeading___Toc257388726"></a>Appendix G. [[Project Name]] Configuration Management Plan</h1>
+<p class="western"><em><strong>Guidance</strong></em></p>
+<p class="western"><em>The objective of the [[Project Name]] Configuration Management Plan is to establish and maintain the integrity of [[Project Name]] work products using configuration identification, configuration control, configuration status accounting, and configuration audits.</em></p>
+<p class="western"><em>The [[Project Name]] Configuration Management Plan would be tailored from the Configuration Management Plan Template available from the SSC Pacific Process Asset Library (PAL). The template is located in the &ldquo;Process Assets&rdquo; sub-page under the &ldquo;Configuration Management (CM)&rdquo; PA in the &ldquo;Plans&rdquo; section. The template can be tailored up or down to meet specific project needs.</em></p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p align="center"><span style="font-size: small;"><strong>DOCUMENT CHANGE REQUEST (DCR)</strong></span></p>
+<center>
+<table width="639" cellspacing="0" cellpadding="7"><colgroup><col width="417" /> <col width="190" /> </colgroup>
+<tbody>
+<tr valign="top">
+<td width="417">
+<p class="western">Document Title: <strong>[[Project]]</strong> <strong>Project Management Plan</strong></p>
+</td>
+<td width="190">
+<p class="western">Tracking Number:</p>
+<p class="western">&nbsp;</p>
+</td>
 </tr>
-
 <tr>
-<td WIDTH="41%">Software Project Management Plan
-<p>This is the controlling document for managing a software
-project, and it defines the technical and managerial processes necessary
-to deliver the project requirements.</td>
-
-<td WIDTH="14%">TBD</td>
-
-<td WIDTH="13%">Yes</td>
-
-<td WIDTH="11%">No</td>
-
-<td WIDTH="20%">Project Manager, Engineering Lead, QA Lead,
-Documentation Lead</td>
+<td colspan="2" valign="top" width="621">
+<p class="western">Name of Submitting Organization:</p>
+<p class="western">&nbsp;</p>
+</td>
 </tr>
-
+<tr valign="top">
+<td width="417">
+<p class="western">Organization Contact:</p>
+<p class="western">&nbsp;</p>
+</td>
+<td width="190">
+<p class="western">Phone:</p>
+</td>
+</tr>
 <tr>
-<td WIDTH="41%">TBD</td>
-
-<td WIDTH="14%">TBD</td>
-
-<td WIDTH="13%">TBD</td>
-
-<td WIDTH="11%">TBD</td>
-
-<td WIDTH="20%">TBD</td>
+<td colspan="2" valign="top" width="621">
+<p class="western">Mailing Address:</p>
+<p class="western">&nbsp;</p>
+</td>
 </tr>
+<tr valign="top">
+<td width="417">
+<p class="western">DCR Description:</p>
+<p class="western">&nbsp;</p>
+</td>
+<td width="190">
+<p class="western">Date:</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top" width="621">
+<p class="western">Change Location:</p>
+<p class="western">(use section #, figure #, table #, etc.)</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top" width="621">
+<p class="western">Proposed change:</p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top" width="621">
+<p class="western">Rationale for Change:</p>
+<p class="western"><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p><br /><br /></p>
+<p><br /><br /></p>
+<p><br /><br /></p>
+<p class="western"><br /><br /></p>
+<p class="western">&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top" width="621">
+<p class="western"><span style="font-size: small;">Note: For the </span><span style="font-size: small;"><em><strong>appropriate authority</strong></em></span><span style="font-size: small;"> to take appropriate action on a change request, please provide a clear description of the recommended change along with supporting rationale.</span></p>
+<p class="western"><span style="font-size: small;">Send to: Commanding Officer, Space and Naval Warfare Systems Center, Code [[xxx]], 53560 Hull Street, San Diego, CA 92152-5001 </span></p>
+<p class="western"><span style="font-size: small;">Fax to: </span><span style="font-size: small;"><em><strong>indicate appropriate fax number</strong></em></span></p>
+<p class="western"><span style="font-size: small;">Email to: </span><span style="font-size: small;"><em><strong>indicate appropriate email</strong></em></span></p>
+<p class="western"><span style="font-size: small;">Submit online: </span><span style="font-size: small;"><em><strong>indicate appropriate URL</strong></em></span></p>
+<p align="right"><span style="font-size: small;">DCR Form 1/2009</span></p>
+</td>
+</tr>
+</tbody>
 </table>
-
-<p><i>You should consider including
-all of the top-level work products described in "Software Project Survival
-Guide", including:</i>
-<ul>
-<li>
-<i>Change Control Plan</i></li>
-
-<li>
-<i>Change Proposals</i></li>
-
-<li>
-<i>Vision statement</i></li>
-
-<li>
-<i>Top 10 Risks List</i></li>
-
-<li>
-<i>Software Development Plan, including
-project cost and schedule estimates</i></li>
-
-<li>
-<i>User Interface Style Guide</i></li>
-
-<li>
-<i>User Manual/Requirements Specification</i></li>
-
-<li>
-<i>Quality Assurance Plan</i></li>
-
-<li>
-<i>Software Architecture</i></li>
-
-<li>
-<i>Software Integration Procedure</i></li>
-
-<li>
-<i>Staged Delivery Plan</i></li>
-
-<li>
-<i>Individual Stage Plans, including
-miniature milestone schedules</i></li>
-
-<li>
-<i>Coding Standard</i></li>
-
-<li>
-<i>Detailed Design Documents</i></li>
-
-<li>
-<i>Software Construction Plans</i></li>
-
-<li>
-<i>Deployment Document (Cutover Handbook)</i></li>
-
-<li>
-<i>Release Checklist</i></li>
-
-<li>
-<i>Release Sign-Off Form</i></li>
-
-<li>
-<i>Software Project Log</i></li>
-
-<li>
-<i>Software Project History Document</i></li>
-</ul>
-<i>The items in this section (and,
-in general, in this document) can be fully described here, or, if they
-are described in sufficient detail elsewhere, that description can simply
-be referenced here.&nbsp; [Try to avoid redundancy with section 4.2].</i>
-<h3>
-2.2 Organizational Structure</h3>
-<i>Describe the internal management
-structure of the project. Use org charts, matrix diagrams, or other appropriate
-notations to describe the lines of authority, responsibility, and communication
-within the project.</i>
-<br><i>[It is NOT necessary to show
-the organization of the entire company, only this project].</i>
-<br><i>[This section lists project
-roles or jobs, but does not mention who is assigned to them.&nbsp; Actual
-personnel assignments are shown in section 3.5].</i>
-<br><i>[Refer to <a href="http://www.csc.calpoly.edu/~jdalbey/205/Mgmt/jobs.html">Job
-Descriptions</a>].</i>
-<h3>
-2.3 Organizational Boundaries and Interfaces</h3>
-<i>Describe the relationships between
-the project and each of the following organizations:</i>
-<ul>
-<li>
-<i>Parent organization (upper management)</i></li>
-
-<li>
-<i>Customer organization (internal
-or external)</i></li>
-
-<li>
-<i>Subcontracting organization(s) (if
-any)</i></li>
-
-<li>
-<i>QA organization, if separate</i></li>
-
-<li>
-<i>Documentation organization, if separate</i></li>
-
-<li>
-<i>End-user support organization, if
-separate</i></li>
-
-<li>
-<i>Any other organizations the project
-interacts with</i></li>
-</ul>
-<i>This list should include a description
-of a specific person or project role that is responsible for maintaining
-the interface between the project and each of these other organizations.</i>
-<p><i>[In CPE 205 the two important
-interfaces are Analyst -> Customer and Team Leader -> Course Instructor].</i>
-<h3>
-2.4 Project Responsibilities</h3>
-<i>[Refer to <a href="http://www.csc.calpoly.edu/~jdalbey/205/Mgmt/jobs.html">Job
-Descriptions</a>]. Identify and describe each major project function and
-activity, and identify the person(s) responsible for each function and
-activity. If appropriate, you might use a table like the one below, otherwise
-just write a narrative description.</i>
-<br><i></i>&nbsp;
-<table BORDER CELLPADDING=2 >
-<tr>
-<td  BGCOLOR="#FFFFFF"><b>&nbsp;</b></td>
-
-<td  BGCOLOR="#FFFFFF"><b>Manager</b></td>
-
-<td  BGCOLOR="#FFFFFF"><b>QA</b></td>
-
-<td  BGCOLOR="#FFFFFF"><b>Analyst</b></td>
-
-<td BGCOLOR="#FFFFFF">Designer</td>
-
-<td BGCOLOR="#FFFFFF">User Interface</td>
-</tr>
-
-<tr>
-<td WIDTH="21%">Liaison Responsibility</td>
-
-<td WIDTH="20%">VP Engineering&nbsp;</td>
-
-<td WIDTH="41%">&nbsp;</td>
-
-<td WIDTH="18%">Customer&nbsp;</td>
-
-<td>Software engineering lab&nbsp;</td>
-
-<td>&nbsp;</td>
-</tr>
-
-<tr>
-<td WIDTH="21%">Document Responsibility</td>
-
-<td WIDTH="20%">SPMP</td>
-
-<td WIDTH="41%">SQAP</td>
-
-<td WIDTH="18%">SRS</td>
-
-<td>SDD</td>
-
-<td>UI Prototype</td>
-</tr>
-
-<tr>
-<td WIDTH="21%">Other Responsibilities</td>
-
-<td WIDTH="20%">&nbsp;</td>
-
-<td WIDTH="41%">FTR's</td>
-
-<td WIDTH="18%">&nbsp;</td>
-
-<td>&nbsp;</td>
-
-<td>&nbsp;</td>
-</tr>
-</table>
-
-<h2>
-3.0 Managerial Process</h2>
-<i>Describe management objectives,
-priorities, project assumptions, dependencies, constraints, risk management
-techniques, monitoring and controlling mechanisms, and the staffing plan.</i>
-<p><i>No text is necessary between
-the heading above and the heading below unless otherwise desired.</i>
-<h3>
-3.1 Management Objectives and Priorities</h3>
-<i>Describe the philosophy, goals,
-and priorities for management during the project. Consider including the
-following items:</i>
-<ul>
-<li>
-<i>relative priorities among functionality,
-schedule, budget [e.g., student hours worked], and quality.</i></li>
-
-<li>
-<i>risk management procedures</i></li>
-
-<li>
-<i>approach to acquiring third party
-software</i></li>
-
-<li>
-<i>approach to modifying or using existing
-software</i></li>
-</ul>
-
-<h3>
-3.2 Assumptions, Dependencies, and Constraints</h3>
-<i>Describe the assumptions upon which
-the project plans are based, the dependencies of the project plans, and
-the constraints upon the project plans (e.g., schedule, budget, quality,
-functionality, etc.)</i>
-<h3>
-3.3 Risk Management</h3>
-<i>Describe how risks will be identified,
-tracked and monitored. Identify the risk manager and his/her duties. The
-actual risks themselves are contained in a separate document, the Risks
-List, that will be updated weekly. Place a link here to the Risks List.</i>
-<h3>
-3.4 Monitoring and Controlling Mechanisms</h3>
-<i>Describe how project cost, schedule,
-quality, and functionality will be tracked throughout the project. Consider
-describing the following:</i>
-<ul>
-<li>
-<i>Status and Progress Report contents/formats</i></li>
-
-<li>
-<i>Reporting structure and frequency</i></li>
-
-<li>
-<i>Meeting structure and frequency</i></li>
-
-<li>
-<i>Audit mechanisms</i></li>
-</ul>
-
-<h3>
-3.5 Staffing Plan</h3>
-<i>Describe the numbers and types of
-personnel needed to conduct the project. Describe the required skill levels,
-start times, duration on the project, method of obtaining the personnel,
-training required, and phasing out of project personnel. [Once staff have
-been hired, list their names and roles here.]</i>
-<h2>
-4.0 Technical Process</h2>
-<i>This section describes the top-level
-technical processes used on the project including the technical methods,
-tools, and techniques; major software documents; and supporting activities
-such as configuration management and quality assurance.</i>
-<p><i>No text is necessary between
-the heading above and the heading below unless otherwise desired.</i>
-<h3>
-4.1 Methods, Tools, and Techniques</h3>
-<i>Describe the following:</i>
-<ul>
-<li>
-<i>The computing system environment
-including hardware and operating system environment;</i></li>
-
-<li>
-<i>Software tools including design
-tools, source code control, time accounting, compiler or IDE, debugging
-aids, defect tracking, and so on</i></li>
-
-<li>
-<i>Development methodologies including
-requirements development practices, design methodologies and notations,
-programming language, coding standards, documentation standards, system
-integration procedure, and so on (these will not all be defined when the
-first draft of the project plan is created; the section should be updated
-as the plans become more detailed)</i></li>
-
-<li>
-<i>Quality assurance practices including
-methods of technical peer review, unit testing, stepping through code in
-a debugger, system testing, automated regression tests, and so on</i></li>
-</ul>
-
-<h3>
-4.2 Software Documentation</h3>
-<i>List the documents that will be
-developed for the project, including milestones, reviews, and signoffs
-for each document. If they are described in sufficient detail elsewhere,
-that description can simply be referenced here. The documentation list
-might include the follow documents:</i>
-<ul>
-<li>
-<i>Change Control Plan</i></li>
-
-<li>
-<i>Change Proposals</i></li>
-
-<li>
-<i>Vision statement</i></li>
-
-<li>
-<i>Top 10 Risks List</i></li>
-
-<li>
-<i>Software Development Plan, including
-project cost and schedule estimates</i></li>
-
-<li>
-<i>User Interface Style Guide</i></li>
-
-<li>
-<i>User Manual/Requirements Specification</i></li>
-
-<li>
-<i>Quality Assurance Plan</i></li>
-
-<li>
-<i>Software Architecture</i></li>
-
-<li>
-<i>Software Integration Procedure</i></li>
-
-<li>
-<i>Staged Delivery Plan</i></li>
-
-<li>
-<i>Individual Stage Plans, including
-miniature milestone schedules</i></li>
-
-<li>
-<i>Coding Standard</i></li>
-
-<li>
-<i>Detailed Design Documents</i></li>
-
-<li>
-<i>Software Construction Plans</i></li>
-
-<li>
-<i>Deployment Document (Cutover Handbook)</i></li>
-
-<li>
-<i>Release Checklist</i></li>
-
-<li>
-<i>Release Sign-Off Form</i></li>
-
-<li>
-<i>Software Project Log</i></li>
-
-<li>
-<i>Software Project History Document</i></li>
-</ul>
-
-<h3>
-4.3 Project Support Functions</h3>
-<i>Describe or give references to other
-documents that describe the plans for functions that support the software
-development effort, including configuration management, quality assurance,
-and end user documentation. Whether included in this document or described
-elsewhere, the plans for these supporting functions should be developed
-in as much detail as the plans for the software itself are. (This includes
-responsibilities, resource requirements, schedule, budget, and so on.)</i>
-<h2>
-5.0 Work Packages, Schedule, and Budget</h2>
-<i>No text is necessary between the
-heading above and the heading below unless otherwise desired.</i>
-<h3>
-5.1 Work Packages</h3>
-<i>Describe the work package (i.e.,
-task or collection of tasks) that must be completed to complete the software.
-Identify each work package with a unique number, and provide a diagram
-showing the breakdown of work packages into sub-packages.</i>
-<h3>
-5.2 Dependencies</h3>
-<i>Describe the dependencies both among
-work packages and between the project�s work packages and external events.</i>
-<h3>
-5.3 Resource Requirements</h3>
-<i>Describe the resources required
-for the project week by week or month by month, depending on the length
-of the project. Describe the numbers and type of personnel that are used,
-number of computers and software used, office facilities used, training
-needed, budget used, and so on over the whole course of the project.</i>
-<h3>
-5.4 Budget and Resource Allocation</h3>
-<i>Describe the portion of the project�s
-budget allocated to different functions (e.g., engineering, quality assurance,
-documentation, management). Describe how the budget will be expended over
-the course of the project.</i>
-<h3>
-5.5 Schedule</h3>
-<i>Describe the schedule for the various
-project functions, activities, and tasks, taking into account the various
-dependencies and required milestone dates and deliverable dates. You can
-express schedules either as absolute calendar dates or as times relative
-to key project milestones (e.g., "requirements signed off + 60 days").</i>
-<p><i>[The schedule is updated frequently
-and may be more appropriately maintained as a separate document, in which
-case include a link here. ]</i>
-<h2>
-6.0 Additional Components</h2>
-<i>Include additional components needed
-to manage your specific project. Possibilities include subcontractor management
-plans, security plans, training plans, hardware procurement plans, facilities
-plans, installation plans, cutover plans, and software maintenance plans.</i>
-<h2>
-7.0 Index</h2>
-<i>The index is optional according
-to the IEEE standard. If the document is made available in electronic form,
-readers can search for terms electronically.</i>
-<h2>
-8.0 Appendices</h2>
-<i>Include supporting detail that would
-be too distracting to include in the main body of the document.</i>
-<br>
-<hr>
-<p>This material is copied and/or adapted
-from the Survival Guide Website at <a href="http://www.construx.com/survivalguide/" target="_top">www.construx.com/survivalguide/</a>.
-This material is copyright &copy; 1993-1998 Steven C. McConnell. Permission
-is hereby given to copy, adapt, and distribute this material as long as
-this notice is included on all such materials and the materials are not
-sold, licensed, or otherwise distributed for commercial gain.
+</center>
+<p class="western"><br /><br /></p>

@@ -6,13 +6,18 @@
       <v-flex xs12 sm2>
         <v-card>
           <v-btn id="spmp" @click="content=srs">SRS</v-btn>
-          <v-btn id="srs" @click="content=spmp">SPMP</v-btn>
+          <v-btn id="srs" @click="content=spmp">PMP</v-btn>
           <v-card-title>
             <span class="title font-weight-dark">Load your prev project</span>
           </v-card-title>
           <v-sheet class="d-flex" color="grey lighten-3" height="600px" with="300px">
             <v-list>
-              <v-btn :key="pdf.name" v-for="pdf in pdfs" @click="content=pdf.data">{{pdf.name}}</v-btn>
+              <div :key="pdf.name" v-for="pdf in pdfs">
+                <v-btn @click="loadData(pdf)">{{pdf.name}}</v-btn>
+                <v-btn @click="deletePdf(pdf.name)">
+                  <v-icon class="material-icons">delete</v-icon>
+                </v-btn>
+              </div>
             </v-list>
           </v-sheet>
         </v-card>
@@ -30,6 +35,13 @@
           ></div>
           <div>
             <v-btn id="download_pdf" type="submit" @click="createPdf" target="_blank">Create PDF</v-btn>
+            <v-btn id="save_pdf" type="submit" @click="savePdf">Save PDF</v-btn>
+            <v-btn
+              v-if="$auth.user.premium"
+              id="send_pdf"
+              type="submit"
+              @click="sendPdf2Mail"
+            >Send PDF</v-btn>
           </div>
         </section>
       </v-flex>
@@ -96,9 +108,9 @@ export default {
       pdfName: "your Project name"
     };
   },
-  created() {
+  async created() {
     getPdf: {
-      this.$axios.get("api/pdf", {}).then(res => {
+      await this.$axios.get("api/pdf", {}).then(res => {
         this.pdfs = res.data.pdfs;
       });
     }
@@ -110,17 +122,50 @@ export default {
     onEditorChange({ editor, html, text }) {
       this.content = html;
     },
+    loadData(data) {
+      this.content = data.data;
+      this.pdfName = data.name;
+    },
+    async sendPdf2Mail() {
+      await this.$axios.post("api/pdfMail", {
+        name: this.pdfName + ".pdf",
+        mail: this.$auth.user.email,
+        message: "here is your pdf"
+      });
+    },
+    async reloadPdf() {
+      await this.$axios.get("api/pdf", {}).then(res => {
+        this.pdfs = res.data.pdfs;
+      });
+    },
+    async savePdf() {
+      await this.$axios
+        .post("api/pdf", {
+          data: this.content,
+          name: this.pdfName,
+          user_id: this.$auth.user.id,
+          responseType: "arraybuffer"
+        })
+        .then(result => {
+          this.reloadPdf();
+        })
+        .catch(err => {
+          console.log(err);
+          this.reloadPdf();
+        });
+    },
+    async deletePdf(name) {
+      await this.$axios.post("api/remove_pdf", {
+        name: name
+      });
+      this.reloadPdf();
+    },
     createPdf() {
       const vm = this;
-      this.$axios.post("api/pdf", {
-        data: this.content,
-        name: this.pdfName,
-        user_id: this.$auth.user.id,
-        responseType: "arraybuffer"
-      });
+
       if (process.browser) {
         const margins = {
-          top: 70,
+          top: 50,
           bottom: 40,
           left: 30,
           width: 550
@@ -148,8 +193,6 @@ export default {
           for (var i = totalPages; i >= 1; i--) {
             //make this page, the current page we are currently working on.
             doc.setPage(i);
-
-            header(doc);
 
             footer(doc, i, totalPages);
           }

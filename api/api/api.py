@@ -1,5 +1,6 @@
 from .models import db, User, Pdf
 import json
+from mimetypes import MimeTypes
 import base64
 import os
 from time import perf_counter
@@ -200,6 +201,9 @@ def render_pdf_weasyprint(User):
 
         pdf = MyFPDF()
         pdf.add_page()
+        pdf.add_font(
+            'DejaVu', '', './api/fonts/DejaVuSansCondensed.ttf', uni=True)
+        pdf.set_font('Arial', '', 14)
         pdf.write_html(request_data["data"])
         pdfData = Pdf(
             name=request_data["name"], data=request_data["data"], user_id=User.id)
@@ -223,6 +227,20 @@ def render_pdf_weasyprint(User):
             newArrey.append({"name": temp["name"], "data": temp["data"]})
             print(pdf.__dict__)
         return jsonify(pdfs=newArrey)
+
+
+@api.route('api/remove_pdf', methods=['POST', "GET"])
+@token_required
+def delete_pdf(User):
+    data = request.get_json()
+    if request.method == 'POST':
+        pdfData = Pdf.query.filter_by(name=data["name"]).first()
+        if pdfData:
+            db.session.delete(pdfData)
+            db.session.commit()
+            return jsonify({'message': 'Pdf Removed'}), 201
+
+        return jsonify({'message': 'Pdf Not Found'}), 401
 
 
 @api.route('api/reset', methods=['GET', 'POST'])
@@ -335,3 +353,24 @@ def delete_user(User):
             return jsonify({'message': 'User doesnt exist'}), 401
     else:
         return jsonify({'message': 'User is not an admin'}), 401
+
+
+@api.route("api/pdfMail", methods=('POST',))
+@token_required
+def sendPdf2Mail(User):
+    request_data = json.loads(request.get_data())
+    dirName = 'uploads/'+User.username+'/PDF_Files/'
+    mimes = MimeTypes()
+    msg = Message(subject=request_data["name"],
+                  sender=current_app.config["MAIL_USERNAME"],
+                  # replace with your email for testing
+                  recipients=[request_data["mail"]],
+                  body=request_data["message"])
+    path_ = os.path.join(dirName, request_data["name"])
+    with current_app.open_resource(path_) as fp:
+        mime = mimes.guess_type(fp.name)
+        msg.attach(path_, mime[0], fp.read())
+
+    current_app.config["mail"].send(msg)
+    response = {'msg': "sent"}
+    return jsonify(response)

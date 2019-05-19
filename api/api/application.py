@@ -41,6 +41,7 @@ def create_app(app_name='API'):
     login = LoginManager(app)
     app.config.update(mail_settings)
     mail = Mail(app)
+    app.config['mail'] = mail
     admin = Admin(app)
 
     @login.user_loader

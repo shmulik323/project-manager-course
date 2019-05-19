@@ -79,6 +79,7 @@ export default {
       method: "GET",
       responseType: "arraybuffer"
     };
+
     await this.$axios(config, { name: this.$auth.user.image_file }).then(
       response => {
         var bytes = new Uint8Array(response.data);
