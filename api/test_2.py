@@ -47,10 +47,11 @@ class TestBase(TestCase):
 
     def setUp(self):
         chromeOptions = webdriver.ChromeOptions()
+        ChromeOptions options=new ChromeOptions();
         chromeOptions.add_argument("--headless")
         chromeOptions.add_argument("--start-fullscreen")
         chromeOptions.add_argument('--disable-dev-shm-usage')
-        chromeOptions.setBinary('C:\Program Files (x86)\Google\Chrome\Application')
+        options.setBinary('C:\Program Files (x86)\Google\Chrome\Application')
         self.driver = webdriver.Chrome(chrome_options=chromeOptions)
         self.driver.get('http://127.0.0.1:3000/')
         self.driver.maximize_window()
