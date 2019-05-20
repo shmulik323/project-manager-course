@@ -69,7 +69,7 @@ class TestFileOptions(TestBase):
         self.user.change()
         db.session.add(self.user)
         db.session.commit()
-        self.premium=User.query.filter_by(email=test_user_email).first
+        self.premium=User.query.filter_by(email=test_user_email).first()
         assert self.premium.premium
 
     def test_admin(self):
@@ -79,7 +79,7 @@ class TestFileOptions(TestBase):
         self.user.promote()
         db.session.add(self.user)
         db.session.commit()
-        self.admin=User.query.filter_by(email=test_user_email).first
+        self.admin=User.query.filter_by(email=test_user_email).first()
         assert self.admin.admin
 
     def test_user(self):
@@ -88,7 +88,7 @@ class TestFileOptions(TestBase):
         db.session.add(self.user)
         db.session.commit()
     
-        assert User.query.filter_by(email=test_user_email).first
+        assert User.query.filter_by(email=test_user_email).first()
 
 if __name__ == '__main__':
     unittest.main()
