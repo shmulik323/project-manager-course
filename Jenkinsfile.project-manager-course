@@ -39,7 +39,7 @@ pipeline {
                 }
             }
         }
-        stage('Tests-2') {
+        stage('Tests-unit') {
             agent {
                 docker { image 'joyzoursky/python-chromedriver:3.7-alpine3.8' }
             }

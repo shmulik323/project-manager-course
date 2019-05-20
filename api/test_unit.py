@@ -69,8 +69,7 @@ class TestFileOptions(TestBase):
         self.user.change()
         db.session.add(self.user)
         db.session.commit()
-        
-
+    
         assert User.query.filter_by(email=test_user_email).first
 
     def test_admin(self):
@@ -81,7 +80,6 @@ class TestFileOptions(TestBase):
         db.session.add(self.user)
         db.session.commit()
         
-
         assert User.query.filter_by(email=test_user_email).first
 
     def test_user(self):
