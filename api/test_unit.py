@@ -69,8 +69,8 @@ class TestFileOptions(TestBase):
         self.user.change()
         db.session.add(self.user)
         db.session.commit()
-        self.premium=User.query.filter_by(email=test_user_email).first()
-        assert self.premium.premium
+        self.prem=User.query.filter_by(email=test_user_email).first()
+        assert self.prem.premium
 
     def test_admin(self):
         User.query.delete()
@@ -79,8 +79,8 @@ class TestFileOptions(TestBase):
         self.user.promote()
         db.session.add(self.user)
         db.session.commit()
-        self.admin=User.query.filter_by(email=test_user_email).first()
-        assert self.admin.admin
+        self.ad=User.query.filter_by(email=test_user_email).first()
+        assert self.ad.admin
 
     def test_user(self):
         User.query.delete()
