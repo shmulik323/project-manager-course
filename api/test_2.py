@@ -53,7 +53,8 @@ class TestBase(TestCase):
         chromeOptions.add_argument('--no-sandbox')
         chromeOptions.add_argument("--start-fullscreen")
         chromeOptions.add_argument('--disable-dev-shm-usage')
-        self.driver = new RemoteWebDriver(new URL("http://35.204.90.38:4444/wd/hub"), capability))
+        
+        self.driver = webdriver.Chrome(chrome_options=chromeOptions)
         self.driver.get('http://127.0.0.1:3000/')
         self.driver.maximize_window()
         db.session.commit()
