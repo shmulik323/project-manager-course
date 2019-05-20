@@ -70,7 +70,7 @@ class TestFileOptions(TestBase):
         db.session.add(self.user)
         db.session.commit()
         
-        assert self.prem=User.query.filter_by(email=test_user_email).first()
+        assert User.query.filter_by(email=test_user_email).first()
 
     def test_admin(self):
         User.query.delete()
