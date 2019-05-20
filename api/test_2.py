@@ -2,7 +2,6 @@ import os
 import tempfile
 import unittest
 import urllib
-import selenium
 from selenium import webdriver
 from api.application import create_app
 from api.models import User, PremiumUser, db
@@ -53,8 +52,8 @@ class TestBase(TestCase):
         chromeOptions.add_argument('--no-sandbox')
         chromeOptions.add_argument("--start-fullscreen")
         chromeOptions.add_argument('--disable-dev-shm-usage')
-        
-        self.driver = new DefaultSelenium("35.204.90.38", 4444, "*chrome", "http://127.0.0.1:3000/");
+        Selenium driver = new DefaultSelenium("35.204.90.38", 4444, "*chrome", "http://127.0.0.1:3000/");
+        self.driver = webdriver.Chrome(chrome_options=chromeOptions)
         self.driver.get('http://127.0.0.1:3000/')
         self.driver.maximize_window()
         db.session.commit()
