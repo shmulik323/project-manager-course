@@ -18,6 +18,9 @@ import multiprocessing
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.support.ui import WebDriverWait as wait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
 
 test_user_first_name = "alex"
@@ -71,6 +74,7 @@ class TestFileOptions(TestBase):
         self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
         db.session.add(self.user)
         db.session.commit()
+        wait(self.driver, 10).until(EC.presence_of_element_located((By.id, "login_link")))
         time.sleep(1)
         self.driver.find_element_by_id("login_link").click()
         time.sleep(3)
