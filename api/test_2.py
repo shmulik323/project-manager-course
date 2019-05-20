@@ -17,9 +17,8 @@ import random, time, queue
 import multiprocessing
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import Select
-from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+
 
 test_user_first_name = "alex"
 test_user_last_name = "vaitz"
@@ -55,7 +54,7 @@ class TestBase(TestCase):
         chromeOptions.add_argument('--disable-dev-shm-usage')
         
         self.driver = webdriver.Chrome(chrome_options=chromeOptions)
-        self.driver.get('http://127.0.0.1:3000/')
+        self.driver.get('http://127.0.0.1:5000/')
         self.driver.maximize_window()
         db.session.commit()
         db.create_all()
@@ -80,7 +79,7 @@ class TestFileOptions(TestBase):
         self.driver.find_element_by_id("password").send_keys(test_user_password)
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
-        self.driver.get('http://127.0.0.1:3000/create')
+        self.driver.get('http://127.0.0.1:5000/create')
         time.sleep(2)
 
         self.driver.find_element_by_id("spmp").click()
@@ -101,7 +100,7 @@ class TestFileOptions(TestBase):
         self.driver.find_element_by_id("password").send_keys(test_user_password)
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
-        self.driver.get('http://127.0.0.1:3000/create')
+        self.driver.get('http://127.0.0.1:5000/create')
         time.sleep(2)
 
         self.driver.find_element_by_id("srs").click()
@@ -122,7 +121,7 @@ class TestFileOptions(TestBase):
         self.driver.find_element_by_id("password").send_keys(test_user_password)
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
-        self.driver.get('http://127.0.0.1:3000/create')
+        self.driver.get('http://127.0.0.1:5000/create')
         time.sleep(2)
 
         self.driver.find_element_by_id("srs").click()
@@ -147,7 +146,7 @@ class TestFileOptions(TestBase):
         self.driver.find_element_by_id("password").send_keys(test_user_password)
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
-        self.driver.get('http://127.0.0.1:3000/search')
+        self.driver.get('http://127.0.0.1:5000/search')
         time.sleep(2)  
 
         self.driver.find_element_by_id("start_search").click()
@@ -169,7 +168,7 @@ class TestFileOptions(TestBase):
         self.driver.find_element_by_id("password").send_keys(test_user_password)
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
-        self.driver.get('http://127.0.0.1:3000/search')
+        self.driver.get('http://127.0.0.1:5000/search')
         time.sleep(2)  
 
         self.driver.find_element_by_id("name").send_keys("cool stuff")
@@ -192,7 +191,7 @@ class TestFileOptions(TestBase):
         self.driver.find_element_by_id("password").send_keys(test_user_password)
         self.driver.find_element_by_id("login_click").click()
         time.sleep(2)
-        self.driver.get('http://127.0.0.1:3000/search')
+        self.driver.get('http://127.0.0.1:5000/search')
         time.sleep(2)  
 
         self.driver.find_element_by_id("start_search").click()
