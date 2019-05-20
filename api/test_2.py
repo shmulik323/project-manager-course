@@ -50,7 +50,6 @@ class TestBase(TestCase):
 
     def setUp(self):
         chromeOptions = webdriver.ChromeOptions()
-        wait = WebDriverWait(self.driver, 10)
         chromeOptions.add_argument("--headless")
         chromeOptions.add_argument('--no-sandbox')
         chromeOptions.add_argument("--start-fullscreen")
@@ -74,7 +73,7 @@ class TestFileOptions(TestBase):
         self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
         db.session.add(self.user)
         db.session.commit()
-
+        wait = WebDriverWait(self.driver, 10)
         wait.until(EC.element_to_be_clickable((By.ID, "login_link")))
         time.sleep(1)
         self.driver.find_element_by_id("login_link").click()

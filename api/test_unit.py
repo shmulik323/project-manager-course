@@ -89,6 +89,13 @@ class TestFileOptions(TestBase):
 
         assert self.driver.get('http://127.0.0.1:5000/')
 
+    def test_user(self):
+        User.query.delete()
+        self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
+        db.session.add(self.user)
+        db.session.commit()
+    
+        assert User.query.filter_by(email=test_user_email).first
 
 if __name__ == '__main__':
     unittest.main()
