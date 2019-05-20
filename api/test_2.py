@@ -74,7 +74,7 @@ class TestFileOptions(TestBase):
         self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
         db.session.add(self.user)
         db.session.commit()
-        wait(self.driver, 10).until(EC.presence_of_element_located((By.id, "login_link")))
+        wait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "login_link")))
         time.sleep(1)
         self.driver.find_element_by_id("login_link").click()
         time.sleep(3)
