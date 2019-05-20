@@ -2,6 +2,7 @@ import os
 import tempfile
 import unittest
 import urllib
+import selenium
 from selenium import webdriver
 from api.application import create_app
 from api.models import User, PremiumUser, db
