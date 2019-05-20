@@ -62,60 +62,33 @@ class TestBase(TestCase):
         self.driver.quit()
 
 class TestFileOptions(TestBase):
-    def test_spmp(self):
+    def test_login(self):
         User.query.delete()
         self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
         db.session.add(self.user)
         db.session.commit()
         
 
-        assert self.driver.find_element_by_id("spmp")
+        assert self.driver.get('http://127.0.0.1:5000/login')
     
-    def test_srs(self):
+    def test_register(self):
         User.query.delete()
         self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
         db.session.add(self.user)
         db.session.commit()
         
 
-        assert self.driver.find_element_by_id("spmp")
+        assert self.driver.get('http://127.0.0.1:5000/register')
 
-    def test_download(self):
+    def test_main(self):
         User.query.delete()
         self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
         db.session.add(self.user)
         db.session.commit()
         
 
-        assert self.driver.find_element_by_id("spmp")
-    
-    def test_search_category(self):
-        User.query.delete()
-        self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
-        db.session.add(self.user)
-        db.session.commit()
-        
+        assert self.driver.get('http://127.0.0.1:5000/')
 
-        assert self.driver.find_element_by_id("sort_button") 
-    
-
-    def test_search_name(self):
-        User.query.delete()
-        self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
-        db.session.add(self.user)
-        db.session.commit()
-        
-
-        assert self.driver.find_element_by_id("sort_button")
-
-    def test_search_date(self):
-        User.query.delete()
-        self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
-        db.session.add(self.user)
-        db.session.commit()
-       
-
-        assert self.driver.find_element_by_id("sort_button")
 
 if __name__ == '__main__':
     unittest.main()
