@@ -71,9 +71,10 @@ class TestFileOptions(TestBase):
 
         assert self.driver.get('http://127.0.0.1:5000/login')
     
-    def test_register(self):
+    def test_premiun(self):
         User.query.delete()
         self.user = User(email=test_user_email,password=test_user_password,name=test_user_first_name,last=test_user_last_name,username=test_user_username)
+        self.user.change()
         db.session.add(self.user)
         db.session.commit()
         
