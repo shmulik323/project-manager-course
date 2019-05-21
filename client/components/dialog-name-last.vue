@@ -1,13 +1,12 @@
 <template>
   <v-layout row justify-center>
+    <b-toast id="my-toast" :variant="varient" solid>
+      <div slot="toast-title" class="d-flex flex-grow-1 align-items-baseline">
+        <strong class="mr-auto">Massege!</strong>
+      </div>
+      {{massege}}
+    </b-toast>
     <v-dialog v-model="dialog" persistent max-width="600px">
-      <b-toast id="my-toast" variant="warning" solid>
-        <div slot="toast-title" class="d-flex flex-grow-1 align-items-baseline">
-          <b-img blank blank-color="#ff5555" class="mr-2" width="12" height="12"></b-img>
-          <strong class="mr-auto">Notice!</strong>
-        </div>This is the content of the toast.
-        It is short and to the point.
-      </b-toast>
       <template v-slot:activator="{ on }">
         <b-btn
           id="change_profile"
@@ -87,7 +86,8 @@ export default {
     form: false,
     isLoading: false,
     password: null,
-    error: "",
+    massege: "",
+    varient: "",
     rules: {
       required: v => !!v || "This field is required"
     }
@@ -103,10 +103,15 @@ export default {
 
         .then(e => {
           this.dialog = !this.dialog;
+          this.varient = "success";
+          this.massege = "The new name is:" + this.name + " " + this.last;
+          this.$bvToast.show("my-toast");
         })
         .catch(e => {
-          this.error = e;
+          this.massege = e;
           this.dialog = !this.dialog;
+          this.varient = "warning";
+
           this.$bvToast.show("my-toast");
         });
     }
