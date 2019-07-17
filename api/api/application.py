@@ -34,8 +34,8 @@ def create_app(app_name='API'):
         "MAIL_PORT": 465,
         "MAIL_USE_TLS": False,
         "MAIL_USE_SSL": True,
-        "MAIL_USERNAME": 'mishel110393@gmail.com',
-        "MAIL_PASSWORD": 'Spygame326'
+        "MAIL_USERNAME": 'other@gmail.com',
+        "MAIL_PASSWORD": 'password'
     }
 
     login = LoginManager(app)
