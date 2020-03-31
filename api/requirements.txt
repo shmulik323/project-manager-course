@@ -2,7 +2,7 @@ alembic==1.0.9
 attrs==19.1.0
 autopep8==1.4.3
 backcall==0.1.0
-bleach==3.1.0
+bleach==3.1.4
 blinker==1.4
 cairocffi==1.0.2
 CairoSVG==2.3.0
